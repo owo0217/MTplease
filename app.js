@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 adr(app);
-// api(app);
+api(app);
 
 
 /// catch 404 and forward to error handler
@@ -63,6 +63,6 @@ app.use(function(err, req, res, next) {
 
 app.listen(52273, function() {
     console.log("Running server at port 52273");
-})
+});
 
 module.exports = app;
