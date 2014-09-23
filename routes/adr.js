@@ -26,7 +26,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/members/mypage', function(req, res) {
-
+		res.render('members/mypage', { title : 'MTPlease!' });
 	});
 
 	app.get('/members/compare/lists', function(req, res) {
