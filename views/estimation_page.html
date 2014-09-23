@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>엠티를 부탁해</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jumbotron-narrow.css" />
+    <link rel="stylesheet" href="css/searchpage.css" />
+    <style>
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a class="brand" href="#">
+                    <img src="img/mtlogo.png" alt="fail to load the image" width="100" height="15" />
+                </a>
+                <div class="nav pull-right">
+                    <ul class="nav">
+                        <li>
+                            <a href="#">
+                                <img src="img/search.png" alt="fail to load the image" />
+                                <sub>검색</sub>
+                            </a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li>
+                            <a href="#">
+                                <img src="img/compare.png" alt="fail to load the image" />
+                                <sub>비교 페이지</sub>
+                            </a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li>
+                            <a href="#">
+                                <img src="img/mypage.png" alt="fail to load the image" />
+                                <sub>마이 페이지</sub>
+                            </a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li>
+                            <a href="#">
+                                <img src="img/logout.png" alt="fail to load the image" />
+                                <sub>로그아웃</sub>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 상단 쿼리문 -->
+        <div class="">
+            <div>우리는 </div>
+            <a href="#">가평</a>
+            <div>으로 </div>
+            <a href="#">17</a>
+            <div>명이서 엠티간다!!</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">견적내기</div>
+        </div>
+        <div class="row-fluid">
+            <!-- 펜션 섹션 -->
+            <div class="span3">
+                <div class="row-fluid">
+                    <div class="span12">펜션명</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">펜션 주소</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">펜션 정보</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12"><img src="" alt="작은 사진" /></div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6">6</div>
+                    <div class="span6">
+                        <button class="btn btn-mini">자세히보기</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span12">펜션 가격</div>
+                </div>
+            </div>
+            <!-- 술 섹션 -->
+            <div class="span3">
+                <div class="row-fluid">
+                    <div class="span12">술</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span11">맥주</div>
+                    <div class="span1">
+                        <button class="btn btn-mini">x</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"><img src="" alt="맥주 그림" /></div>
+                    <div class="span1">1</div>
+                    <div class="span5">
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" id="num-beer" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                1 병
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>2 병</li>
+                                <li>3 병</li>
+                                <li>4 병</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span11">소주</div>
+                    <div class="span1">
+                        <button class="btn btn-mini">x</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"><img src="" alt="소주 그림" /></div>
+                    <div class="span1">1</div>
+                    <div class="span5">
+                        <div class="dropdown">
+                            <a class="btn  dropdown-toggle" id="num-soju" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                1 병
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>2 병</li>
+                                <li>3 병</li>
+                                <li>4 병</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span2">
+                        <button class="btn btn-mini">+</button>
+                    </div>
+                    <div class="span10">10</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span11">총 술 가격</div>
+                    <div class="span1">1</div>
+                </div>
+            </div>
+            <!-- 고기 섹션 -->
+            <div class="span3">
+                <div class="row-fluid">
+                    <div class="span12">고기</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span11">돼지</div>
+                    <div class="span1">
+                        <button class="btn btn-mini">x</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"><img src="" alt="돼지 그림" /></div>
+                    <div class="span1">1</div>
+                    <div class="span5">
+                        <div class="dropdown">
+                            <a class="btn  dropdown-toggle" id="num-pork" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                1 근
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>2 근</li>
+                                <li>3 근</li>
+                                <li>4 근</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span11">소</div>
+                    <div class="span1">
+                        <button class="btn btn-mini">x</button>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span6"><img src="" alt="소 그림" /></div>
+                    <div class="span1">1</div>
+                    <div class="span5">
+                        <div class="dropdown">
+                            <a class="btn dropdown-toggle" id="num-beef" role="button" data-toggle="dropdown" data-target="#" href="#">
+                                1 근
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                <li>2 근</li>
+                                <li>3 근</li>
+                                <li>4 근</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span1">
+                        <button class="btn btn-mini">+</button>
+                    </div>
+                    <div class="span11">11</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span11">총 고기 가격</div>
+                    <div class="span1">1</div>
+                </div>
+            </div>
+            <!-- 기타 섹션 -->
+            <div class="span3">
+                <div class="row-fluid">
+                    <div class="span12">기타 비용</div>
+                </div>
+                <div class="row-fluid">
+                    <div class="span11">기타 항목 입력</div>
+                    <div class="span1">
+                        <button class="btn btn-mini">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">총 가격</div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">1인 기준 가격</div>
+        </div>
+        <div class="row-fluid">
+            <div class="span8">8</div>
+            <div class="span2">
+                <button class="btn">저장하기</button>
+            </div>
+            <div class="span2">
+                <button class="btn">공유하기</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
