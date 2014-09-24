@@ -11,7 +11,6 @@ module.exports = function(app) {
 		// console.log(res);
 	});
 
-
 	// member management part
 	app.get('/members/login', function(req, res) {
 
