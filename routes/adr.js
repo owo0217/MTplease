@@ -1,14 +1,10 @@
 var express = require('express');
-//var router = express.Router();
-
-//module.exports = router;
 
 module.exports = function(app) {
 
 	// main page 
 	app.get('/', function(req, res) {
-		res.render('index', { title : 'MTPlease!' });
-		// console.log(res);
+		res.render('main', { title : 'MTPlease!' });
 	});
 
 	// member management part
