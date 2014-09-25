@@ -1,11 +1,7 @@
-// export module                                                                                                                                                    
-var fs = require('fs')                                                                                                                                              
-	, ejs = require('ejs')                                                                                                                                          
-	, http = require('http')                                                                                                                                        
-	, mysql = require('mysql')                                                                                                                                      
-	, expxress = require('express');                                                                                                                                
-	                                                                                                                                                                
-// connect database                                                                                                                                                 
+// module exports
+var mysql = require('mysql');
+
+// create database connection
 var connection = mysql.createConnection({                                                                                                                           
 	user : 'root',                                                                                                                                                  
 	password : 'bdg051205anata',
@@ -20,23 +16,17 @@ connection.connect(function(err){
 	}                                                                                                                                                               
 });
 
-// TEST2 라는 데이터베이스에 접속합니다.                                                                                                                                                                 
+
+                                                                                                                                                                
 connection.query('use MTPlease');                                                                                                                                
 
-var query = "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema = '" + "MTPlease" + "' AND table_name = '" + "members" + "'";
-
-
-
-// development mode
-/*if (app.get('env') === 'development') {
-
-    if (connection.query('SHOW TABLES LIKE "members";')) {
-    	connection.query('CREATE TABLE IF NOT EXISTS products(id VARCHAR(100) NOT NULL PRIMARY KEY, password VARCHAR(100) NOT NULL);'                                                     
-	, function(err, rows, fields){
-		if(err) throw err;                                                                                                                                        
-			else{ console.log(rows);                                                                                                                                    
-			}
-	});
-    }
-       
-}*/
+// create members database
+var query = 'CREATE TABLE IF NOT EXISTS members(mem_id VARCHAR(100) NOT NULL PRIMARY KEY, password VARCHAR(100) NOT NULL);'
+connection.query(query, function(err, results) {
+	if(err) {
+		throw err;
+	}
+	else { 
+		console.log(results);                            
+	}
+});
