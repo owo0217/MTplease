@@ -16,8 +16,6 @@ connection.connect(function(err){
 	}                                                                                                                                                               
 });
 
-
-                                                                                                                                                                
 connection.query('use MTPlease');                                                                                                                                
 
 // create members database
@@ -26,7 +24,7 @@ connection.query(query, function(err, results) {
 	if(err) {
 		throw err;
 	}
-	else { 
+	else {
 		console.log(results);                            
 	}
 });

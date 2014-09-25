@@ -1,10 +1,10 @@
-var member_db = require('../database/member_db.js');
+var database_members = require('../database/database_members.js');
 
 module.exports = {
 
 	// 회원 등록
 	join : function(req, res){
-		member_db.add(req.body, function(result){
+		database_members.add(req.body, function(result){
 			req.session.userid = req.body.id;
 
 			if(result === true){
@@ -21,7 +21,7 @@ module.exports = {
 	
 	// 로그인
 	,login: function(req, res){
-		member_db.get({id: req.body.id}, function(member){
+		database_members.get({id: req.body.id}, function(member){
 		
 			if(member[0]){
 				if(req.body.pw === member[0].password){
@@ -47,7 +47,7 @@ module.exports = {
 		var condition = {};
 		condition.id = req.session.userid;
 		condition.pw = req.body.pw;
-		member_db.modify(condition, function(result){
+		database_members.modify(condition, function(result){
 
 			if(result === true){
 				console.log('member_service.js, modify_success');

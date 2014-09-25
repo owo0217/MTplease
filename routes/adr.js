@@ -67,12 +67,12 @@ module.exports = function(app) {
 
 	// compare part
 	app.get('/compare', function(req, res) {
-
+		res.render('compare', { title : 'MTPlease!' });
 	});
 
 	// estimate part
 	app.get('/estimate', function(req, res) {
-
+		res.render('estimate', { title : 'MTPlease!' });
 	});
 
 

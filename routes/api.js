@@ -1,4 +1,4 @@
-var member_service = require('../modules/service/member_service.js');
+var member_service = require('../modules/service/service_members.js');
 
 module.exports = function(app) {
 	app.post('/member/join', function(req, res){
@@ -21,11 +21,11 @@ module.exports = function(app) {
 		member_service.modify(req, res);
 	});
 
-	app.post('/members/compare/update', function(req, res) {
+	app.post('/members/compare/modify', function(req, res) {
 
 	});
 
-	app.post('/members/estimate/update', function(req, res) {
+	app.post('/members/estimate/modify', function(req, res) {
 
 	});
 
