@@ -1,34 +1,34 @@
-var member_service = require('../modules/service/service_members.js');
+var service_members = require('../modules/service/service_members.js');
 
 module.exports = function(app) {
-	app.post('/member/join', function(req, res){
-		member_service.join(req, res);
+
+	app.post('/members/join', function(req, res){
+		service_members.join(req, res);
 	});
 	
-	
 		// 로그인
-	app.post('/member/login', function(req, res) {
-		member_service.login(req, res);
+	app.post('/members/login', function(req, res) {
+		service_members.login(req, res);
 	});	
 		
 		// 로그아웃
-	app.post('/member/logout', function(req, res) {
-		member_service.logout(req, res);
+	app.post('/members/logout', function(req, res) {
+		service_members.logout(req, res);
 	});
 	
 		// 회원 정보 수정
-	app.post('/member/modify', function(req, res){
-		member_service.modify(req, res);
+	app.post('/members/modify', function(req, res){
+		service_members.modify(req, res);
 	});
 
 		//  비교하기 수정 
 	app.post('/members/compare/modify', function(req, res) {
-		compare.update(req,res);
+		compare.modify(req,res);
 	});
 
 		// 견적내기 수정
 	app.post('/members/estimate/modify', function(req, res) {
-		estimate.update(req,res);
+		estimate.modify(req,res);
 	});
 
 		//  비교하기 생성

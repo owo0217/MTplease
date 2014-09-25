@@ -1,3 +1,4 @@
+/* 
 var mysql = require('mysql');
 
 var connection = mysql.createConnection({
@@ -48,3 +49,7 @@ query = "CREATE TABLE IF NOT EXISTS rooms (
 	PRIMARY KEY(pen_name, room_name),
 	FOREIGN KEY (region, pen_name) REFERENCES pensions(region, pen_name) ON DELETE CASCADE ON UPDATE CASCADE
 );";
+
+
+
+*/

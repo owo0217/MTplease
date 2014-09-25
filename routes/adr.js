@@ -9,17 +9,22 @@ module.exports = function(app) {
 
 	// member management part
 	app.get('/members/login', function(req, res) {
-		
+		if(!req.session.user_id){
+			res.render('members/members_login', {title: 'members-login'});
+		} else {
+			console.log(req.session.user_id);
+			res.render('main', { title: 'MTPlease!', members_ID: req.session.user_id});
+		}
 	});
 
 	// 회원 가입 페이지
 	app.get('/members/join', function(req, res) {
-
+		res.render('members/members_join', {title: 'members-join'});
 	});
 
 	// 회원 정보 수정 페이지
 	app.get('/members/modify', function(req, res) {
-
+		res.render('members/members_modify', {title: 'members-modify'});
 	});
 
 
@@ -65,16 +70,16 @@ module.exports = function(app) {
 
 	// ***   search part ***//
 	//  검색결과 보기
-	app.get('/pentions/general_search', function(req, res) {
+	app.get('/pensions/general_search', function(req, res) {
 
 	});
 	// 검색 결과 보기(역경매 페이지 )
-	app.get('/pentions/rev_auction_search', function(req, res) {
+	app.get('/pensions/rev_auction_search', function(req, res) {
 
 	});
 
 	// 펜션 세부 정보 보기
-	app.get('/pentions/:id', function(req, res) {
+	app.get('/pensions/:id', function(req, res) {
 
 	});
 
