@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 
 var session = require('express-session');
 var mysql = require('mysql');
-// var router = express.Router();
 
 var api = require('./routes/api.js');
 var adr = require('./routes/adr.js');
@@ -25,6 +24,9 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({ secret: 
+
+}));
 
 adr(app);
 api(app);
