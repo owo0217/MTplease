@@ -1,0 +1,43 @@
+head
+	//extends layout
+	//block scripts
+	
+	script(src="//code.jquery.com/jquery-1.11.0.min.js")
+	//script(type="text/javascript", src="/javascripts/js_index.js")
+
+body
+	block content
+		h1= title
+		p Welcome to #{title}
+		hr
+		p
+			form(method='post', action='/member/login')
+				| My ID is #{id}
+		hr
+		
+		table
+			tr
+				td
+					| You already have an ID.
+				td
+					input#btn_login(type='button', value='Login')
+			tr
+				td
+					| If you don't
+				td
+					input#btn_join(type='button', value='Join')
+			tr
+				td
+					| Modify
+				td
+					input#btn_modify(type ='button', value = 'Modify')
+
+			tr
+				td
+					| Logout
+				td
+					input#btn_logout(type ='button', value = 'Logout')
+					
+					
+					
+					

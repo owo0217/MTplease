@@ -1,0 +1,89 @@
+doctype html
+
+html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
+  head
+    meta(charset='utf-8', name='viewport', content='width=device-width, initial-scale=1.0')
+    title 엠티를 부탁해
+    link(rel='stylesheet', href='../public/css/bootstrap.min.css')
+    link(rel='stylesheet', href='../public/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='../public/css/theme.css')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='css/bootstrap-responsive.min.css')
+    script(src='http://code.jquery.com/jquery-1.7.1.js')
+  body
+    div.navbar.navbar-default.navbar-fixed-top(role='navigation')
+      div.container
+        div.navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='nav-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='#')
+            img(src='../public/img/mtlogo-navbar-header.png', alt='fail to load the image')
+        div.navbar-collapse.collapse
+          ul.nav.navbar-nav.navbar-right
+            li
+              a(href='#')
+                img(src='../public/img/search.png', alt='fail to load the image')
+                sub 검색
+            li.divider-vertical
+            li
+              a(href='#')
+                img(src='../public/img/compare.png', alt='fail to load the image')
+                sub 비교 페이지
+            li.divider-vertical
+            li
+              a(href='#')
+                img(src='../public/img/mypage.png', alt='fail to load the image')
+                sub 마이 페이지
+            li.divider-vertical
+            li
+              a(href='#')
+                sub 로그인
+      //
+         상단 쿼리문
+                <div class="container">
+                    <div>우리는 </div>
+                    <a href="#">가평</a>
+                    <div>으로 </div>
+                    <a href="#">17</a>
+                    <div>명이서 엠티간다!!</div>
+                </div>
+                    
+    div.container(role='main')
+      div.row
+        div.col-md-12
+          h1 펜션명
+      div.row
+        // 좌측 사진 섹션
+        div.col-md-7
+          | 사진섹션
+          div.row
+            div.col-md-12
+              img(src='', alt='큰 사진')
+          div.row
+            div.col-md-3
+              img(src='', alt='작은 사진1')
+            div.col-md-3
+              img(src='', alt='작은 사진2')
+            div.col-md-3
+              img(src='', alt='작은 사진3')
+            div.col-md-3
+              img(src='', alt='작은 사진4')
+        // 우측 지도 섹션
+        div.col-md-5
+          | 지도섹션
+          div.row
+            div.col-md-12 주소
+          div.row
+            div.col-md-12 지도
+          div.row
+            div.col-md-12 세부사항들
+          div.row
+            div.col-md-5
+            div.col-md-7
+              div.btn-group
+                button.btn.btn-default(type='button') 비교하기
+                button.btn.btn-default(type='button') 공유하기
+                button.btn.btn-default(type='button') 견적내기  
