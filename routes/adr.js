@@ -4,14 +4,17 @@ module.exports = function(app) {
 
 	// main page 
 	app.get('/', function(req, res) {
-		res.render('index', { title : 'MTPlease!' });
-		// console.log(res);
+		res.render('main', { title : 'MTPlease!' });
 	});
 
+<<<<<<< HEAD
 
 	// ***  member management part ***//
 	
 	// 로그인 페이지
+=======
+	// member management part
+>>>>>>> c482b8f2848640d9826d28518766bb8f8b001275
 	app.get('/members/login', function(req, res) {
 		
 	});
