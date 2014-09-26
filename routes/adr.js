@@ -5,6 +5,7 @@ module.exports = function(app) {
 	// main page 
 	app.get('/', function(req, res) {
 		res.render('main', { title : 'MTPlease!' });
+		console.log(req);
 	});
 
 	// member management part
@@ -65,27 +66,28 @@ module.exports = function(app) {
 
 	// ***   search part ***//
 	//  검색결과 보기
-	app.get('/pentions/general_search', function(req, res) {
+	app.get('/pensions/general_search', function(req, res) {
 
 	});
 	// 검색 결과 보기(역경매 페이지 )
-	app.get('/pentions/rev_auction_search', function(req, res) {
+	app.get('/pensions/rev_auction_search', function(req, res) {
 
 	});
 
-	// 펜션 세부 정보 보기
-	app.get('/pentions/:id', function(req, res) {
-
+	// 객실 세부 정보 보기
+	app.get('/pensions/:room_id', function(req, res) {
+		console.log(res);
+		res.render('compare', { title : 'MTPlease!' });
 	});
 
 	// ***  compare part ***//
-	// 비교하기 보기
+	// 비교하기 페이지 보기
 	app.get('/compare', function(req, res) {
 		res.render('compare', { title : 'MTPlease!' });
 	});
 
 	// *** estimate part ***//
-	//  견적내기 페이지
+	//  견적내기 페이지 보기
 	app.get('/estimate', function(req, res) {
 		res.render('estimate', { title : 'MTPlease!' });
 	});
