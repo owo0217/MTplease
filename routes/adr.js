@@ -10,17 +10,22 @@ module.exports = function(app) {
 
 	// member management part
 	app.get('/members/login', function(req, res) {
-		
+		if(!req.session.user_id){
+			res.render('members/members_login', {title: 'members-login'});
+		} else {
+			console.log(req.session.user_id);
+			res.render('main', { title: 'MTPlease!', members_ID: req.session.user_id});
+		}
 	});
 
 	// 회원 가입 페이지
 	app.get('/members/join', function(req, res) {
-
+		res.render('members/members_join', {title: 'members-join'});
 	});
 
 	// 회원 정보 수정 페이지
 	app.get('/members/modify', function(req, res) {
-
+		res.render('members/members_modify', {title: 'members-modify'});
 	});
 
 
@@ -74,10 +79,16 @@ module.exports = function(app) {
 
 	});
 
+<<<<<<< HEAD
 	// 객실 세부 정보 보기
 	app.get('/pensions/:room_id', function(req, res) {
 		console.log(res);
 		res.render('compare', { title : 'MTPlease!' });
+=======
+	// 펜션 세부 정보 보기
+	app.get('/pensions/:id', function(req, res) {
+
+>>>>>>> 877bc53280a2d60822035e0774bc1c3ac83df779
 	});
 
 	// ***  compare part ***//

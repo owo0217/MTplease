@@ -5,12 +5,11 @@ html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
       meta(charset='utf-8' name='viewport' content='width=device-width, initial-scale=1.0')
       meta(http-equiv='X-UA-Compatible' content='IE=edge')
       title 엠티를 부탁해 - 로그인
-
+      script(src="//code.jquery.com/jquery-1.11.0.min.js")
       // Bootstrap core CSS
-      link(href='css/bootstrap.min.css' rel='stylesheet')
-
+      link(href='../css/bootstrap.min.css' rel='stylesheet')
       // Custom styles for this template
-      link(href='css/signin.css' rel='stylesheet')
+      script(type="text/javascript", src="/javascripts/members/members_login.js")
 
    body
       div.navbar.navbar-default.navbar-fixed-top(role='navigation')
@@ -22,23 +21,23 @@ html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
                   span.icon-bar
                   span.icon-bar
                a.navbar-brand(href='#')
-                  img(src='img/mtlogo-navbar-header.png' alt='fail to load the image')
+                  img(src='../img/mtlogo-navbar-header.png' alt='fail to load the image')
             
             div.navbar-collapse.collapse
                ul.nav.navbar-nav.navbar-right
                   li
                      a(href='#')
-                        img(src='img/search.png' alt='fail to load the image')
+                        img(src='../img/search.png' alt='fail to load the image')
                         sub 검색
                   li.divider-vertical
                   li
                      a(href='#')
-                        img(src='img/compare.png' alt='fail to load the image')
+                        img(src='../img/compare.png' alt='fail to load the image')
                         sub 비교 페이지
                   li.divider-vertical
                   li
                      a(href='#')
-                        img(src='img/mypage.png' alt='fail to load the image')
+                        img(src='../img/mypage.png' alt='fail to load the image')
                         sub 마이 페이지
                   li.divider-vertical
                   li
@@ -48,9 +47,9 @@ html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
       div.container
          form.form-signin(role='form')
             h2.form-signin-heading 로그인
-            input.form-control(type='email' placeholder='이메일 주소' required autofocus)
-            input.form-control(type='password' placeholder='비밀번호' required)
+            input.form-control(type='email' name='members_ID' placeholder='이메일 주소' required autofocus)
+            input.form-control(type='password' name='members_password' placeholder='비밀번호' required)
             label.checkbox
-               input(type='checkbox' value='remember-me') 
-               이메일 주소 기억
-            button.btn.btn-lg.btn-primary.btn-block(type='submit') 로그인
+               input(type='checkbox' value='remember-me')
+               | 이메일 주소 기억
+            button.btn.btn-lg.btn-primary.btn-block#btn-submit(type='button') 로그인

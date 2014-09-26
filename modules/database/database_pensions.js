@@ -30,3 +30,5 @@ connection.query(query, function(err, results) {
 });
 
 query = "CREATE TABLE IF NOT EXISTS rooms ( region enum('대성리', '청평', '가평') not null, pen_name CHAR(30) not null, room_name CHAR(30) not null, std_people INT not null, max_people INT not null, PRIMARY KEY(pen_name, room_name), FOREIGN KEY (region, pen_name) REFERENCES pensions(region, pen_name) ON DELETE CASCADE ON UPDATE CASCADE );";
+
+

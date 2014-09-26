@@ -24,14 +24,16 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(session({ secret: '<mtrulbutachae>',
+    saveUninitialized: true,
+    resave: true}));
 
 adr(app);
 api(app);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    console.log('First Middleware');
+//    console.log('First Middleware');
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
@@ -43,7 +45,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
-        console.log('Second Middleware');
+    //    console.log('Second Middleware');
 
         res.status(err.status || 500);
         res.render('etc/error', {
