@@ -25,7 +25,7 @@ connection.query(query, function(err, results) {
 		throw err;
 	}
 	else { 
-		console.log(results);
+		//console.log(results);
 	}
 });
 

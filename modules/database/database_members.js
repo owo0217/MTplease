@@ -4,14 +4,14 @@ var mysql = require('mysql');
 // create database connection
 var connection = mysql.createConnection({                                                                                                                           
 	user : 'root',                                                                                                                                                  
-	password : 'blacky',
+	password : 'bdg051205anata',
 	database : 'MTPlease'
 });                                                                                                                                                                 
                                                                                                                                                                     
 connection.connect(function(err){                                                                                                                                   
 	if(err){                                                                                                                                                        
 		console.error('mysql connection error');                                                                                                                    
-		console.log(err);                                                                                                                                           
+		//console.log(err);                                                                                                                                           
 		throw err;                                                                                                                                                  
 	}                                                                                                                                                               
 });
@@ -27,7 +27,7 @@ connection.query(query, function(err, results) {
 		throw err;
 	}
 	else {
-		console.log(results);                            
+		//console.log(results);                            
 	}
 });
 

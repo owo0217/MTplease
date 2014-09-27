@@ -1,0 +1,26 @@
+head
+	script(src="//code.jquery.com/jquery-1.11.0.min.js")
+	script(type="text/javascript", src="/javascripts/pensions/pensions_search_test.js")
+
+body
+	block content
+		h1= title
+		p Welcome to #{title}
+		hr
+		hr
+		table
+			tr
+				td
+					| 지역
+				td
+					input.input_form(type='text', name='region')
+			tr
+				td
+					| 인원
+				td
+					input.input_form(type='text', name='people')
+			tr
+				td
+					| Submit
+				td
+					input#btn_submit(type='button', value ='submit')
