@@ -75,9 +75,8 @@ module.exports = function(app) {
 	});
 
 	app.get('/pensions/pensions_search_list_test', function(req, res) {
-		console.log('ha...');
-		//res.json( { results : true } );
-		res.render('pensions/pensions_search_list_test', { results : true });
+		console.log('list_test');
+		res.json( { results : true });
 	});
 
 	// 객실 세부 정보 보기

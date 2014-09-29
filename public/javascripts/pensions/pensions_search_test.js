@@ -11,12 +11,13 @@ $(document).ready(function() {
 
 		$.ajax({
 			type : 'get',
-			dataType : 'json',
 			url : '/pensions/pensions_search_list_test',
 			data : input_data,
+			dataType : 'json',
 			success : function(data) {
-				//console.log('success');
 				alert(data.join());
+				console.log('success');
+				console.log(data);
 			},
 			error : function(data, status, err) {
 
