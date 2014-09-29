@@ -28,6 +28,12 @@ app.use(session({ secret: '<mtrulbutachae>',
     saveUninitialized: true,
     resave: true}));
 
+app.use(function(req, res, next) {
+    console.log(req.query);
+    next();
+});
+
+
 adr(app);
 api(app);
 
