@@ -75,7 +75,9 @@ module.exports = function(app) {
 	});
 
 	app.get('/pensions/pensions_search_list_test', function(req, res) {
-		res.render('pensions/pensions_search_list_test', { title : 'MTPlease' });
+		console.log('ha...');
+		//res.json( { results : true } );
+		res.render('pensions/pensions_search_list_test', { results : true });
 	});
 
 	// 객실 세부 정보 보기

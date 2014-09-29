@@ -15,9 +15,8 @@ $(document).ready(function() {
 			url : '/pensions/pensions_search_list_test',
 			data : input_data,
 			success : function(data) {
-				console.log('success');
-				console.log(data);
-				location.href = '/pensions/pensions_search_list_test'
+				//console.log('success');
+				alert(data.join());
 			},
 			error : function(data, status, err) {
 
