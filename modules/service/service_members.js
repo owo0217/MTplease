@@ -1,10 +1,15 @@
 var database_members = require('../database/database_members.js');
 
+console.log('service_members  에 들어옴');
+
 module.exports = {
 
 	join:  function(req,res){
+		console.log('service_members -join 에 들어옴');
 		database_members.add(req.body, function(result){
 			req.session.user_id = req.body.members_ID;
+
+			console.log('req.body.members_ID: ', req.body.members_ID);
 
 			if(result == true){
 				console.log('service_members: join success');
@@ -17,6 +22,7 @@ module.exports = {
 	}	// end of join
 
 	, login: function(req, res){
+		console.log('service_members -login 에 들어옴');
 		database_members.get({members_ID: req.body.members_ID}, function(members){
 			if(members[0]){
 				if(req.body.members_password == members[0].members_password){
@@ -28,7 +34,7 @@ module.exports = {
 				} else {
 					res.json({result: false
 						, members: members[0]
-						, user_id: req.session.user_id
+						, members_ID: req.session.user_id
 						, message: "비밀번호가 일치하지 않습니다."});
 				}
 			} else {
@@ -42,6 +48,17 @@ module.exports = {
 		var condition = {};
 		condition.members_ID = req.session.user_id;
 		condition.members_password = req.body.members_password;
+		condition.members_nickname = req.body.members_nickname;
+		condition.members_sex = req.body.members_sex;
+		condition.members_school = req.body.members_school;
+		condition.members_major = req.body.members_major;
+		condition.members_group = req.body.members_group;
+		condition.members_mobile = req.body.members_mobile;
+		condition.members_startYear = req.body.members_startYear;
+		condition.members_emailAD = req.body.members_emailAD;
+		condition.members_mobileAD = req.body.members_mobileAD;
+		condition.members_point = req.body.members_point;
+
 		database_members.modify(condition, function(result){
 			if(result === true){
 				console.log('service_members: modify success');
@@ -55,6 +72,7 @@ module.exports = {
 
 	, logout: function(req, res){
 		req.session.user_id = null;
+		req.session.destory();
 		res.json({result: true, message: "정상적으로 로그아웃 처리 되었습니다."});
 	}	// end of logout
 

@@ -1,0 +1,63 @@
+doctype html
+
+html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
+   head
+      meta(charset='utf-8' name='viewport' content='width=device-width, initial-scale=1.0')
+      meta(http-equiv='X-UA-Compatible' content='IE=edge')
+      title 엠티를 부탁해 - 회원 가입
+      script(src="//code.jquery.com/jquery-1.11.0.min.js")
+      // Bootstrap core CSS
+      link(href='../css/bootstrap.min.css' rel='stylesheet')
+      // Custom styles for this template
+      script(type="text/javascript", src="/javascripts/members/members_join.js")
+
+   body
+      div.navbar.navbar-default.navbar-fixed-top(role='navigation')
+         div.container
+            div.navbar-header
+               button.navbar-toggle.collapsed(type='button' data-toggle='collapse' data-target='nav-collapse')
+                  span.sr-only Toggle navigation
+                  span.icon-bar
+                  span.icon-bar
+                  span.icon-bar
+               a.navbar-brand(href='/')
+                  img(src='../img/mtlogo-navbar-header.png' alt='fail to load the image')
+            
+            div.navbar-collapse.collapse
+               ul.nav.navbar-nav.navbar-right
+                  li
+                     a(href='/pensions/general_search')
+                        img(src='../img/search.png' alt='fail to load the image')
+                        sub 검색
+                  li.divider-vertical
+                  li
+                     a(href='/compare')
+                        img(src='../img/compare.png' alt='fail to load the image')
+                        sub 비교 페이지
+                  li.divider-vertical
+                  li
+                     a(href='/members/myPage')
+                        img(src='../img/mypage.png' alt='fail to load the image')
+                        sub 마이 페이지
+                  li.divider-vertical
+                  li
+                     a(href='/members/login')
+                        sub 로그인
+
+      div.container
+         form.form-signin(role='form')
+            h2.form-signin-heading 회원 가입 
+            input.form-control(type='email' name='members_ID' placeholder='이메일 주소 아이디' required autofocus)
+            input.form-control(type='password' name='members_password' placeholder='비밀번호' required)
+            input.form-control(type='password' name='members_password2' placeholder='비밀번호 확인' required)
+            input.form-control(type='text' name='members_nickname' placeholder='닉네임')
+            input.form-control(type='text' name='members_sex' placeholder='성별')
+            input.form-control(type='text' name='members_school' placeholder='학교')
+            input.form-control(type='text' name='members_major' placeholder='학부/학과')
+            input.form-control(type='text' name='members_group' placeholder='동아리/과모임 명')
+            input.form-control(type='text' name='members_mobile' placeholder='핸드폰 번호')
+            input.form-control(type='text' name='members_startYear' placeholder='학번')
+            input.form-control(type='text' name='members_emailAD' placeholder='이메일수신동의' required)
+            input.form-control(type='text' name='members_mobileAD' placeholder='모바일 수신동의' required)
+ 
+            button.btn.btn-lg.btn-primary.btn-block#btn-submit(type='button') 회원 가입

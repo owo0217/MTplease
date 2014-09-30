@@ -6,6 +6,7 @@ html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
       meta(http-equiv='X-UA-Compatible' content='IE=edge')
       title 엠티를 부탁해 - 로그인
       script(src="//code.jquery.com/jquery-1.11.0.min.js")
+      script(src="//code.jquery.com/jquery-migrate-1.2.1.min.js")
       // Bootstrap core CSS
       link(href='../css/bootstrap.min.css' rel='stylesheet')
       // Custom styles for this template
@@ -20,29 +21,34 @@ html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
                   span.icon-bar
                   span.icon-bar
                   span.icon-bar
-               a.navbar-brand(href='#')
+               a.navbar-brand(href='/')
                   img(src='../img/mtlogo-navbar-header.png' alt='fail to load the image')
             
             div.navbar-collapse.collapse
                ul.nav.navbar-nav.navbar-right
                   li
-                     a(href='#')
+                     a(href='/pensions/general_search')
                         img(src='../img/search.png' alt='fail to load the image')
                         sub 검색
                   li.divider-vertical
                   li
-                     a(href='#')
+                     a(href='/compare')
                         img(src='../img/compare.png' alt='fail to load the image')
                         sub 비교 페이지
                   li.divider-vertical
                   li
-                     a(href='#')
+                     a(href='/members/myPage')
                         img(src='../img/mypage.png' alt='fail to load the image')
                         sub 마이 페이지
                   li.divider-vertical
                   li
-                     a(href='#')
+                     a(href='/members/login')
                         sub 로그인
+                  li.divider-vertical
+                  li
+                     a(href='/members/join')
+                        sub 회원가입
+
 
       div.container
          form.form-signin(role='form')

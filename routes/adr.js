@@ -10,7 +10,7 @@ module.exports = function(app) {
 	// member management part
 	app.get('/members/login', function(req, res) {
 		if(!req.session.user_id){
-			res.render('members/members_login', {title: 'members-login'});
+			res.render('members/members_login', { title: 'members-login', members_ID: req.session.user_id});
 		} else {
 			console.log(req.session.user_id);
 			res.render('main', { title: 'MTPlease!', members_ID: req.session.user_id});
@@ -24,49 +24,30 @@ module.exports = function(app) {
 
 	// 회원 정보 수정 페이지
 	app.get('/members/modify', function(req, res) {
-		res.render('members/members_modify', {title: 'members-modify'});
+		res.render('members/members_modify', {title: 'members-modify', members_ID: req.session.user_id});
 	});
-
 
 	// 마이 페이지
-	app.get('/members/mypage', function(req, res) {
-		res.render('members/mypage', { title : 'MTPlease!' });
+	app.get('/members/myPage', function(req, res) {
+		res.render('members/members_myPage', { title : 'members-myPage', members_ID: req.session.user_id });
 	});
 
-	// 마이 페이지 내부 비교하기 목록 페이지
-	app.get('/members/compare/lists', function(req, res) {
-
+	// 마이 페이지 내부 비교하기 리스트 페이지
+	app.get('/members/myCompare', function(req, res) {
+		res.render('members/members_myCompare', { title : 'members-myCompare' });
 	});
 
-	// 마이 페이지 내부 비교하기  자세히 보기
-	app.get('/members/compare/detail', function(req, res) {
 
+	// 마이 페이지 내부 견적보기 리스트 페이지
+	app.get('/members/myEstimate', function(req, res) {
+		res.render('members/members_myEstimate', { title : 'members-myEstimate' });
 	});
 
-	// 마이 페이지 내부  견적 목록 페이지
-	app.get('/members/estimate/lists', function(req, res) {
-
+	// 마이 페이지 내부 히스토리 보기 리스트 페이지
+	app.get('/members/myHistory', function(req, res) {
+		res.render('members/members_myHistory', { title : 'members-myHistory' });
 	});
 
-	//  마이 페이지  내부 견적 자세히 보기
-	app.get('/members/estimate/detail', function(req, res) {
-
-	});
-
-	// 마이 페이지 예약 목록 페이지
-	app.get('/members/reserve/lists', function(req, res) {
-
-	});
-
-	// 마이 페이지 예약 자세히 보기
-	app.get('/members/reserve/detail', function(req, res) {
-
-	});
-
-	// 최근 히스토리 목록 
-	app.get('/members/recent/lists', function(req, res) {
-
-	});
 
 	// ***   search part ***//
 	//  검색결과 보기

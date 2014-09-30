@@ -4,7 +4,7 @@ var mysql = require('mysql');
 // create database connection
 var connection = mysql.createConnection({                                                                                                                           
 	user : 'root',                                                                                                                                                  
-	password : 'bdg051205anata',
+	password : 'blacky',
 	database : 'MTPlease'
 });                                                                                                                                                                 
                                                                                                                                                                     
@@ -35,9 +35,10 @@ connection.query(query, function(err, results) {
 module.exports = {
 
 	add: function(members, callback){
+
 		var data = [members.members_ID
 				, members.members_password	
-				, members_nickname
+				, members.members_nickname
 				, members.members_sex
 				, members.members_school
 				, members.members_major
