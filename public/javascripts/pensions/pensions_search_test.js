@@ -13,9 +13,9 @@ $(document).ready(function() {
 			type : 'get',
 			url : '/pensions/pensions_search_list_test',
 			data : input_data,
-			dataType : 'json',
+			dataType : 'html',
 			success : function(data) {
-				alert(data.join());
+				//alert(data.join());
 				console.log('success');
 				console.log(data);
 			},
