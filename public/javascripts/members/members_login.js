@@ -29,7 +29,7 @@ $(document).ready(function(){
 				console.log('data :', data);
 
 				if(data.result == true){
-					location.href = '/';
+					location.href = '/members/myPage';
 				}
 				else{
 					alert(data.message);

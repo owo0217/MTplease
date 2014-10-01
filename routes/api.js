@@ -2,8 +2,14 @@ var service_members = require('../modules/service/service_members.js');
 var service_pensions = require('../modules/service/service_pensions.js');
 
 module.exports = function(app) {
+
+
+		// *** 회원관리*** //
+
+		// 회원가입
 	app.post('/members/join', function(req, res){
-		service_members.join(req, res);
+		console.log('/members/join - post 방식');
+		service_members.join(req,res);
 	});
 	
 		// 로그인
@@ -28,8 +34,12 @@ module.exports = function(app) {
 		service_pensions.compare_create(req, res);
 	});
 		//  비교하기 수정 
-	app.post('/members/compare/modify', function(req, res) {
-		service_pensions.estimate_modify(req, res);
+	app.post('/compare/modify', function(req, res) {
+		service_pensions.compare_modify(req, res);
+	});
+		//  비교하기 삭제
+	app.post('/compare/remove', function(req, res) {
+		service_pensions.compare_remove(req, res);
 	});
 
 
@@ -39,8 +49,12 @@ module.exports = function(app) {
 		service_pensions.estimate_create(req, res);
 	});
 		// 견적내기 수정
-	app.post('/members/estimate/modify', function(req, res) {
+	app.post('/estimate/modify', function(req, res) {
 		service_pensions.estimate_modify(req, res);
+	});
+		// 견적내기 삭제
+	app.post('/estimate/remove', function(req, res) {
+		service_pensions.estimate_remove(req, res);
 	});
 
 		
