@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	$('#btn_submit').click(function() {
+	/* $('#btn_submit').click(function() {
 		var input_data = {};
 		
 		$('.input_form').each(function(){
@@ -23,6 +23,6 @@ $(document).ready(function() {
 
 			}
 		});
-
-	});
+	
+	}); */
 });

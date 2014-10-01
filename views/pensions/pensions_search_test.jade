@@ -1,6 +1,5 @@
 head
 	script(src="//code.jquery.com/jquery-1.11.0.min.js")
-	script(type="text/javascript", src="/javascripts/pensions/pensions_search_test.js")
 
 body
 	block content
@@ -8,19 +7,16 @@ body
 		p Welcome to #{title}
 		hr
 		hr
-		table
-			tr
-				td
-					| 지역
-				td
-					input.input_form(type='text', name='region')
-			tr
-				td
-					| 인원
-				td
-					input.input_form(type='text', name='people')
-			tr
-				td
-					| Submit
-				td
-					input#btn_submit(type='button', value ='submit')
+		form(action='/pensions/pensions_search_list_test', method='get' accept-charset="utf-8") 
+			table
+				tr
+					td
+						| 지역
+					td
+						input(type='text', name='region')
+				tr
+					td
+						| 인원
+					td
+						input(type='text', name='people')
+			input(type='submit', value ='submit')

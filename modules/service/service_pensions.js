@@ -2,8 +2,18 @@ var database_pensions = require('../database/database_pensions.js');
 
 module.exports = {
 	
-	general_search : function(req, res) {
+	search : function(req, res) {
+		console.log('service_member - search called');
 
+		database_pensions.search(req.query, function(result) {
+			if(result != null) {
+				console.log('search success');
+				res.render('pensions/pensions_search_list_test', { results : 'true' } );
+			}
+			else {
+				console.log('search fail');
+			}
+		}
 	},
 
 
