@@ -7,7 +7,7 @@ body
 		p Welcome to #{title}
 		hr
 		hr
-		form(action='/pensions/pensions_search_list_test', method='get' accept-charset="utf-8") 
+		form(action='/pensions/pensions_search', method='get' accept-charset="utf-8") 
 			table
 				tr
 					td
@@ -19,4 +19,9 @@ body
 						| 인원
 					td
 						input(type='text', name='people')
+				tr
+					td
+						| 날짜
+					td
+						input(type='text', name='date')			
 			input(type='submit', value ='submit')

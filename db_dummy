@@ -1,0 +1,51 @@
+INSERT INTO pensions(pen_region,pen_name,pen_homepage,pen_lot_adr,pen_road_adr,pen_ceo,pen_phone1,pen_phone2,pen_checkin,pen_checkout,pen_check_caution,pen_pickup,pen_bbq,pen_ground_existence,pen_ground_description,pen_etc_facility,pen_valley_description,pen_caution)
+VALUES (1 ,'a','a','a','a','a','010-1111-1111','a','14:00:00','12:00:00','a','a','a',1,'a','a','a','a')
+INSERT INTO pensions(pen_region,pen_name,pen_homepage,pen_lot_adr,pen_road_adr,pen_ceo,pen_phone1,pen_phone2,pen_checkin,pen_checkout,pen_check_caution,pen_pickup,pen_bbq,pen_ground_existence,pen_ground_description,pen_etc_facility,pen_valley_description,pen_caution)
+VALUES (1 ,'b','b','b',null,'b','010-2222-2222',null,'15:00','11:00','b','b','b',0,'b','b',null,'b')
+
+INSERT INTO pensions_peak_periods(pen_region,pen_name,pen_period_division,period_start,period_end)
+VALUES (1 ,'a',1 ,'2014-01-01','2014-07-01');
+INSERT INTO pensions_peak_periods(pen_region,pen_name,pen_period_division,period_start,period_end)
+VALUES (1 ,'a',2 ,'2014-07-02','2014-07-31');
+INSERT INTO pensions_peak_periods(pen_region,pen_name,pen_period_division,period_start,period_end)
+VALUES (1 ,'a',3 ,'2014-08-01','2014-08-31');
+INSERT INTO pensions_peak_periods(pen_region,pen_name,pen_period_division,period_start,period_end)
+VALUES (1 ,'a',1 ,'2014-09-01','2014-12-31');
+INSERT INTO pensions_peak_periods(pen_region,pen_name,pen_period_division,period_start,period_end)
+VALUES (1 ,'b',1 ,'2014-01-01','2014-07-31');
+INSERT INTO pensions_peak_periods(pen_region,pen_name,pen_period_division,period_start,period_end)
+VALUES (1 ,'b',2 ,'2014-08-01','2014-08-31');
+INSERT INTO pensions_peak_periods(pen_region,pen_name,pen_period_division,period_start,period_end)
+VALUES (1 ,'b',1 ,'2014-09-01','2014-12-31');
+
+INSERT INTO rooms(pen_region,pen_name,room_name,std_num_people,max_num_people,pyeong,num_room,num_kitchen,air_existence,etc)
+VALUES(1 ,'a','A',10 ,20 ,20 ,2 ,1 ,1 ,'a');
+INSERT INTO rooms(pen_region,pen_name,room_name,std_num_people,max_num_people,pyeong,num_room,num_kitchen,air_existence,etc)
+VALUES(1 ,'a','B',4 ,8 ,10 ,1 ,1 ,0 ,'a');
+INSERT INTO rooms(pen_region,pen_name,room_name,std_num_people,max_num_people,pyeong,num_room,num_kitchen,air_existence,etc)
+VALUES(1 ,'b','C',30 ,40 ,50 ,2 ,1 ,1 ,'b');
+INSERT INTO rooms(pen_region,pen_name,room_name,std_num_people,max_num_people,pyeong,num_room,num_kitchen,air_existence,etc)
+VALUES(1 ,'b','D',20 ,30 ,40 ,1 ,1 ,1 ,'b');
+
+
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'a','A',1 ,80000 ,100000 ,100000 );
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'a','A',2 ,100000 ,120000 ,120000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'a','A',3 ,120000 ,140000 ,140000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'a','B',1 ,60000 ,80000 ,80000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'a','B',2 ,80000 ,100000 ,100000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'a','B',3 ,100000 ,120000 ,120000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'b','C',1 ,150000 ,180000 ,180000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'b','C',2 ,180000 ,210000 ,210000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'b','D',1 ,130000 ,150000 ,150000);
+INSERT INTO rooms_costs(pen_region,pen_name,room_name,pen_period_division,weekdays,friday,weekends)
+VALUES(1,'b','D',2 ,150000 ,170000 ,170000);
+

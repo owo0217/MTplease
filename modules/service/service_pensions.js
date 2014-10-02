@@ -5,15 +5,30 @@ module.exports = {
 	search : function(req, res) {
 		console.log('service_member - search called');
 
-		database_pensions.search(req.query, function(result) {
-			if(result != null) {
+		database_pensions.search(req.query, function(results) {
+			if(results != null) {
 				console.log('search success');
-				res.render('pensions/pensions_search_list_test', { results : 'true' } );
+				res.render('pensions/pensions_search', { result : results });
 			}
 			else {
 				console.log('search fail');
 			}
-		}
+		});
+	},
+
+	detail : function(req, res) {
+		console.log('service_member - detail called');
+
+		database_pensions.detail(req.query, function(results) {
+			if(results != null) {
+				console.log('detail success');
+				res.render('pensions/pensions_detail', { result : results });
+			}
+			else {
+				console.log('detail fail');
+			}
+		});
+
 	},
 
 
@@ -34,6 +49,6 @@ module.exports = {
 
 	estimate_modify : function(req, res) {
 
-	},
+	}
 
 };
