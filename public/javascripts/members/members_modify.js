@@ -1,4 +1,41 @@
 $(document).ready(function(){
+
+	$.ajax({
+		type: 'post'
+		, dataType: 'json'
+		, url: '/members/get'
+		, success: function(data){
+			console.log('data :', data);
+	
+			$("input[name='members_sex']").val(data.result[0].members_sex);
+			$("input[name='members_school']").val(data.result[0].members_school);
+			$("input[name='members_major']").val(data.result[0].members_major);
+			$("input[name='members_group']").val(data.result[0].members_group);
+			$("input[name='members_mobile']").val(data.result[0].members_mobile);
+			$("input[name='members_startYear']").val(data.result[0].members_startYear);
+			$("input[name='members_emailAD']").val(data.result[0].members_emailAD);
+			$("input[name='members_mobileAD']").val(data.result[0].members_mobileAD);
+		}	// end of success
+		, error: function(data, status, err){
+
+		}	// end of error
+	}); 	// end of ajax
+
+	$('#btn-logout').click(function(){
+		$.ajax({
+			type: 'post',
+			url: '/members/logout',
+			success: function(data){
+				if(data.result ===true){
+					alert(data.message);
+					location.href = '/members/myPage';
+				}	// end of if
+			}	// end of success
+		}); 	// end of ajax
+		
+	});	// end of click
+
+
 	$('#btn-submit').click(function(){
 		var input_data = {};
 

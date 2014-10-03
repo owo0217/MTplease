@@ -87,7 +87,14 @@ module.exports = {
 	, modify: function(condition, callback){
 		console.log('database_members -modify : condition => ', condition);
 
-		var query_select = "UPDATE members SET members_password='"+condition.members_password+"', members_nickname='"+condition.members_nickname+"', members_sex='"+condition.members_sex+"', members_school='"+condition.members_school+"', members_major='"+condition.members_major+"', members_group='"+condition.members_group+"', members_mobile='"+condition.members_mobile+"', members_startYear='"+condition.members_startYear+"', members_emailAD='"+condition.members_emailAD+"', members_mobileAD='"+condition.members_mobileAD+"', members_point'"+condition.members_point+"' WHERE members_ID='"+condition.members_ID+"'";
+		if(condition.members_sex ==underfined){condition.members_sex='';}
+		if(condition.members_school ==underfined){condition.members_school='';}
+		if(condition.members_major==underfined){condition.members_major='';}
+		if(condition.members_group==underfined){condition.members_group='';}
+		if(condition.members_mobile==underfined){condition.members_mobile='';}
+		if(condition.members_startYear==underfined){condition.members_startYear='';}
+
+		var query_select = "UPDATE members SET members_password='"+condition.members_password+"', members_nickname='"+condition.members_nickname+"', members_sex='"+condition.members_sex+"', members_school='"+condition.members_school+"', members_major='"+condition.members_major+"', members_group='"+condition.members_group+"', members_mobile='"+condition.members_mobile+"', members_startYear='"+condition.members_startYear+"', members_emailAD='"+condition.members_emailAD+"', members_mobileAD='"+condition.members_mobileAD+"', members_point='"+condition.members_point+"' WHERE members_ID='"+condition.members_ID+"'";
 
 		console.log(query_select);
 

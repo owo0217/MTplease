@@ -8,7 +8,6 @@ module.exports = function(app) {
 
 		// 회원가입
 	app.post('/members/join', function(req, res){
-		console.log('/members/join - post 방식');
 		service_members.join(req,res);
 	});
 	
@@ -27,6 +26,10 @@ module.exports = function(app) {
 		service_members.modify(req, res);
 	});
 
+		// 회원 정보  보여주기
+	app.post('/members/get', function(req, res){
+		service_members.get_members(req, res);
+	});
 
 		// *** 비교 *** //
 		//  비교하기 생성

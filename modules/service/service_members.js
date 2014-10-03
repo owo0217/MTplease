@@ -71,9 +71,32 @@ module.exports = {
 	}	// end of modify
 
 	, logout: function(req, res){
+		console.log('안녕 난 로그아웃이라해');
 		req.session.user_id = null;
-		req.session.destory();
+
+		console.log('logout - req.session.user_id : ', req.session.user_id);
+
 		res.json({result: true, message: "정상적으로 로그아웃 처리 되었습니다."});
 	}	// end of logout
+
+	, get_members: function(req, res){
+		console.log("안녕 난 get_members야 service_members에 있지 ");
+		var condition = {};
+		condition.members_ID = req.session.user_id;
+
+		if(req.session.user_id != null){
+			database_members.get(condition, function(result){
+				if(result){
+					console.log('service_members: get_members success');
+					res.json({result: result, message: "회원 정보를 반환합니다."});
+				} else {
+					console.log('service_members: get_members fail');
+					res.json({result: false, message: "회원 정보가 없습니다."});
+				}
+			});	// end of database_members. get_members;
+		} else {
+			res.json({message: "회원 정보가 없습니다."})
+		}
+	}
 
 }	// end of module exports

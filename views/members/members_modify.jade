@@ -41,23 +41,22 @@ html(lang='en' xmlns='http://www.w3.org/1999/xhtml')
                         sub 마이 페이지
                   li.divider-vertical
                   li
-                     a(href='/members/logout')
-                        sub 로그아웃
+                     button#btn-logout(type='button') 로그아웃
+
 
       div.container
-         form.form-signin(role='form' action='/members/login' method='post')
             h2.form-signin-heading 회원 정보 수정
             p ID는요 #{members_ID}
             p 이 페이지는 #{title} 입니다.
             input.form-control(type='password' name='members_password' placeholder='비밀번호' required)
             input.form-control(type='password' name='members_password2' placeholder='비밀번호 확인' required)
-            input.form-control(type='text' name='members_nickname' placeholder='#{members_nickname}')
-            input.form-control(type='text' name='members_sex' placeholder='#{members_sex}')
-            input.form-control(type='text' name='members_school' placeholder='#{members_school}')
-            input.form-control(type='text' name='members_major' placeholder='#{members_major}')
-            input.form-control(type='text' name='members_group' placeholder='#{members_group}')
-            input.form-control(type='text' name='members_mobile' placeholder='#{members_mobile}')
-            input.form-control(type='text' name='members_startYear' placeholder='#{members_startYear}')
+            input.form-control(type='text' name='members_nickname')
+            input.form-control(type='text' name='members_sex')
+            input.form-control(type='text' name='members_school')
+            input.form-control(type='text' name='members_major')
+            input.form-control(type='text' name='members_group')
+            input.form-control(type='text' name='members_mobile')
+            input.form-control(type='text' name='members_startYear')
             input.form-control(type='text' name='members_emailAD' placeholder='이메일수신동의' required)
             input.form-control(type='text' name='members_mobileAD' placeholder='모바일 수신동의' required)
  

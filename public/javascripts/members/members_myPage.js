@@ -11,11 +11,11 @@ $(document).ready(function(){
 			success: function(data){
 				if(data.result ===true){
 					alert(data.message);
-					location.href = '/members/myPage';
+					location.href = '/';
 				}	// end of if
 			}	// end of success
 		}); 	// end of ajax
 		
-	});	// end of click
+	});	// end of click 
 	
 });	// end of bind
