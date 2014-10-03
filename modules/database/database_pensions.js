@@ -2,7 +2,7 @@ var mysql = require('mysql');
 
 var connection = mysql.createConnection({
 	user : 'root',
-	password : 'blacky',
+	password : 'bdg051205anata',
 	database : 'MTPlease'
 });
 
@@ -15,20 +15,45 @@ connection.connect(function(err) {
 });
 connection.query('use MTPlease');
 
-// create members database
+module.exports = {
+	search : function(condition, callback) {
+		var search_query = "SELECT * FROM (SELECT * FROM pensions_peak_periods NATURAL JOIN rooms_costs WHERE period_start <= '" + condition.date + "' AND period_end >= '" + condition.date + "') A NATURAL JOIN (SELECT * FROM rooms NATURAL JOIN pensions WHERE pen_region ='" + condition.region + "' AND std_num_people <=" + condition.people + " AND max_num_people >=" + condition.people + ") B";
+		console.log(search_query);
+		connection.query(search_query, function(err, results) {
+			if(!err) {
+				console.log(results);
+				callback(results);
+			}
+			else {
+				console.log('db query err');
+				callback(null);
+			}
+		});
+	},
 
-
-// pensions database
-var query = "CREATE TABLE IF NOT EXISTS pensions ( region enum('대성리','청평','가평') not null, pen_name CHAR(30) not null, pen_homepage CHAR(30), pen_lot_adr CHAR(60), pen_road_adr CHAR(60), pen_ceo CHAR(20) not null, pen_checkin TIME not null, pen_checkout TIME not null, PRIMARY KEY(region, pen_name) );";
-connection.query(query, function(err, results) {
-	if(err) {
-		throw err;
+	detail : function(condition, callback) {
+		var detail_query = "SELECT * FROM (SELECT * FROM pensions_peak_periods NATURAL JOIN rooms_costs WHERE period_start <= '" + condition.date + "' AND period_end >= '" + condition.date + "') A NATURAL JOIN (SELECT * FROM rooms NATURAL JOIN pensions WHERE pen_region ='" + condition.region + "' AND std_num_people <=" + condition.people + " AND max_num_people >=" + condition.people + ") B";
+		console.log(detail_query);
+		connection.query(detail_query, function(err, results) {
+			if(!err) {
+				console.log(results);
+				callback(results);
+			}
+			else {
+				console.log('db query err');
+				callback(null);
+			}
+		});
 	}
-	else { 
-		//console.log(results);
-	}
-});
+}
 
-query = "CREATE TABLE IF NOT EXISTS rooms ( region enum('대성리', '청평', '가평') not null, pen_name CHAR(30) not null, room_name CHAR(30) not null, std_people INT not null, max_people INT not null, PRIMARY KEY(pen_name, room_name), FOREIGN KEY (region, pen_name) REFERENCES pensions(region, pen_name) ON DELETE CASCADE ON UPDATE CASCADE );";
-
-
+/*"SELECT *
+FROM (SELECT *
+FROM pensions_peak_periods NATURAL JOIN rooms_costs
+WHERE period_start <= '" + condition.date + "' AND period_end >= '" + condition.date + "') A
+NATURAL JOIN
+(SELECT *
+FROM rooms NATURAL JOIN pensions
+WHERE pen_region ='" + condition.region + "
+AND std_num_people <=" + condition.people + "
+AND max_num_people >=" + condition.people + ") B"*/

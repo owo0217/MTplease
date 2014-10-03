@@ -45,7 +45,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES ('cto.owo@gmail.com','1234','잉여','m','성균관대학교','컴퓨터공학과','8조','010-8586-9035',2009313343,0,0,NULL);
+INSERT INTO `members` VALUES ('cto.owo@gmail.com','1234','??','?','??????','??????','8?','010-8586-9035',2009313343,0,0,NULL);
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 

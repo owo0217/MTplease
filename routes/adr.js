@@ -1,4 +1,5 @@
 var express = require('express');
+var service_pensions = require('../modules/service/service_pensions.js');
 
 module.exports = function(app) {
 
@@ -55,14 +56,13 @@ module.exports = function(app) {
 		res.render('pensions/pensions_search_test', { title : 'MTPlease' });
 	});
 
-	app.get('/pensions/pensions_search_list_test', function(req, res) {
-		console.log('list_test');
-		res.json( { results : true });
+	app.get('/pensions/pensions_search', function(req, res) {
+		service_pensions.search(req, res);
 	});
 
 	// 객실 세부 정보 보기
-	app.get('/pensions/:room_id', function(req, res) {
-		res.render('compare', { title : 'MTPlease!' });
+	app.get('/pensions/pensions_detail', function(req, res) {
+		service_pensions.detail(req, res);
 	});
 
 	// ***  compare part ***//
