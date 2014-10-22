@@ -1,241 +1,179 @@
-﻿<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>엠티를 부탁해</title>
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="../public/css/theme.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
-    <script src="../public/javascripts/bootstrap.min.js"></script>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="nav-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="../public/img/mtlogo-navbar-header.png" alt="fail to load the image" />
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">
-                            <img src="../public/img/search.png" alt="fail to load the image" />
-                            <sub>검색</sub>
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li>
-                        <a href="#">
-                            <img src="../public/img/compare.png" alt="fail to load the image" />
-                            <sub>비교 페이지</sub>
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li>
-                        <a href="#">
-                            <img src="../public/img/mypage.png" alt="fail to load the image" />
-                            <sub>마이 페이지</sub>
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li>
-                        <a href="#">
-                            <sub>로그인</sub>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- 상단 쿼리문
-        <div class="container">
-            <div>우리는 </div>
-            <a href="#">가평</a>
-            <div>으로 </div>
-            <a href="#">17</a>
-            <div>명이서 엠티간다!!</div>
-        </div>
-            -->
-    </div>
+	<div class="wrap-table-estimate">
+		<h2>견적페이지</h2>
+		<div class="table-estimate">
+			<div class="cell-estimate room">
+				<div class="wrap-name-room">
+					<span id="estimate-text-name-room" class="title-cell">00펜션 000룸</p>
+					<button class="btn-delete" type="button">x</button>
+				</div>
+				<div class="wrap-detail-room">
+					<p class="text-address-room">경기도 00시 00면 00리 000-00번지</p>
+					<div class="wrap-number-room">
+						<span>방 </span>
+						<span id="estimate-text-number-room">0</span>
+						<span>화장실 </span>
+						<span id="estimate-text-number-toilet">0</span>							
+					</div>
+				</div>
+				<div class="wrap-image-room">
+					<img src="" alt="방 사진">
+					<button class="btn-detail" type="button">자세히보기</button>
+				</div>
+				<div class="wrap-price">
+					<p class="text-price">000,000 원</p>
+				</div>
+			</div>
+			<div class="cell-estimate alcohol">
+				<div class="wrap-title">
+					<span class="title-cell">술</span>
+				</div>
+				<div class="wrap-section soju">
+					<span class="image-soju">
+						<img src="" alt="소주 그림">
+					</span>
+					<span class="wrap-components">
+						<div class="wrap-btn-delete">
+							<button class="btn-delete" type="button">x</button>
+						</div>
+						<div class="wrap-dropdown">
+							<input type="button" class="dropdown" id="estimate-dropdown-numSoju" value="0 병">
+						</div>
+					</span>
+				</div>
+				<div class="wrap-section beer">
+					<span class="image-beer">
+						<img src="" alt="맥주 그림">
+					</span>
+					<span class="wrap-components">
+						<div class="wrap-btn-delete">
+							<button class="btn-delete" type="button">x</button>
+						</div>
+						<div class="wrap-dropdown">
+							<input type="button" class="dropdown" id="estimate-dropdown-numBeer" value="0 병">
+						</div>
+					</span>
+				</div>
+				<div class="wrap-btn-add">
+					<button class="btn-add-item" type="button">더하기</button>
+				</div>
+				<div class="wrap-price">
+					<p class="text-price">00,000 원</p>
+				</div>
+			</div>
+			<div class="cell-estimate meat">
+				<div class="wrap-title">
+					<span class="title-cell">고기</span>
+				</div>
+				<div class="wrap-section pork">
+					<span class="image-pork">
+						<img src="" alt="돈육 그림">
+					</span>
+					<span class="wrap-components">
+						<div class="wrap-btn-delete">
+							<button class="btn-delete" type="button">x</button>
+						</div>
+						<div class="wrap-dropdown">
+							<input type="button" class="dropdown" id="estimate-dropdown-numPork" value="0 인분">
+						</div>
+					</span>
+				</div>
+				<div class="wrap-section beef">
+					<span class="image-beef">
+						<img src="" alt="우육 그림">
+					</span>
+					<span class="wrap-components">
+						<div class="wrap-btn-delete">
+							<button class="btn-delete" type="button">x</button>
+						</div>
+						<div class="wrap-dropdown">
+							<input type="button" class="dropdown" id="estimate-dropdown-numBeef" value="0 인분">
+						</div>
+					</span>
+				</div>
+				<div class="wrap-btn-add">
+					<button class="btn-add-item" type="button">더하기</button>
+				</div>
+				<div class="wrap-price">
+					<p class="text-price">00,000 원</p>
+				</div>
+			</div>
+			<div class="cell-add-estimate">
+				<button class="btn-add-cell" type="button"> + </button>
+			</div>
+			<!--동적 할당 태그-->
+			<div class="cell-estimate extra">
+				<div class="wrap-title">
+					<span class="title-cell">추가 재료 및 비품</span>
+				</div>
+				<div class="wrap-section">
+					<span class="image-item">
+						<img src="" alt="그림">
+					</span>
+					<span class="wrap-components">
+						<div class="wrap-btn-delete">
+							<button class="btn-delete" type="button">x</button>
+						</div>
+						<div class="wrap-dropdown">
+							<input type="button" class="dropdown" value="0">
+						</div>
+					</span>
+				</div>
+				<div class="wrap-btn-add">
+					<button class="btn-add-item" type="button">더하기</button>
+				</div>
+				<div class="wrap-price">
+					<p class="text-price">00,000 원</p>
+				</div>
+			</div>
+			<!---->
+		</div>
+		<div class="wrap-price-overall">
+			<h2 class="text-price-total">총 000,000 원</h2>
+			<h2 class="text-price-onePerson">1인 기준 000,000 원</h2>
+		</div>
+		<div class="btn-set">
+			<button class="btn-save" type="button">저장하기</button>
+			<button class="btn-share" type="button">공유하기</button>
+		</div>
+	</div>
+	<!-- 동적 코드. 과거 견적들을 처음 보여줄 때 3개만 단 3개 이하일 경우는 갯수 만큼 보여준다.
+		 예를 들어 과거 견적들이 두 가지인 경우에는 마지막 3번째 패널을 .hidden으로 가려준다. -->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">견적내기</div>
-        </div>
-        <div class="row">
-            <!-- 펜션 섹션 -->
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12">펜션명</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">펜션 주소</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">펜션 정보</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12"><img src="" alt="작은 사진" /></div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">6</div>
-                    <div class="col-md-6">
-                        <button class="btn btn-default btn-xs" type="button">자세히보기</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">펜션 가격</div>
-                </div>
-            </div>
-            <!-- 술 섹션 -->
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12">술</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">맥주</div>
-                    <div class="col-md-2">
-                        <button class="btn btn-default btn-xs" type="button">x</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6"><img src="" alt="맥주 그림" /></div>
-                    <div class="col-md-1">1</div>
-                    <div class="col-md-5">
-                        <div class="btn-group">
-                            <button type="button" data-toggle="dropdown" id="num-beer" class="btn btn-default dropdown-toggle">1병<span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">2 병</a></li>
-                                <li><a href="#">3 병</a></li>
-                                <li><a href="#">4 병</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">소주</div>
-                    <div class="col-md-2">
-                        <button class="btn btn-default btn-xs" type="button">x</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6"><img src="" alt="소주 그림" /></div>
-                    <div class="col-md-1">1</div>
-                    <div class="col-md-5">
-                        <div class="btn-group">
-                            <button type="button" data-toggle="dropdown" id="num-soju" class="btn btn-default dropdown-toggle">1 병<span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">2 병</a></li>
-                                <li><a href="#">3 병</a></li>
-                                <li><a href="#">4 병</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <button class="btn btn-default btn-sm" type="button">+</button>
-                    </div>
-                    <div class="col-md-10">10</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-11">총 술 가격</div>
-                    <div class="col-md-1">1</div>
-                </div>
-            </div>
-            <!-- 고기 섹션 -->
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12">고기</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">돼지</div>
-                    <div class="col-md-2">
-                        <button class="btn btn-default btn-xs" type="button">x</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6"><img src="" alt="돼지 그림" /></div>
-                    <div class="col-md-1">1</div>
-                    <div class="col-md-5">
-                        <div class="btn-group">
-                            <button type="button" data-toggle="dropdown" id="num-pork" class="btn btn-default dropdown-toggle">1 근<span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">2 근</a></li>
-                                <li><a href="#">3 근</a></li>
-                                <li><a href="#">4 근</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">소</div>
-                    <div class="col-md-2">
-                        <button class="btn btn-default btn-xs" type="button">x</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6"><img src="" alt="소 그림" /></div>
-                    <div class="col-md-1">1</div>
-                    <div class="col-md-5">
-                        <div class="btn-group">
-                            <button type="button" data-toggle="dropdown" id="num-beef" class="btn btn-default dropdown-toggle">1 근<span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">2 근</a></li>
-                                <li><a href="#">3 근</a></li>
-                                <li><a href="#">4 근</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-2">
-                        <button class="btn btn-default btn-sm" type="button">+</button>
-                    </div>
-                    <div class="col-md-10">10</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-11">총 고기 가격</div>
-                    <div class="col-md-1">1</div>
-                </div>
-            </div>
-            <!-- 기타 섹션 -->
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-12">기타 비용</div>
-                </div>
-                <div class="row">
-                    <div class="col-md-10">기타 항목 입력</div>
-                    <div class="col-md-2">
-                        <button class="btn btn-default btn-sm" type="button">+</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">총 가격</div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">1인 기준 가격</div>
-        </div>
-        <div class="row">
-            <div class="col-md-10">10</div>
-            <div class="col-md-2">
-                <div class="btn-group">
-                    <button class="btn btn-default" type="button">저장하기</button>
-                    <button class="btn btn-default" type="button">공유하기</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!--
+					날짜
+					펜션 방 이름 / 인원수 / 1인당 비용
+
+					날짜
+					펜션 방 이름 / 인원수 / 1인당 비용
+
+					날짜
+					펜션 방 이름 / 인원수 / 1인당 비용
+
+					.
+					.
+					.
+	-->
+	<div class="wrap-estimate-history">
+		<div class="accordion-estimate-history">
+			<!-- 열리면 .opened를 추가 닫히면 없앤다 -->
+			<div id="estimante-panel-history-first" class="panel-history">
+				<!--class=close-panel을 만들어서 동적으로 붙여주기-->
+			</div>
+			<div id="estimante-panel-history-second" class="panel-history">
+				<!--class=close-panel을 만들어서 동적으로 붙여주기-->
+			</div>
+			<div id="estimante-panel-history-third" class="panel-history">
+				<!--class=close-panel을 만들어서 동적으로 붙여주기-->
+			</div>
+		</div>
+	</div>
+	<!--스크롤 밑으로 하면 과거 항목 더 로딩 해오기-->
 </body>
 </html>
