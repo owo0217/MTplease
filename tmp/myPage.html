@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
+</head>
+<body>
+	<div class="wrap-top">
+		<h2>마이페이지</h2>
+		<div class="wrap-personalInfo">
+			<div class="wrap-first-line">
+				<h4 id="myPage-text-nickname">닉네임</h4>
+				<h5 id="myPage-text-ID">아이디</h5>
+				<button class="btn-modify" type="button">수정</button>
+			</div>
+			<div class="wrap-second-line">
+				<h4 id="myPage-text-point">회원 보유 포인트</h4>
+			</div>
+			<ol class="wrap-third-line">
+				<li><button class="btn-members-school" type="button">소속 학교</button></li>
+				<li><button class="btn-members-group" type="button">소속 동아리</button></li>
+			</ol>
+		</div>
+		<div class="carousel-photo-md" id="carousel-currentRooms">
+			<button type="button" class="btn-left"><img src="" alt="좌측 슬라이드 버튼"></button>
+			<ol class="list-photo-room">
+				<!-- 4번째 이미지(.img-fourth)는 투명도를 높여서 약간만 보이게 
+					 좌우 버튼을 누르면 그림이 양옆으로 움직이는 방식
+				-->
+				<li><a href="#"><img src="" alt="1번 사진" class="img-frist"></a></li>
+				<li><a href="#"><img src="" alt="2번 사진" class="img-second"></a></li>
+				<li><a href="#"><img src="" alt="3번 사진" class="img-third"></a></li>
+				<li><a href="#"><img src="" alt="3번 사진" class="img-fourth unclear"></a></li>
+			</ol>
+			<button type="button" class="btn-right"><img src="" alt="우측 슬라이드 버튼"></button>
+		</div>
+	</div>
+	<div class="wrap-bottom">
+		<h2 class="title-timeline">Timeline</h2>
+		<ol class="filter-posting-myPage">
+			<!-- .checked는 탭이 선택됨을 나타냄 없는 경우엔 선택되지 않은 경우-->
+			<li class="tab-myCompare"><button type="button">비교</button></li>
+			<li class="tab-myEstimate"><button type="button">견적</button></li>
+			<li class="tab-myReview"><button type="button">후기</button></li>
+		</ol>
+		<div class="wrap-posting-myPage">
+			<div class="text-date-posting-myPage">포스팅 날짜</div>
+			<div class="text-query-posting-myPage">포스팅 쿼리문</div>
+			<div>나머지 내용들</div>
+		</div>
+	</div>
+</body>
+</html>

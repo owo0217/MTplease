@@ -1,97 +1,382 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>엠티를 부탁해</title>
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="../public/css/theme.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-    <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
-    <script src="../public/javascripts/bootstrap.min.js"></script>
-</head>
-<body>
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="nav-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">
-                    <img src="../public/img/mtlogo-navbar-header.png" alt="fail to load the image" />
-                </a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#">
-                            <img src="../public/img/search.png" alt="fail to load the image" />
-                            <sub>검색</sub>
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li>
-                        <a href="#">
-                            <img src="../public/img/compare.png" alt="fail to load the image" />
-                            <sub>비교 페이지</sub>
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li>
-                        <a href="#">
-                            <img src="../public/img/mypage.png" alt="fail to load the image" />
-                            <sub>마이 페이지</sub>
-                        </a>
-                    </li>
-                    <li class="divider-vertical"></li>
-                    <li>
-                        <a href="#">
-                            <sub>로그인</sub>
-                        </a>
-                    </li>
-                </ul>
+    <head>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>엠티를 부탁해</title>
+        <style>
+        #navbar-container {
+            padding-top: 10px;
+        }
+
+        .row {
+            margin-bottom: 50px;
+            margin-top: 50px;
+        }
+
+        .row .dropdown-menu {
+            text-align: center;
+        }
+    
+        .row > div > input:first-child {
+            width: 50px;
+        }
+    
+        .row > div > input#dp {
+            width: 200px;
+            text-align: center;
+        }
+    
+        .row > .col-md-12 > .btn-group > input {
+            float: none !important;
+        }
+        
+        .col-md-12,
+        .row > .col-md-12 > h1,
+        .row > .col-md-12 > .btn-group
+        {
+            display: inline;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        #mainSearchModal {
+            top: 20%;
+        }
+/*
+        .hidden {
+            opacity: 0;
+        }
+*/
+        .animated { 
+            -webkit-animation-duration: 2s; 
+            animation-duration: 2s; 
+            -webkit-animation-fill-mode: both; 
+            animation-fill-mode: both; 
+        } 
+        
+        @-webkit-keyframes fadeInUp { 
+            0% { 
+                opacity: 0; 
+                -webkit-transform: translateY(20px); 
+            } 
+            100% { 
+                opacity: 1; 
+                -webkit-transform: translateY(0); 
+            } 
+        } 
+        
+        @keyframes fadeInUp { 
+            0% { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            } 
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            } 
+        } 
+        
+        .fadeInUp { 
+            -webkit-animation-name: fadeInUp; 
+            animation-name: fadeInUp; 
+        }
+        
+        </style>
+        <link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="../public/css/theme.css" />
+        <link rel="stylesheet" href="../public/css/datepicker.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="../public/javascripts/bootstrap.min.js"></script>
+        <script src="../public/javascripts/bootstrap-datepicker.js"></script>
+    </head>
+    <body>
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container" id="navbar-container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#" id="btn-home">
+                        <img src="../public/img/mtplease_logo.png" alt="fail to load the image" />
+                    </a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#" id="btn-search">
+                                <img src="../public/img/search.png" alt="fail to load the image" />
+                                <sub>검색</sub>
+                            </a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li>
+                            <a href="#" id="btn-compare">
+                                <img src="../public/img/compare.png" alt="fail to load the image" />
+                                <sub>비교 페이지</sub>
+                            </a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li>
+                            <a href="#" id="btn-estimate">
+                                <img src="../public/img/mypage.png" alt="fail to load the image" />
+                                <sub>마이 페이지</sub>
+                            </a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li>
+                            <a href="#" id="btn-login">
+                                <sub>로그인</sub>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container" role="main">
-        <div class="jumbotron">
-            <div class="row">
-                <div class="col-md-12"><h2>우리는</h2></div>
-            </div>
+        <form id="main-query-form" action="" method="get">
             <div class="row">
                 <div class="col-md-12">
+                    <h1>우리는</h1>
                     <div class="btn-group">
-                        <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">어디<span class="caret"></span></button>
+                        <input type="button" data-toggle="dropdown" class="btn btn-default btn-lg dropdown-toggle" value=" 어디 " id="dropdown-location"></input>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">대성리</a></li>
-                            <li><a href="#">청평</a></li>
-                            <li><a href="#">가평</a></li>
+                            <li><a href="#" class="location-choice">대성리</a></li>
+                            <li><a href="#" class="location-choice">청평</a></li>
+                            <li><a href="#" class="location-choice">가평</a></li>
                         </ul>
                     </div>
-                    <h2>으로</h2>
+                    <h1>&nbsp;으로</h1>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12"><input type="text" /><h2>명이</h2></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">calender <h2>일에</h2></div>
-            </div>
-            <div class="row">
-                <div class="col-md-12"><h2>엠티간다!!</h2></div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button type="button" class="btn btn-lg btn-info">&nbsp; &nbsp;엠티를 부탁해!&nbsp; &nbsp;</button>
+                    <input type="text" id="input-numPeople"/>
+                    <h1>명이 </h1>
+                    <input type="button" class="btn btn-primary btn-lg" value="" data-date-format="yyyy/mm/dd" id="btn-datepicker">
+                    <h1>에</h1>
                 </div>
             </div>
-        </div>
-    </div>
-</body>
+            <div class="row">
+                <div class="col-md-12"><h1>엠티간다!</h1></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button type="button" class="btn btn-lg btn-info" id="btn-sendQuery">&nbsp; &nbsp;엠티를 부탁해!&nbsp; &nbsp;</button>
+                </div>
+            </div>
+        </form>
+
+        <!--
+        id or class naming style = component type - content1 - content2 - ...
+        id="text-numRoom"
+        id="carousel-mainPhoto"
+        class="posting"
+        -->
+    
+        <div id="animated-example1"><H1>TIME LINE1<H2></div>
+        <div id="animated-example2"><H1>TIME LINE2<H2></div>
+        <div id="animated-example3"><H1>TIME LINE3<H2></div>
+        <div id="animated-example4"><H1>TIME LINE4<H2></div>
+        <div id="animated-example5"><H1>TIME LINE5<H2></div>
+        <div id="animated-example6"><H1>TIME LINE6<H2></div>
+        <div id="animated-example7"><H1>TIME LINE7<H2></div>
+        <div id="animated-example8"><H1>TIME LINE8<H2></div>              
+        <div id="animated-example9"><H1>TIME LINE9<H2></div>              
+        <div id="animated-example10"><H1>TIME LINE10<H2></div>              
+        <div id="animated-example11"><H1>TIME LINE11<H2></div>              
+        <div id="animated-example12"><H1>TIME LINE12<H2></div>              
+    
+        <script>
+            $.fn.isInView = function(){
+                
+                var win = $(window);
+                
+                var viewport = {
+                    top : win.scrollTop(),
+                };
+                viewport.bottom = viewport.top + win.height() - 80;
+                
+                var bounds = this.offset();
+                bounds.bottom = bounds.top + this.outerHeight();
+
+                console.log(viewport.top);
+                console.log(viewport.bottom);
+                console.log(bounds.top);
+                console.log(bounds.bottom);
+
+                return (!(viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+                
+            };
+
+            ////**** 장소 선택 드롭다운 메뉴용 스크립트 ****////
+            $(document).ready(function() {
+                /*
+                if($('#animated-example1').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example1').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example2').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example2').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example3').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example3').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example4').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example4').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example5').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example5').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example6').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example6').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example7').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example7').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example8').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example8').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example9').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example9').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example10').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example1').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example11').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example11').removeClass().addClass('animated fadeInUp');
+                }
+                if($('#animated-example12').isInView()) {
+                    console.log("anmation");
+                    $('#animated-example12').removeClass().addClass('animated fadeInUp');
+                }
+                */
+
+
+                $(window).scroll(function() {
+                    if($('#animated-example1').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example1').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example2').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example2').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example3').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example3').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example4').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example4').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example5').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example5').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example6').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example6').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example7').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example7').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example8').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example8').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example9').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example9').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example10').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example10').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example11').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example11').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+
+                $(window).scroll(function() {
+                    if($('#animated-example12').isInView()) {
+                        console.log("anmation activated");
+                        $('#animated-example12').removeClass().addClass('animated fadeInUp');
+                    }
+                });
+                
+            });
+
+            $('.location-choice').click(function(){
+                var locationName = $(this).text();
+                $('#dropdown-location').val(locationName);
+            });
+
+            ////**** 날짜 선택 드롭다운 메뉴용 스크립트 ****////
+            $('#btn-datepicker').datepicker();
+            var nowTemp = new Date();
+            var mm = (nowTemp.getMonth() + 1 < 10 ? '0' : '') + (nowTemp.getMonth() + 1);
+            var dd = (nowTemp.getDate() < 10 ? '0' : '') + nowTemp.getDate();
+            $('#btn-datepicker').val(nowTemp.getFullYear() + '년 ' + mm + '월 ' + dd + '일');
+
+            ////**** 쿼리 전송 ****////
+            $('#btn-sendQuery').click(function() {
+                console.log("clicked");
+                if($('#dropdown-location').val() === " 어디 ") {
+                    console.log($('#location-chosen').val());
+                    console.log("입력값 없음");
+                }
+                $('#main-query-form').submit();
+            });
+        </script>
+    
+    </body>
 </html>

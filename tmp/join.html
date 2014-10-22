@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
+</head>
+<body>
+	<div class="wrap-join">
+		<div class="wrap-titlebar">
+			<img src="" alt="엠티를 부탁해 로고">
+			<h2>회원가입</h2>
+			<img src="" alt="가로 줄">
+		</div>
+		<div class="wrap-input-info-basic">
+			<form action="#" method="get" id="join-form-info-basic">
+				<p>기본(필수)정보 입력</p>
+				<div class="wrap-input id">
+					<p class="text-id">ID</p>
+					<input type="text" id="join-input-id">
+					<button class="btn-check-duplication" type="button">중복확인</button>
+				</div>
+				<div class="wrap-input pw">
+					<p class="text-pw">비밀번호</p>
+					<input type="text" id="join-input-pw">
+				</div>
+				<div class="wrap-input pw-confirm">
+					<p class="text-pw-confirm">비밀번호 확인</p>
+					<input type="text" id="join-input-pw-confirm">
+				</div>
+				<div class="wrap-input nickname">
+					<p class="text-nickname">닉네임</p>
+					<input type="text" id="join-input-nickname">
+					<button class="btn-check-duplication" type="button">중복확인</button>
+				</div>
+				<div class="wrap-input email">
+					<p class="text-email">이메일</p>
+					<input type="text" id="join-input-email">
+					<button class="btn-check-duplication" type="button">중복확인</button>
+				</div>
+				<div class="wrap-input email-receive">
+					<p class="text-email-receive">이메일 수신여부</p>
+					<input type="radio" name="yesorno" value="yes" checked="checked">예
+					<input type="radio" name="yesorno" value="no">아니오
+				</div>
+				<div class="wrap-input dateOfBirth">
+					<p class="text-dateOfBirth">생년월일</p>
+				</div>
+				<div class="wrap-input sex">
+					<p class="text-sex">성별</p>
+					<input type="radio" name="sex" value="male" checked="checked">남
+					<input type="radio" name="sex" value="female">여
+				</div>
+				<div class="wrap-input phone">
+					<button class="btn-authenticate-phone" type="button">인증하기</button>
+				</div>
+			</form>
+		</div>
+		<div class="divider-vertical">
+			<img src="" alt="세로 줄">
+		</div>
+		<div class="wrap-input-info-additional">
+			<form action="#" method="get" id="join-form-info-additional">
+				<p>추가 정보 입력</p>
+				<div class="wrap-input school">
+					<p class="text-school">학교</p>
+					<input type="text" id="join-input-school">
+					<button class="btn-search" type="button">검색</button>
+				</div>
+				<div class="wrap-input major">
+					<p class="text-major">전공</p>
+					<input type="text" id="join-input-major">
+					<button class="btn-search" type="button">검색</button>
+				</div>
+				<div class="wrap-input SID">
+					<p class="text-SID">학번</p>
+					<input type="text" id="join-input-SID">
+				</div>
+				<div class="wrap-input society">
+					<p class="text-society">동아리</p>
+					<input type="text" id="join-input-society">
+					<button class="btn-search" type="button">검색</button>
+				</div>
+				<div class="wrap-conditionsOfUse">
+					<div id="join-textArea-conditionsOfUse">이용약관동의</div>
+					<input type="checkbox" name="agreement" value="agree">동의함
+				</div>
+			</form>
+		</div>
+		<button id="join-btn-signup" type="button">가입하기</button>
+	</div>
+	<!--
+	가입하기 버튼을 눌렀을 때 정보가 잘못 입력되어 에러가 났을 경우 잘 못 입력된 부분에 가이드 팝업
+	띄워주기
+	-->
+</body>
+</html>
