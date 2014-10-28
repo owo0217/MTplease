@@ -3,50 +3,282 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>엠티를 부탁해</title>
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="../public/css/datepicker.css" />
+
+	<style>
+		.wrap-main {
+			padding-top: 50px;
+		}
+		.wrap-searchNphotoList {
+			width: 100%;
+			height: 580px;
+			background-image: url('../public/img/main/main-background-wrap-searchNphotoList.png');
+			background-repeat: no-repeat;
+			background-position: center center;
+			margin-left: 0px;
+			margin-right: 0px;
+			text-align: center;
+		}
+		.wrap-searchNphotoList > .col-md-12:first-child {
+			height: 350px;
+			font-size: 35px;
+			color: white;
+			background-image: url('../public/img/main/main-background-col-md-12-first.png');
+			background-repeat: no-repeat;
+			background-position: center center;
+			vertical-align: middle;
+		}
+		.wrap-searchNphotoList > .col-md-12:nth-child(2) {
+			height: 230px;
+			font-size: 23px;
+			color: white;
+			background-image: url('../public/img/main/main-background-col-md-12-second.png');
+			background-repeat: no-repeat;
+			background-position: center center;
+			vertical-align: middle;
+		}
+		#main-carousel-photo-main{
+			padding-top: 10px;
+			text-align: center;
+		}
+		#main-carousel-photo-main > ol {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		#main-carousel-photo-main > ol > li {
+			margin: 0 20px 0 20px;
+			padding: 0 0 0 0;
+    		border : 0;
+    		display: inline-block;
+		}
+		.carousel-photo-lg > ol > li > a > img{
+			width: 201px;
+			height: 130px;
+		}		
+		.wrap-search {
+			padding-top: 100px;
+		}
+		.wrap-list-photo-room {
+			padding-top: 20px;
+		}
+		.wrap-list-photo-room > span {
+			text-decoration: underline;
+		}
+		.btn-search {
+			width: 220px;
+			height: 60px;
+			display: inline-block;
+			border: 1px solid #FFFFFF;
+			border-radius: 10px;
+			background: transparent;
+			cursor: pointer;
+		}
+		#main-input-numPeople {
+			color: white;
+			font-weight: bold;
+			background-color: transparent;
+			border: 0 solid #7B7B7B;
+			text-align: center;
+		}
+		#main-text-number-room {
+			font-size: 40px;
+		}
+		.wrap-timeline {
+			margin-top: 50px;
+			text-align: center;
+		}
+		.wrap-timeline > .row:first-child > .col-md-12 {
+			font-size: 40px
+		}
+		.text-posting-date {
+			width: 200px;
+			font-size: 20px;
+			display: inline-block;
+			padding-top: 10px;
+			vertical-align: top;
+		}
+		.wrap-posting-content {
+			width: 800px;
+			display: inline-block;
+			font-size: 20px;
+			background-color: #c7ddec;
+			border-radius: 5px;
+			
+		}
+		.wrap-content-text {
+			padding: 10px 0 10px 0;
+			text-align: left;
+			text-indent: 10px;
+		}
+		.dynamic-post {
+			margin: 15px 0 15px 0;
+		}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script src="../public/javascripts/bootstrap-datepicker.js"></script>
 </head>
 <body>
-	<div class="wrap-search">
-		<span>우리는</span>
-		<input type="button" value="어디" class="dropdown" id="main-dropdown-location"></input>
-		<span>으로</span>
-		<input type="text" id="main-input-numPeople"></input>
-		<span>명이서</span>
-		<input type="button" id="main-btn-datepicker"></input>
-		<span>에</span>
-		<span>엠티를 간다!</span>
-		<button class="btn-search" type="button">
-			<img src="" alt="검색 버튼(돋보기)">
-		</button>
-	</div>
-	<div class="wrap-list-photo-room">	
-		<span>우리가 발로 뛰어 찾은</span>
-		<span id="main-text-number-room">0000</span>
-		<span>개의 방들</span>
-		<div id="main-carousel-photo-main" class="carousel-photo-lg">
-			<button type="button" class="btn-left"><img src="" alt="좌측 슬라이드 버튼"></button>
-			<ol class="list-photo-room">
-				<!-- 5번째 이미지(.img-fifth)는 투명도를 높여서 약간만 보이게 
-					 좌우 버튼을 누르면 그림이 양옆으로 움직이는 방식
-				-->
-				<li><a href="#"><img src="" alt="1번 사진" class="img-frist"></a></li>
-				<li><a href="#"><img src="" alt="2번 사진" class="img-second"></a></li>
-				<li><a href="#"><img src="" alt="3번 사진" class="img-third"></a></li>
-				<li><a href="#"><img src="" alt="4번 사진" class="img-fourth"></a></li>
-				<li><a href="#"><img src="" alt="5번 사진" class="img-fifth unclear"></a></li>
-			</ol>
-			<button type="button" class="btn-right"><img src="" alt="우측 슬라이드 버튼"></button>
-		</div>
-	</div>
-	<div class="wrap-timeline">
-		<h2 class="title-timeline">timeline</h2>
-		<div class="wrap-posting-main">
-			<div class="text-posting-date">
-				<h4>포트팅 날짜</h4>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" id="btn-home">
+					<img src="../public/img/mtplease_logo.png" style="width:124px;height:22px" />
+				</a>
 			</div>
-			<div class="wrap-posting-main">
-				<h4>포스팅 내용</h4>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#" id="btn-compare">비교 페이지</a>
+					</li>
+					<li>
+						<a href="#" id="btn-estimate">마이 페이지</a>
+					</li>
+					<li>
+						<a href="#" id="btn-login">로그인</a>
+					</li>
+				</ul>
+				<form role="search" class="navbar-form navbar-right">
+                	<div class="form-group">
+                    	<input type="text" placeholder="펜션이름 검색" class="form-control">
+                	</div>
+            	</form>
 			</div>
 		</div>
 	</div>
+
+	<div class="wrap-main">
+		<div class="row wrap-searchNphotoList">
+			<div class="col-md-12">
+				<div class="wrap-search">
+					우리는
+					<div class="btn-group">
+						<input type="button" data-toggle="dropdown" class="btn btn-primary btn-lg dropdown-toggle" value=" 어디 " id="main-dropdown-location"></input>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#" class="btn-location-choice">대성리</a></li>
+							<li><a href="#" class="btn-location-choice">청평</a></li>
+							<li><a href="#" class="btn-location-choice">가평</a></li>
+						</ul>
+					</div>
+					으로
+					<input type="text" id="main-input-numPeople" onfocus="this.value=''" value="몇" size="3" maxlength="3"></input>
+					명이서
+					<div class="btn-group">
+						<input type="button" class="btn btn-primary btn-lg" value="" data-date-format="yyyy/mm/dd" id="main-btn-datepicker"></input>
+					</div>
+					에
+					엠티를 간다!
+					<br>
+					<br>
+					<button class="btn-search" type="button">
+						<img src="../public/img/mtplease_logo.png" alt="검색 버튼">
+					</button>
+				</div>
+			</div>
+			<div class="col-md-12">	
+				<div class="wrap-list-photo-room">
+					<span>우리가 발로 뛰어 찾은</span>
+					<span id="main-text-number-room">0000</span>
+					<span>개의 방들</span>
+					<div id="main-carousel-photo-main" class="carousel-photo-lg">
+						<ol class="list-photo-room">
+							<!-- 5번째 이미지(.img-fifth)는 투명도를 높여서 약간만 보이게 
+								 좌우 버튼을 누르면 그림이 양옆으로 움직이는 방식
+								-->
+							<li><a href="#"><img src="../public/img/main/img-first.png" alt="1번 사진" class="img-frist"></a></li>
+							<li><a href="#"><img src="../public/img/main/img-second.png" alt="2번 사진" class="img-second"></a></li>
+							<li><a href="#"><img src="../public/img/main/img-third.png" alt="3번 사진" class="img-third"></a></li>
+							<li><a href="#"><img src="../public/img/main/img-fourth.png" alt="4번 사진" class="img-fourth"></a></li>
+							<li><a href="#"><img src="../public/img/main/img-fifth.png" alt="5번 사진" class="img-fifth unclear"></a></li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<div class="row wrap-timeline">
+			<div class="row">
+				<div class="col-md-12">mt info</div>
+			</div>
+			<div class="row dynamic-post">
+				<div class="col-md-12">
+					<div class="wrap-posting">
+						<div class="text-posting-date">2014.10.26</div>
+						<div class="wrap-posting-content">
+							<div class="wrap-content-text">
+								<p>공지사항</p>
+								<p>오늘부터 알파 테스트 시작!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row dynamic-post">
+				<div class="col-md-12">
+					<div class="wrap-posting">
+						<div class="text-posting-date">2014.10.30</div>
+						<div class="wrap-posting-content">
+							<div class="wrap-content-text">
+								<p>아이스크림 칵테일 제조법</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row dynamic-post">
+				<div class="col-md-12">
+					<div class="wrap-posting">
+						<div class="text-posting-date">2014.10.28</div>
+						<div class="wrap-posting-content">
+							<div class="wrap-content-text">
+								<p>숙취 해소, 난 이렇게 한다. 대학생 숙취해소법 10가지</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="row dynamic-post">
+				<div class="col-md-12">
+					<div class="wrap-posting">
+						<div class="text-posting-date">2014.10.27</div>
+						<div class="wrap-posting-content">
+							<div class="wrap-content-text">
+								<p>mt가서 하기 좋은 게임 5가지!!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+			$('.btn-location-choice').click(function() {
+				var locationName = $(this).text();
+                $('#main-dropdown-location').val(locationName);
+            });
+
+            ////**** 날짜 선택 드롭다운 메뉴용 스크립트 ****////
+            $('#main-btn-datepicker').datepicker();
+            var nowTemp = new Date();
+            var mm = (nowTemp.getMonth() + 1 < 10 ? '0' : '') + (nowTemp.getMonth() + 1);
+            var dd = (nowTemp.getDate() < 10 ? '0' : '') + nowTemp.getDate();
+            $('#main-btn-datepicker').val(nowTemp.getFullYear() + '년 ' + mm + '월 ' + dd + '일');
+	</script>
 </body>
 </html>

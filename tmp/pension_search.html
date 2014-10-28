@@ -3,22 +3,267 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>엠티를 부탁해</title>
+
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="../public/css/datepicker.css" />
+
+	<style>
+		.wrap-search-result {
+			padding-top: 100px;
+		}
+		/* main.css 것과 중복된다. */
+		#main-input-numPeople {
+			color: white;
+			font-weight: bold;
+			background-color: transparent;
+			border: transparent;
+			text-align: center;
+		}
+		/* 다른 페이지에서도 사용될 요소 */
+		.wrap-query {
+			background-color: #AAAAAA;
+			padding: 5px 0 5px 0;
+			text-align: center;
+			font-size: 20px;
+			color: white;
+		}
+		.wrap-query > div{
+			display: inline-block;
+		}
+		#pension_search-dropdown-location, #pension_search-btn-datepicker {
+			display: inline-block;
+			background-color: transparent;
+			color: white;
+			border: 1px solid #FFFFFF;
+			border-radius: 10px;
+			cursor: pointer;
+		}
+		.btn-refresh {
+			border: 1px solid #FFFFFF;
+			border-radius: 10px;
+			background: transparent;
+			cursor: pointer;
+		}
+		.title-search-result > .col-md-12:first-child > h2 {
+			display: inline-block;
+			padding: 0 20px 0 100px;
+		}
+		.title-search-result > .col-md-12:first-child > img {
+			display: block;
+		}
+		.underline {
+			width: 30%;
+			border-bottom: 2px #AAAAAA solid;
+		}
+		#search-text-num-result {
+			letter-spacing: 5px;
+			display: inline-block;
+		}
+		.list-search-result {
+			margin-top: 50px;
+			text-align: center;
+		}
+		.wrap-result {
+			border: 2px solid #E10B58;
+			padding: 20px;
+			display: inline-block;
+			margin-right: 50px;
+		}
+		.wrap-result > div {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.wrap-img-room {
+			position: relative;
+		}
+		.img-room {
+			width: 294.7px;
+			height: 187.3px;
+		}
+		.state-mouseHover {
+			width: 294.7px;
+			height: 187.3px;
+			background-image: url('../public/img/pension_search/pension_search-state-mouseHover.png');
+			background-repeat: no-repeat;
+			background-size: 294.7px 187.3px;
+			position: absolute;
+			top: 0px;
+		}
+		.hidden {
+			display: none;
+		}
+		.wrap-hover-btns {
+			margin-top: 53.5px;
+			margin-bottom: auto;
+		}
+		.wrap-hover-btns > div {
+			display: inline-block;
+			opacity: 1.0;
+		}
+		.btn-estimate, .btn-toggle-compare {
+			width: 80px;
+			height: 80px;
+			line-height: 30px;
+			font-size: 20px;
+			color: white;
+			font-weight: bold;
+			border-radius: 40px;
+			border: 1px solid #FFFFFF;
+		}
+		.btn-estimate > div:first-child, .btn-toggle-compare > div:first-child {
+			margin-top: 10px;
+		}
+		.divider-vertical-left, .divider-vertical-right {
+			width: 15px;
+			height: 80px;
+			vertical-align: top;
+		}
+		.divider-vertical-left {
+			border-right: 1px solid #FFFFFF;
+		}
+		.divider-vertical-right {
+			border-left: 1px solid #FFFFFF;
+		}
+		.toggled {
+			color: #E10B58;
+			background-color: #000000;
+		}
+		.wrap-line-first {
+			padding: 10px 0 5px 0;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.wrap-number-room {
+			font-size: 16px;
+			display: inline-block;
+			padding-right: 10px;
+		}
+		.wrap-line-second, .wrap-line-third {
+			padding: 5px 0 5px 0;
+		}
+		.wrap-line-second > span {
+			font-size: 12px;
+		}
+		.wrap-info-room {
+			text-align: left;
+			padding-left: 10px;
+		}
+		.wrap-line-third > div {
+			width: 44px;
+			height: 44px;
+			text-align: center;
+			line-height: 44px;
+			color: white;
+			margin: 0 3px 0 3px;
+			float: left;
+			background-color: #E10B58;
+			border-radius: 22px;
+		}
+		.not-available {
+			opacity: 0.1;
+		}
+		.wrap-info-room > h4 {
+			padding-top: 60px;
+			text-align: right;
+			font-weight: bold;
+		}
+		.row-single {
+			padding: 20px 0 20px 0;
+		}
+
+	</style>
+
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script src="../public/javascripts/bootstrap-datepicker.js"></script>
 </head>
 <body>
+	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#" id="btn-home">
+					<img src="../public/img/mtplease_logo.png" style="width:124px;height:22px" />
+				</a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="#" id="btn-compare">비교 페이지</a>
+					</li>
+					<li>
+						<a href="#" id="btn-estimate">마이 페이지</a>
+					</li>
+					<li>
+						<a href="#" id="btn-login">로그인</a>
+					</li>
+				</ul>
+				<form role="search" class="navbar-form navbar-right">
+                	<div class="form-group">
+                    	<input type="text" placeholder="펜션이름 검색" class="form-control">
+                	</div>
+            	</form>
+			</div>
+		</div>
+		<div class="wrap-query">
+           	우리는
+			<div class="btn-group">
+				<input type="button" data-toggle="dropdown" class="dropdown-toggle" value=" 어디 " id="pension_search-dropdown-location">
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="#" class="btn-location-choice">대성리</a></li>
+					<li><a href="#" class="btn-location-choice">청평</a></li>
+					<li><a href="#" class="btn-location-choice">가평</a></li>
+				</ul>
+			</div>
+			으로
+			<input type="text" id="main-input-numPeople" onfocus="this.value=''" value="몇" size="3" maxlength="3"></input>
+			명이서
+			<div class="btn-group">
+				<!--<input type="button" class="btn btn-warning btn-sm" value="" data-date-format="yyyy/mm/dd" id="pension_search-btn-datepicker"></input>-->
+				<input type="button" value="" data-date-format="yyyy/mm/dd" id="pension_search-btn-datepicker"></input>
+			</div>
+			에
+			엠티를 간다!
+			<button class="btn-refresh" type="button">
+				<span><img src="" alt="재검색"></span>
+			</button>
+           </div>
+	</div>
+
+
 	<div class="wrap-search-result">
-		<div class="title-search-result">
-			<h2>검색결과</h2>
-			<h3 id="search-text-num-result">00개의 결과</h3>
-			<img src="" alt="검색결과 하단 라인 이미지">
+		<div class="row title-search-result">
+			<div class="col-md-12">
+				<h2>검색결과</h2>
+				<h4 id="search-text-num-result">00개</h4>
+				<div class="underline"></div>
+			</div>
 		</div>
 		<!--동적 할당 태그-->
 		<div class="list-search-result">
+			<ol class="row-single">
 			<!-- anchor 태그로 할 지 동적 Location assign코드로 정해줄 지 잉여랑 말해봐야 할 듯
 				 mouse-hover시에는 어떻게 해야할 지 고려... 모바일 경우 mouse-hover는 사용할 수 없다는 것 주의!!
 			-->
-			<a href="#">
-				<div class="wrap-result">
-					<img src="" alt="좌측 방 사진">
+				<li class="wrap-result">
+					<div class="wrap-img-room">
+						<img src="../public/img/pension_search/pension_search-photo-room.png" alt="좌측 방 사진" class="img-room">
+						<!-- 견적내기&비교하기 버튼 마우스 커서 호버 상태는? -> 토글 상태와는 다른 효과로 -->
+						<div class="state-mouseHover hidden">
+							<div class="wrap-hover-btns">
+								<div class="btn-estimate"><div>견적</div><div>내기</div></div>
+								<div class="divider-vertical-left"></div>
+								<div class="divider-vertical-right"></div>
+								<div class="btn-toggle-compare"><div>비교</div><div>하기</div></div>
+							</div>
+						</div>
+					</div>
 					<div class="wrap-info-room">
 						<div class="wrap-line-first">
 							<span class="text-location">지역</span>
@@ -40,17 +285,163 @@
 							<span class="text-number-maximum">00</span>
 						</div>
 						<div class="wrap-line-third">
-							<span class="tag-has-playground">운동장</span>
-							<span class="tag-has-valley">계곡</span>
-							<span class="tag-has-pickup">픽업</span>
-							<span class="tag-has-barbeque">바베큐</span>
+							<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+							<div class="tag-has-playground">운동장</div>
+							<div class="tag-has-valley">계곡</div>
+							<div class="tag-has-pickup">픽업</div>
+							<div class="tag-has-barbeque">바베큐</div>
 						</div>
-						<h4 class="text-price">00,000 원</h4>
+						<h4 class="text-price">000,000 원</h4>
 					</div>
-				</div>
-			</a>
+				</li>
+	
+				<li class="wrap-result">
+					<div class="wrap-img-room">
+						<img src="../public/img/pension_search/pension_search-photo-room.png" alt="좌측 방 사진" class="img-room">
+						<div class="state-mouseHover">
+							<div class="wrap-hover-btns">
+								<div class="btn-estimate"><div>견적</div><div>내기</div></div>
+								<div class="divider-vertical-left"></div>
+								<div class="divider-vertical-right"></div>
+								<div class="btn-toggle-compare toggled"><div>비교</div><div>하기</div></div>
+							</div>
+						</div>
+					</div>
+					<div class="wrap-info-room">
+						<div class="wrap-line-first">
+							<span class="text-location">지역</span>
+							<span class="text-name-pension">펜션 명</span>
+							<span class="text-name-room">방 명</span>
+						</div>
+						<div class="wrap-line-second">
+							<div class="wrap-number-room">
+								<span>방 </span>
+								<span class="text-number-room">0</span>
+								<span>화장실 </span>
+								<span class="text-number-toilet">0</span>							
+							</div>
+							<span class="text-size-room">00</span>
+							<span>평</span>
+							<span>기준인원</span>
+							<span class="text-number-standard">00</span>
+							<span>최대인원</span>
+							<span class="text-number-maximum">00</span>
+						</div>
+						<div class="wrap-line-third">
+							<div class="tag-has-playground not-available">운동장</div>
+							<div class="tag-has-valley not-available">계곡</div>
+							<div class="tag-has-pickup">픽업</div>
+							<div class="tag-has-barbeque">바베큐</div>
+						</div>
+						<h4 class="text-price">000,000 원</h4>
+					</div>
+				</li>
+			</ol>
+
+			<ol class="row-single">
+			<!-- anchor 태그로 할 지 동적 Location assign코드로 정해줄 지 잉여랑 말해봐야 할 듯
+				 mouse-hover시에는 어떻게 해야할 지 고려... 모바일 경우 mouse-hover는 사용할 수 없다는 것 주의!!
+			-->
+				<li class="wrap-result">
+					<div class="wrap-img-room">
+						<img src="../public/img/pension_search/pension_search-photo-room.png" alt="좌측 방 사진" class="img-room">
+						<div class="state-mouseHover">
+							<div class="wrap-hover-btns">
+								<div class="btn-estimate"><div>견적</div><div>내기</div></div>
+								<div class="divider-vertical-left"></div>
+								<div class="divider-vertical-right"></div>
+								<div class="btn-toggle-compare"><div>비교</div><div>하기</div></div>
+							</div>
+						</div>
+					</div>
+					<div class="wrap-info-room">
+						<div class="wrap-line-first">
+							<span class="text-location">지역</span>
+							<span class="text-name-pension">펜션 명</span>
+							<span class="text-name-room">방 명</span>
+						</div>
+						<div class="wrap-line-second">
+							<div class="wrap-number-room">
+								<span>방 </span>
+								<span class="text-number-room">0</span>
+								<span>화장실 </span>
+								<span class="text-number-toilet">0</span>							
+							</div>
+							<span class="text-size-room">00</span>
+							<span>평</span>
+							<span>기준인원</span>
+							<span class="text-number-standard">00</span>
+							<span>최대인원</span>
+							<span class="text-number-maximum">00</span>
+						</div>
+						<div class="wrap-line-third">
+							<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+							<div class="tag-has-playground">운동장</div>
+							<div class="tag-has-valley not-available">계곡</div>
+							<div class="tag-has-pickup">픽업</div>
+							<div class="tag-has-barbeque">바베큐</div>
+						</div>
+						<h4 class="text-price">000,000 원</h4>
+					</div>
+				</li>
+	
+				<li class="wrap-result">
+					<div class="wrap-img-room">
+						<img src="../public/img/pension_search/pension_search-photo-room.png" alt="좌측 방 사진" class="img-room">
+						<div class="state-mouseHover">
+							<div class="wrap-hover-btns">
+								<div class="btn-estimate"><div>견적</div><div>내기</div></div>
+								<div class="divider-vertical-left"></div>
+								<div class="divider-vertical-right"></div>
+								<div class="btn-toggle-compare"><div>비교</div><div>하기</div></div>
+							</div>
+						</div>
+					</div>
+					<div class="wrap-info-room">
+						<div class="wrap-line-first">
+							<span class="text-location">지역</span>
+							<span class="text-name-pension">펜션 명</span>
+							<span class="text-name-room">방 명</span>
+						</div>
+						<div class="wrap-line-second">
+							<div class="wrap-number-room">
+								<span>방 </span>
+								<span class="text-number-room">0</span>
+								<span>화장실 </span>
+								<span class="text-number-toilet">0</span>							
+							</div>
+							<span class="text-size-room">00</span>
+							<span>평</span>
+							<span>기준인원</span>
+							<span class="text-number-standard">00</span>
+							<span>최대인원</span>
+							<span class="text-number-maximum">00</span>
+						</div>
+						<div class="wrap-line-third">
+							<div class="tag-has-playground">운동장</div>
+							<div class="tag-has-valley not-available">계곡</div>
+							<div class="tag-has-pickup">픽업</div>
+							<div class="tag-has-barbeque">바베큐</div>
+						</div>
+						<h4 class="text-price">000,000 원</h4>
+					</div>
+				</li>
+			</ol>
 		</div>
 		<!---->
 	</div>
+	<script>
+			$('.btn-location-choice').click(function() {
+				var locationName = $(this).text();
+                $('#pension_search-dropdown-location').val(locationName);
+            });
+
+            ////**** 날짜 선택 드롭다운 메뉴용 스크립트 ****////
+            $('#pension_search-btn-datepicker').datepicker();
+            var nowTemp = new Date();
+            var mm = (nowTemp.getMonth() + 1 < 10 ? '0' : '') + (nowTemp.getMonth() + 1);
+            var dd = (nowTemp.getDate() < 10 ? '0' : '') + nowTemp.getDate();
+            $('#pension_search-btn-datepicker').val(nowTemp.getFullYear() + '년 ' + mm + '월 ' + dd + '일');
+	</script>
 </body>
 </html>
