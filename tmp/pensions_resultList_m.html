@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
+
+	<style>
+	html, body {
+		height: 100%;
+	}
+	label.btn.btn-default {
+		font-size: 12px;
+	}
+	.tab-filter {
+		margin-top: 10px;
+		border-radius: 10px;
+		text-align: center;
+	}
+	.btn-groups {
+		display: inline-block;
+	}
+	.btn-groups > label {
+		border-radius: 5px;
+	}
+	/* 재사용 코드 */
+	.box-single {
+		border: 1px solid #E10B58;
+		margin: 20px 1px 0 1px;
+		background-color: white;
+	}
+	.container {
+		margin-bottom: 18%;
+	}
+	.img-room {
+		width: 150px;
+		height: 150px;
+		margin-top: 3px;
+	}
+	.col-xs-6, .col-xs-12 {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	.wrap-line-first {
+		padding: 10px 0 5px 0;
+		font-size: 15px;
+		font-weight: bold;
+	}
+	.wrap-line-second, .wrap-line-third, .wrap-line-fourth {
+		padding: 5px 0 5px 0;
+	}
+	.wrap-line-second {
+		font-size: 11px;
+		display: inline-block;
+		padding-right: 10px;
+	}
+	.wrap-line-third {
+		font-size: 11px;
+	}
+	.wrap-line-fourth > div {
+		width: 31px;
+		height: 31px;
+		text-align: center;
+		line-height: 31px;
+		color: white;
+		margin: 0 3px 5px 3px;
+		float: left;
+		background-color: #E10B58;
+		border-radius: 31px;
+		font-size: 10px;
+		font-weight: bold;
+	}
+	.text-price {
+		text-align: right;
+	}
+	/* 재사용 코드 끝 */
+	.fixedbar-bottom {
+		width: 100%;
+		height: 10%;
+		position: fixed;
+		text-align: center;
+		background-color: #C7DDEC;
+		padding: 10px 15px 10px 15px;
+		font-size: 20px;
+		bottom: 0;
+		box-shadow: 0px 5px 10px 5px grey;
+		z-index: 1000;
+	}
+	.fixedbar-bottom > .btn-compare {
+		width: 48%;
+		height: 100%;
+		background-color: transparent;
+		border: 0px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.fixedbar-bottom > .divider-vertical {
+		width: 1px;
+		height: 100%;
+		border: 1px solid black;
+		display: inline-block;
+	}
+	.fixedbar-bottom > .btn-estimate {
+		width: 48%;
+		height: 100%;
+		background-color: transparent;
+		border: 0px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	</style>
+	
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+</head>
+<body>
+	<div class="container">
+		<div class="tab-filter">
+			<div class="btn-groups" data-toggle="buttons">
+				<label class="btn btn-default">
+					<input type="radio" name="options" id="pensions_resultList_m-filter-review" class="btn-filter">후기순
+				</label>
+				<label class="btn btn-default">
+					<input type="radio" name="options" id="pensions_resultList_m-filter-lowPrice" class="btn-filter">낮은가격순
+				</label>
+				<label class="btn btn-default">
+					<input type="radio" name="options" id="pensions_resultList_m-filter-points" class="btn-filter">별점순
+				</label>
+				<label class="btn btn-default">
+					<input type="radio" name="options" id="pensions_resultList_m-filter-group" class="btn-filter">학교/소속순
+				</label>
+			</div>
+		</div>
+		<div class="row box-single">
+			<div class="col-xs-6">
+				<img src="" alt="사진" class="img-room">
+			</div>
+			<div class="col-xs-6">
+				<div class="wrap-line-first">
+					<span class="text-location">지역</span>
+					<span class="text-name-pension">펜션 명</span>
+					<span class="text-name-room">방 명</span>
+				</div>
+				<div class="wrap-line-second">
+					<span>방 </span>
+					<span class="text-number-room">0</span>
+					<span>화장실 </span>
+					<span class="text-number-toilet">0</span>
+				</div>
+				<div class="wrap-line-third">
+					<span class="text-size-room">00</span>
+					<span>평</span>
+					<span>기준인원</span>
+					<span class="text-number-standard">00</span>
+					<span>최대인원</span>
+					<span class="text-number-maximum">00</span>
+				</div>
+				<div class="wrap-line-fourth">
+					<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+					<div class="tag-has-playground">운동장</div>
+					<div class="tag-has-valley">계곡</div>
+					<div class="tag-has-pickup">픽업</div>
+					<div class="tag-has-barbeque">바베큐</div>
+				</div>
+				<div class="text-price">
+					<h4>000,000 원</h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="row box-single">
+			<div class="col-xs-6">
+				<img src="" alt="사진" class="img-room">
+			</div>
+			<div class="col-xs-6">
+				<div class="wrap-line-first">
+					<span class="text-location">지역</span>
+					<span class="text-name-pension">펜션 명</span>
+					<span class="text-name-room">방 명</span>
+				</div>
+				<div class="wrap-line-second">
+					<span>방 </span>
+					<span class="text-number-room">0</span>
+					<span>화장실 </span>
+					<span class="text-number-toilet">0</span>
+				</div>
+				<div class="wrap-line-third">
+					<span class="text-size-room">00</span>
+					<span>평</span>
+					<span>기준인원</span>
+					<span class="text-number-standard">00</span>
+					<span>최대인원</span>
+					<span class="text-number-maximum">00</span>
+				</div>
+				<div class="wrap-line-fourth">
+					<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+					<div class="tag-has-playground">운동장</div>
+					<div class="tag-has-valley">계곡</div>
+					<div class="tag-has-pickup">픽업</div>
+					<div class="tag-has-barbeque">바베큐</div>
+				</div>
+				<div class="text-price">
+					<h4>000,000 원</h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="row box-single">
+			<div class="col-xs-6">
+				<img src="" alt="사진" class="img-room">
+			</div>
+			<div class="col-xs-6">
+				<div class="wrap-line-first">
+					<span class="text-location">지역</span>
+					<span class="text-name-pension">펜션 명</span>
+					<span class="text-name-room">방 명</span>
+				</div>
+				<div class="wrap-line-second">
+					<span>방 </span>
+					<span class="text-number-room">0</span>
+					<span>화장실 </span>
+					<span class="text-number-toilet">0</span>
+				</div>
+				<div class="wrap-line-third">
+					<span class="text-size-room">00</span>
+					<span>평</span>
+					<span>기준인원</span>
+					<span class="text-number-standard">00</span>
+					<span>최대인원</span>
+					<span class="text-number-maximum">00</span>
+				</div>
+				<div class="wrap-line-fourth">
+					<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+					<div class="tag-has-playground">운동장</div>
+					<div class="tag-has-valley">계곡</div>
+					<div class="tag-has-pickup">픽업</div>
+					<div class="tag-has-barbeque">바베큐</div>
+				</div>
+				<div class="text-price">
+					<h4>000,000 원</h4>
+				</div>
+			</div>
+		</div>
+
+		<div class="row box-single">
+			<div class="col-xs-6">
+				<img src="" alt="사진" class="img-room">
+			</div>
+			<div class="col-xs-6">
+				<div class="wrap-line-first">
+					<span class="text-location">지역</span>
+					<span class="text-name-pension">펜션 명</span>
+					<span class="text-name-room">방 명</span>
+				</div>
+				<div class="wrap-line-second">
+					<span>방 </span>
+					<span class="text-number-room">0</span>
+					<span>화장실 </span>
+					<span class="text-number-toilet">0</span>
+				</div>
+				<div class="wrap-line-third">
+					<span class="text-size-room">00</span>
+					<span>평</span>
+					<span>기준인원</span>
+					<span class="text-number-standard">00</span>
+					<span>최대인원</span>
+					<span class="text-number-maximum">00</span>
+				</div>
+				<div class="wrap-line-fourth">
+					<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+					<div class="tag-has-playground">운동장</div>
+					<div class="tag-has-valley">계곡</div>
+					<div class="tag-has-pickup">픽업</div>
+					<div class="tag-has-barbeque">바베큐</div>
+				</div>
+				<div class="text-price">
+					<h4>000,000 원</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="fixedbar-bottom">
+		<button type="button" class="btn-compare">비교하기</button>
+		<div class="divider-vertical"></div>
+		<button type="button" class="btn-estimate">견적내기</button>
+	</div>
+</body>
+</html>

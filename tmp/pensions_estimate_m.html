@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
+
+	<style>
+	html, body {
+		height: 98%;
+		margin: 0px;
+		text-align: center;
+	}
+	.container {
+		width: 90%;
+		height: 100%;
+		text-align: center;
+		display: inline-block;
+	}
+	.box-single {
+		width: 100%;
+		height: 20%;
+		border: 3px solid #E10B58;
+		border-radius: 30px;
+		font-size: 40px;
+		font-weight: 100;
+		margin-top: 15px;
+		text-align: center;
+		display: table;
+	}
+	.box-single > .wrap-btn-add {
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.box-single > .wrap-btn-add > span {
+		opacity: 0.47;
+		vertical-align: top;
+	}
+	.box-single > .wrap-btn-add > img {
+		width: 40px;
+		height: 40px;
+	}
+	.btn-cal-estimate {
+		width: 100%;
+		height: 10%;
+		border: 0px;
+		display: block;
+		position: fixed;
+		background-color: #C7DDEC;
+		bottom: 0px;
+		font-size: 20px;
+	}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="box-single" id="pensions_estimate_m-btn-select-room">
+			<div class="wrap-btn-add">
+				<span>숙소 &nbsp&nbsp</span>
+				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
+			</div>
+		</div>
+		<div class="box-single">
+			<div class="wrap-btn-add">
+				<span>주류 &nbsp&nbsp</span>
+				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
+			</div>
+		</div>
+		<div class="box-single">
+			<div class="wrap-btn-add">
+				<span>바베큐</span>
+				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
+			</div>
+		</div>
+		<div class="box-single">
+			<div class="wrap-btn-add">
+				<span>기타 &nbsp&nbsp</span>
+				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
+			</div>	
+		</div>
+	</div>
+	<button type="button" class="btn-cal-estimate">견적내기</button>
+</body>
+</html>

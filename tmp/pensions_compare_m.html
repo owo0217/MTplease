@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
+
+	<style>
+	.wrap-checkbox-options {
+		margin-left: -15px;
+		margin-right: -15px;
+		padding-top: 10px;
+		text-align: center;
+		position: fixed;
+		background-color: white;
+		z-index: 100;
+	}
+	.checkbox-tab {
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		color: white;
+		margin: 0 3px 5px 3px;
+		border-radius: 50px;
+		font-size: 15px;
+		font-weight: bold;
+		text-decoration: underline;
+		display: inline-block;
+	}
+	.checkbox-tab.checkbox-tab-unchecked {
+		background-color: #7E7E7F;
+	}
+	.checkbox-tab.checkbox-tab-checked {
+		background-color: #E10B58;
+	}
+	.checkbox-options-first-row .checkbox-line-height {
+		padding-top: 3px;
+		line-height: 20px;
+	}
+	.wrap-checkbox-options .checkbox-tab > input {
+		margin: 15px 0 0 15px;
+		z-index: -1;
+		position: absolute;
+	}
+	.checkbox-options-first-row > div {
+		vertical-align: top;
+	}
+	.container > .row:nth-child(2) {
+		margin-top: 130px;
+	}
+	/* 재사용 코드 */
+	.box-single {
+		border: 1px solid #E10B58;
+		margin: 20px 1px 0 1px;
+		background-color: white;
+	}
+	.img-room {
+		width: 150px;
+		height: 150px;
+		margin-top: 3px;
+	}
+	.col-xs-6, .col-xs-12 {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	.wrap-line-first {
+		padding: 10px 0 5px 0;
+		font-size: 15px;
+		font-weight: bold;
+	}
+	.wrap-line-second, .wrap-line-third, .wrap-line-fourth {
+		padding: 5px 0 5px 0;
+	}
+	.wrap-line-second {
+		font-size: 11px;
+		display: inline-block;
+		padding-right: 10px;
+	}
+	.wrap-line-third {
+		font-size: 11px;
+	}
+	.wrap-line-fourth > div {
+		width: 31px;
+		height: 31px;
+		text-align: center;
+		line-height: 31px;
+		color: white;
+		margin: 0 3px 5px 3px;
+		float: left;
+		background-color: #E10B58;
+		border-radius: 31px;
+		font-size: 10px;
+		font-weight: bold;
+	}
+	.text-price {
+		text-align: right;
+	}
+	/* 재사용 코드 끝 */
+	</style>
+
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row wrap-checkbox-options">
+			<div class="col-xs-12 checkbox-options-first-row">
+				<div class="checkbox-tab checkbox-line-height checkbox-tab-unchecked">
+					<input type="checkbox" id="checkbox-ascendingPrice">낮은<br>가격순</input>
+				</div>
+				<div class="checkbox-tab checkbox-line-height checkbox-tab-unchecked">
+					<input type="checkbox" id="checkbox-decendingPrice">높은<br>가격순</input>
+				</div>
+				<div class="checkbox-tab checkbox-tab-unchecked">
+					<input type="checkbox" id="checkbox-playground">운동장</input>
+				</div>
+				<div class="checkbox-tab checkbox-tab-unchecked">
+					<input type="checkbox" id="checkbox-valley">계곡</input>
+				</div>
+			</div>
+			<div class="col-xs-12 checkbox-options-second-row">
+				<div class="checkbox-tab checkbox-tab-unchecked">
+					<input type="checkbox" id="checkbox-pickup">픽업</input>
+				</div>
+				<div class="checkbox-tab checkbox-tab-unchecked">
+					<input type="checkbox" id="checkbox-barbeque">바베큐</input>
+				</div>
+				<div class="checkbox-tab checkbox-tab-unchecked">
+					<input type="checkbox" id="checkbox-etc">기타</input>
+				</div>
+			</div>
+		</div>
+
+		<div class="row box-single">
+			<div class="col-xs-6">
+				<img src="" alt="사진" class="img-room">
+			</div>
+			<div class="col-xs-6">
+				<div class="wrap-line-first">
+					<span class="text-location">지역</span>
+					<span class="text-name-pension">펜션 명</span>
+					<span class="text-name-room">방 명</span>
+				</div>
+				<div class="wrap-line-second">
+					<span>방 </span>
+					<span class="text-number-room">0</span>
+					<span>화장실 </span>
+					<span class="text-number-toilet">0</span>
+				</div>
+				<div class="wrap-line-third">
+					<span class="text-size-room">00</span>
+					<span>평</span>
+					<span>기준인원</span>
+					<span class="text-number-standard">00</span>
+					<span>최대인원</span>
+					<span class="text-number-maximum">00</span>
+				</div>
+				<div class="wrap-line-fourth">
+					<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+					<div class="tag-has-playground">운동장</div>
+					<div class="tag-has-valley">계곡</div>
+					<div class="tag-has-pickup">픽업</div>
+					<div class="tag-has-barbeque">바베큐</div>
+				</div>
+				<div class="text-price">
+					<h4>000,000 원</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	$(document).on('click', '.checkbox-tab.checkbox-tab-unchecked', function() {
+		$(this).removeClass("checkbox-tab-unchecked").addClass("checkbox-tab-checked");
+	});
+	$(document).on('click', '.checkbox-tab.checkbox-tab-checked', function() {
+		$(this).removeClass("checkbox-tab-checked").addClass("checkbox-tab-unchecked");
+	});
+	</script>
+</body>
+</html>

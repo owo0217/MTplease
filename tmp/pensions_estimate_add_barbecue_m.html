@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
+	<style>
+	.fixedbar-top {
+		width: 100%;
+		padding: 5px 0 5px 0;
+		position: fixed;
+		z-index: 1000;
+		background-color: white;
+		top: 0;
+		box-shadow: 0px -5px 10px 5px grey;
+	}
+	.fixedbar-top > .header {
+		padding: 2px 0 10px 0;
+		background-color: white;
+		font-size: 20px;
+		margin-left: 15px;
+	}
+	.fixedbar-top > .bar-search {
+		padding: 12px 0 12px 0;
+		background-color: #C7DDEC;
+	}
+	.fixedbar-top > .bar-search > input {
+		width: 60%;
+		margin-left: 15px;
+		display: inline-block;
+	}
+	.fixedbar-top > .bar-search > button {
+		width: 30%;
+		margin-right: 15px;
+	}
+	.container {
+		height: 60%;
+	}
+	.container > .panel-barbecue-popular {
+		padding: 10px 0 30px 0 ;
+		margin: 120px -15px 0 -15px;
+		background-color: #C7DDEC; 
+	}
+	.panel-barbecue-popular > .header {
+		margin: 0 15px 15px 15px;
+		font-size: 20px;
+	}
+	.panel-barbecue-popular > .wrap-list-barbecue-popular > div {
+		text-align: center;
+	}
+	.panel-barbecue-popular > .wrap-list-barbecue-popular > .wrap-barbecue-popular-first,
+	.panel-barbecue-popular > .wrap-list-barbecue-popular > .wrap-barbecue-popular-second {
+		margin: 0 5px 20px 5px;
+	}
+	.box-single-small {
+		width: 28%;
+		display: inline-block;
+		margin: 0 3px 0 3px;
+		border: 2px solid #FFFFFF;
+		border-radius: 8px;
+		background-color: white;
+	}
+	.box-single-small > .wrap {
+		position: relative;
+	}
+	.box-single-small > .wrap > .img-barbecue > img {
+		width: 80%;
+		height: auto;
+		margin-top: 5px;
+		padding-bottom: 80px;
+	}
+	.box-single-small > .wrap > .wrap-nameNprice-barbecue {
+		font-weight: bold;
+		margin-top: 15px;
+		text-align: left;
+		position: absolute;
+		left: 5px;
+		bottom: 5px;
+		z-index: 100;
+	}
+	.box-single-small > .wrap > .wrap-nameNprice-barbecue > .text-name-barbecue {
+		font-size: 20px;
+	}
+	.box-single-small > .wrap > .wrap-nameNprice-barbecue > .text-standard {
+		font-size: 11px;
+	}
+	.box-single-small > .wrap > .wrap-nameNprice-barbecue > .text-price-barbecue {
+		font-size: 16px;
+	}
+	/* 고기 항목이 선택 됐을 경우의 효과 */
+	.box-single-small.selected {
+		border: 2px solid #E10B58;
+	}
+	.box-single-small.selected > .wrap > .img-barbecue {
+		border-radius: 8px;
+		background-color: white;
+		-webkit-filter: brightness(0.3);
+		-ms-filter: brightness(0.3);
+		-moz-filter: brightness(0.3);
+	}
+	.box-single-small.selected > .wrap > .wrap-nameNprice-barbecue {
+		color: white;
+	}
+	.fixedbar-bottom {
+		width: 100%;
+		position: fixed;
+		background-color: white;
+		padding: 10px 15px 10px 15px;
+		bottom: 0;
+		box-shadow: 0px 5px 10px 5px grey;
+		z-index: 1000;
+	}
+	.fixedbar-bottom > img,
+	.fixedbar-bottom > div {
+		display: inline-block;
+	}
+	/* 아이템이 선택되면 .item-selected 클래스가 붙어서 
+	   하단바에 아이콘이 나타난다. 선택되지 않거나 선택 해지가
+	   되어있으면 아이콘이 보이지 않고 빈 네모 칸이 보인다.*/
+	.wrap-icNnameNprice-selected {
+		width: 20%;
+		padding: 5px;
+		margin-right: 15px;
+		border: 1px solid #000000;
+		vertical-align: middle;
+	}
+	.wrap-icNnameNprice-selected.item-selected {
+		border: 0px solid #000000;
+	}
+	.wrap-icNnameNprice-selected > .ic-selected {
+		width: 100%;
+		height: auto;
+		opacity: 0;
+	}
+	.wrap-icNnameNprice-selected.item-selected > .ic-selected {
+		opacity: 1;
+	}
+	.wrap-icNnameNprice-selected > .text-name-barbecue-selected {
+		opacity: 0;
+	}
+	.wrap-icNnameNprice-selected.item-selected > .text-name-barbecue-selected {
+		opacity: 1;
+	}
+	.fixedbar-bottom > .counter {
+		width: 18%;
+		border: 1px solid #000000;
+		border-radius: 10px;
+		padding: 5px 0 5px 0;
+		text-align: center;
+		vertical-align: middle;
+	}
+	.fixedbar-bottom > .counter > img {
+		width: auto;
+		height: auto;
+	}
+	.fixedbar-bottom > .counter > div {
+		font-size: 20px;
+	}
+	.fixedbar-bottom > .wrap-countNpriceNbtn {
+		width: 55%;
+		vertical-align: middle;
+	}
+	.fixedbar-bottom > .wrap-countNpriceNbtn > div {
+		display: inline-block;
+	}
+	.fixedbar-bottom > .wrap-countNpriceNbtn > .text-count {
+		width: 15%;
+		font-size: 14px;
+		margin-right: 5px;
+	}
+	.fixedbar-bottom > .wrap-countNpriceNbtn > .text-price {
+		width: 46%;
+		font-weight: bold;
+		font-size: 17px;
+		text-decoration: underline;
+		display: inline-block;
+	}
+	.fixedbar-bottom > .wrap-countNpriceNbtn > img {
+		width: 30%;
+		height: auto;
+		display: inline-block;
+	}
+	.popup-notification {
+		width: 100%;
+		height: 15%;
+		text-align: center;
+		position: absolute;
+		top: 40%;
+		z-index: 200;
+	}
+	.popup-notification > .background {
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0.8;
+	}
+	.popup-notification > .text-message-notification {
+		width: 100%;
+		top: 50%;
+		left: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		-moz-transform: translate(-50%,-50%);
+		color: white;
+		font-size: 15px;
+		font-weight: bold;
+		position: absolute;
+	}
+	</style>
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="../public/javascripts/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="fixedbar-top">
+		<div class="header">바베큐 추가</div>
+		<div class="bar-search">
+			<input type="text" class="form-control" placeholder="고기 이름 검색&hellip;">
+			<button type="submit" class="btn btn-default">검색</button>
+		</div>	
+	</div>
+
+	<div class="container">
+		<div class="panel-barbecue-popular">
+			<div class="header">인기 바베큐</div>
+			<div class="wrap-list-barbecue-popular">
+				<div class="wrap-barbecue-popular-first">
+					<div class="box-single-small">
+						<div class="wrap">
+							<div class="img-barbecue">
+								<img src="../public/img/pensions_estimate_m/img-pig.png" alt="바베큐1">
+							</div>
+							<div class="wrap-nameNprice-barbecue">
+								<div class="text-name-barbecue">목살</div>
+								<div class="text-standard">1인분 200g 기준</div>
+								<div class="text-price-barbecue">5,000원</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-single-small selected">
+						<div class="wrap">
+							<div class="img-barbecue">
+								<img src="../public/img/pensions_estimate_m/img-pig.png" alt="바베큐2">
+							</div>
+							<div class="wrap-nameNprice-barbecue">
+								<div class="text-name-barbecue">삽겹살</div>
+								<div class="text-standard">1인분 200g 기준</div>
+								<div class="text-price-barbecue">5,000원</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-single-small">
+						<div class="wrap">
+							<div class="img-barbecue">
+								<img src="../public/img/pensions_estimate_m/img-pig.png" alt="바베큐3">
+							</div>
+							<div class="wrap-nameNprice-barbecue">
+								<div class="text-name-barbecue">항정살</div>
+								<div class="text-standard">1인분 200g 기준</div>
+								<div class="text-price-barbecue">5,000원</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="wrap-barbecue-popular-second">
+					<div class="box-single-small">
+						<div class="wrap">
+							<div class="img-barbecue">
+								<img src="../public/img/pensions_estimate_m/img-cow.png" alt="바베큐4">
+							</div>
+							<div class="wrap-nameNprice-barbecue">
+								<div class="text-name-barbecue">부채살</div>
+								<div class="text-standard">1인분 200g 기준</div>
+								<div class="text-price-barbecue">5,000원</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-single-small">
+						<div class="wrap">
+							<div class="img-barbecue">
+								<img src="../public/img/pensions_estimate_m/img-cow.png" alt="바베큐5">
+							</div>
+							<div class="wrap-nameNprice-barbecue">
+								<div class="text-name-barbecue">치마살</div>
+								<div class="text-standard">1인분 200g 기준</div>
+								<div class="text-price-barbecue">5,000원</div>
+							</div>
+						</div>
+					</div>
+					<div class="box-single-small">
+						<div class="wrap">
+							<div class="img-barbecue">
+								<img src="../public/img/pensions_estimate_m/img-cow.png" alt="바베큐6">
+							</div>
+							<div class="wrap-nameNprice-barbecue">
+								<div class="text-name-barbecue">안심</div>
+								<div class="text-standard">1인분 200g 기준</div>
+								<div class="text-price-barbecue">5,000원</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- hidden 클래스를 붙이면 안보이게 됨 -->
+	<div class="popup-notification">
+		<div class="background"></div>
+		<div class="text-message-notification">삼겹살 10인분이 견적페이지에 추가되었습니다.</div>
+	</div>
+
+	<div class="fixedbar-bottom">
+		<!-- 아이템이 선택됐을 때는 item-selected클래스가 뒤에 붙고
+			 선택이 안되었거나 해지 됐을 때는 item-selected클래스가
+			 뒤에 붙지 않는다. css코드 참조
+		-->
+		<div class="wrap-icNnameNprice-selected item-selected">
+			<img src="../public/img/pensions_estimate_m/img-pig.png" alt="식재료 아이콘" class="ic-selected">
+			<div class="text-name-barbecue-selected">삼겹살</div>
+		</div>
+		<div class="counter">
+			<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
+			<div>10</div>
+			<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
+		</div>
+		<div class="wrap-countNpriceNbtn">
+			<div class="text-count">인분</div>
+			<div class="text-price">
+				<div>150,000원</div>
+			</div>
+			<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
+		</div>
+	</div>
+</body>
+</html>
