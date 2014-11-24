@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>엠티를 부탁해</title>
+	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
+	<style>
+	* {
+		outline: none;
+	}
+	html, body {
+		height: 98%;
+	}
+	.container {
+		height: 100%;
+		position: relative;
+	}
+	.table-single {
+		width: 100%;
+		height: 20%;
+		border: 3px solid #E10B58;
+		margin-top: 13px;
+		display: table;
+		position: relative;
+	}
+	.table-single > .wrap-btn-add {
+		text-align: center;
+		font-size: 2.5em;
+		font-weight: 100;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.table-single > .wrap-btn-add > span {
+		opacity: 0.47;
+		vertical-align: top;
+	}
+	.table-single > .wrap-btn-add > img {
+		width: 40px;
+		height: 40px;
+	}
+	.table-single > .wrap-btn-add.hidden {
+		display: none;
+	}
+	/* 방 부분 */
+	.row.box-single {
+		display: none;
+	}
+	.row.box-single.selected {
+		display: block;
+	}
+	.box-single {
+		background-color: white;
+	}
+	.box-single.room {
+		margin: 3px;
+		position: relative;
+	}
+	.img-room {
+		width: 100%;
+		height: auto;
+		margin-top: 3px;
+	}
+	.col-xs-6, .col-xs-12 {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	.wrap-line-first {
+		width: 100%;
+		margin-top: 3px;
+		font-size: 0.9375em;
+		font-weight: bold;
+	}
+	.wrap-line-second {
+		font-size: 0.6875em;
+		display: inline-block;
+		padding-right: 10px;
+	}
+	.wrap-line-third {
+		font-size: 0.6875em;
+	}
+	.wrap-line-fourth > div {
+		width: 31px;
+		height: 31px;
+		text-align: center;
+		line-height: 31px;
+		color: white;
+		margin: 0 3px 5px 3px;
+		float: left;
+		background-color: #E10B58;
+		border-radius: 31px;
+		font-size: 0.625em;
+		font-weight: bold;
+	}
+	.wrap-line-fourth > .tag-has-playground.not-available,
+	.wrap-line-fourth > .tag-has-valley.not-available,
+	.wrap-line-fourth > .tag-has-pickup.not-available,
+	.wrap-line-fourth > .tag-has-barbeque.not-available {
+		background-color: grey;
+	}
+	.wrap-line-fourth + .text-price {
+		text-align: right;
+	}
+	/* 테이블 부분 */
+	.table-overall {
+		width: 100%;
+		margin-top: 10px;
+		text-align: center;
+	}
+	.table-row-head > div,
+	.table-row-single > div {
+		width: 31%;
+		text-align: left;
+		display: inline-block;
+	}
+	.table-row-head > div {
+		padding-left: 2%;
+		font-size: 1.375em;
+		border-right: 1px solid white;
+		background-color: #C7DDEC;
+	}
+	.table-row-single > div {
+		padding-left: 2%;
+		padding-top: 50px;
+		font-size: 1.25em;
+		border-right: 1px solid white;
+	}
+	.table-row-single > div.table-column-number {
+		padding-top: 23px;
+		bottom: 0px;
+	}
+	.table-row-single > .table-column-number > div {
+		display: inline-block;
+	}
+	.table-row-single > .table-column-number > .text-number {
+		font-size: 2.0em;
+	}
+	.table-row-single > .table-column-number > .text-unit {
+		font-size: 1.0em;
+	}
+	.table-row-single > .table-column-price {
+		font-size: 1.375em;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	</style>
+
+	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script>
+	
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="table-single" id="pensions_estimate_m-btn-select-room">
+			<div class="row box-single room selected">
+				<div class="col-xs-6">
+					<img src="../public/img/main/img-first.png" alt="사진" class="img-room">
+				</div>
+				<div class="col-xs-6">
+					<div class="wrap-line-first">
+						<span class="text-location">지역</span>
+						<span class="text-name-pension">펜션 명</span>
+						<span class="text-name-room">방 명</span>
+					</div>
+					<div class="wrap-line-second">
+						<span>방 </span>
+						<span class="text-number-room">0</span>
+						<span>화장실 </span>
+						<span class="text-number-toilet">0</span>
+					</div>
+					<div class="wrap-line-third">
+						<span class="text-size-room">00</span>
+						<span>평</span>
+						<span>기준인원</span>
+						<span class="text-number-standard">00</span>
+						<span>최대인원</span>
+						<span class="text-number-maximum">00</span>
+					</div>
+					<div class="wrap-line-fourth">
+						<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+						<div class="tag-has-playground">운동장</div>
+						<div class="tag-has-valley">계곡</div>
+						<div class="tag-has-pickup">픽업</div>
+						<div class="tag-has-barbeque">바베큐</div>
+					</div>
+					<div class="text-price">
+						<h4>150,000 원</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+		<style>
+		
+		</style>
+		<div class="table-overall">
+			<div class="table-content">
+				<div class="table-row-head">
+					<div class="table-column-name">항목명</div>
+					<div class="table-column-number">수량</div>
+					<div class="table-column-price">가격</div>
+				</div>
+				<div class="table-row-single">
+					<div class="table-column-name">처음처럼</div>
+					<div class="table-column-number">
+						<div class="text-number">300</div>
+						<div class="text-unit">병</div>
+					</div>
+					<div class="table-column-price">30,000원</div>
+				</div>
+				<div class="table-row-single">
+					<div class="table-column-name">삼겹살</div>
+					<div class="table-column-number">
+						<div class="text-number">10</div>
+						<div class="text-unit">인분</div>
+					</div>
+					<div class="table-column-price">50,000원</div>
+				</div>
+				<div class="table-row-single">
+					<div class="table-column-name">물(1.5L)</div>
+					<div class="table-column-number">
+						<div class="text-number">10</div>
+						<div class="text-unit">병</div>
+					</div>
+					<div class="table-column-price">10,000원</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<style>
+	.fixedbar-combo-bottom {
+		width: 100%;
+		height: 25%;
+		position: fixed;
+		bottom: 0;
+		box-shadow: 0px 5px 10px 5px grey;
+		
+		z-index: 1000;
+	}
+	.fixedbar-combo-bottom > .bar-price {
+		width: 100%;
+		height: 60%;
+		padding: 1.5% 5% 1% 5%;
+
+		background-color: #C7DDEC;
+
+		vertical-align: bottom;
+	}
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-total,
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-each {
+		width: 100%;
+		text-align: right;
+	}
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-total > div,
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-each > div {
+		display: inline-block;
+	}
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-total > .text-total,
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-each > .text-each {
+		margin-right: 10px;
+		font-size: 1.25em;
+	}
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-total > .text-price-total,
+	.fixedbar-combo-bottom > .bar-price > .wrap-price-each > .text-price-each {
+		font-size: 2.0em;
+		font-weight: bold;
+		text-decoration: underline;	
+	}
+	/*
+	.fixedbar-combo-bottom > .divider-horizontal {
+		width: 100%;
+		height: 5%;
+		background-color: white;
+	}*/
+	.fixedbar-combo-bottom > .btn-group-custom {
+		height: 40%;
+		padding: 2% 0 2% 0;
+		text-align: center;
+
+		background-color: white;
+	}
+	.fixedbar-combo-bottom > .btn-group-custom > button {
+		width: 30%;
+		height: 100%;
+		font-size: 1.0625em;
+		border: 0px;
+		background-color: transparent;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.fixedbar-combo-bottom > .btn-group-custom > .divider-vertical {
+		height: 100%;
+		border-right: 1px solid black;
+		display: inline-block;
+	}
+	</style>
+	<div class="fixedbar-combo-bottom">
+		<div class="bar-price">
+			<div class="wrap-price-total">
+				<div class="text-total">총</div>
+				<div class="text-price-total">240,000원</div>
+			</div>
+			<div class="wrap-price-each">
+				<div class="text-each">1인당</div>
+				<div class="text-price-each">20,000원</div>
+			</div>
+		</div>
+		<!--
+		<div class="divider-horizontal"></div>
+	-->
+		<div class="btn-group-custom">
+			<button type="button" class="btn-share">공유하기</button>
+			<div class="divider-vertical"></div>
+			<button type="button" class="btn-save">저장하기</button>
+			<div class="divider-vertical"></div>
+			<button type="button" class="btn-modify">수정하기</button>
+		</div>
+	</div>
+</body>
+</html>

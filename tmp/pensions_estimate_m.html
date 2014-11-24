@@ -6,40 +6,282 @@
 	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
 	<style>
+	* {
+		outline: none;
+	}
 	html, body {
 		height: 98%;
-		margin: 0px;
-		text-align: center;
 	}
 	.container {
-		width: 90%;
 		height: 100%;
-		text-align: center;
-		display: inline-block;
-		padding: 0px;
+		position: relative;
 	}
-	.box-single {
+	.table-single {
 		width: 100%;
 		height: 20%;
 		border: 3px solid #E10B58;
-		border-radius: 30px;
+		margin-top: 13px;
+		display: table;
+		position: relative;
+	}
+	.table-single > .wrap-btn-add {
+		text-align: center;
 		font-size: 2.5em;
 		font-weight: 100;
-		margin-top: 15px;
-		text-align: center;
-		display: table;
-	}
-	.box-single > .wrap-btn-add {
 		display: table-cell;
 		vertical-align: middle;
 	}
-	.box-single > .wrap-btn-add > span {
+	.table-single > .wrap-btn-add > span {
 		opacity: 0.47;
 		vertical-align: top;
 	}
-	.box-single > .wrap-btn-add > img {
+	.table-single > .wrap-btn-add > img {
 		width: 40px;
 		height: 40px;
+	}
+	.table-single > .wrap-btn-add.hidden {
+		display: none;
+	}
+	/* 방 부분 */
+	.row.box-single {
+		display: none;
+	}
+	.row.box-single.selected {
+		display: block;
+	}
+	.box-single {
+		background-color: white;
+	}
+	.box-single.room {
+		margin: 3px;
+		position: relative;
+	}
+	.img-room {
+		width: 100%;
+		height: auto;
+		margin-top: 3px;
+	}
+	.col-xs-6, .col-xs-12 {
+		padding-right: 5px;
+		padding-left: 5px;
+	}
+	.wrap-line-first {
+		width: 100%;
+		margin-top: 3px;
+		font-size: 0.9375em;
+		font-weight: bold;
+	}
+	.wrap-line-second {
+		font-size: 0.6875em;
+		display: inline-block;
+		padding-right: 10px;
+	}
+	.wrap-line-third {
+		font-size: 0.6875em;
+	}
+	.wrap-line-fourth > div {
+		width: 31px;
+		height: 31px;
+		text-align: center;
+		line-height: 31px;
+		color: white;
+		margin: 0 3px 5px 3px;
+		float: left;
+		background-color: #E10B58;
+		border-radius: 31px;
+		font-size: 0.625em;
+		font-weight: bold;
+	}
+	.wrap-line-fourth > .tag-has-playground.not-available,
+	.wrap-line-fourth > .tag-has-valley.not-available,
+	.wrap-line-fourth > .tag-has-pickup.not-available,
+	.wrap-line-fourth > .tag-has-barbeque.not-available {
+		background-color: grey;
+	}
+	.wrap-line-fourth + .text-price {
+		text-align: right;
+	}
+	/* 주류 파트 */
+	.box-single.alcohol {
+		margin: 6% 6% 6% 6%;
+		text-align: center;
+	}
+	.box-single.alcohol > .wrap-icNnameNprice-selected {
+		width: 30%;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.alcohol > .wrap-icNnameNprice-selected > .ic-selected {
+		width: 25%;
+		height: auto;
+		margin-right: 5px;
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	.box-single.alcohol > .wrap-icNnameNprice-selected > .text-nameNprice-selected {
+		width: 55%;
+		font-size: 0.875em;
+		text-align: left;
+		display: inline-block;
+	}
+	.box-single.alcohol > .counter {
+		width: 20%;
+		border: 1px solid #000000;
+		border-radius: 10px;
+		padding: 5px 0 5px 0;
+		text-align: center;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.alcohol > .counter > img {
+		width: auto;
+		height: auto;
+	}
+	.box-single.alcohol > .counter > div {
+		font-size: 1.25em;
+	}
+	.box-single.alcohol > .wrap-countNprice {
+		width: 45%;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.alcohol > .wrap-countNprice > div {
+		display: inline-block;
+	}
+	.box-single.alcohol > .wrap-countNprice > .text-count {
+		width: 20%;
+		font-size: 1.25em;
+		margin-right: 5px;
+	}
+	.box-single.alcohol > .wrap-countNprice > .text-price {
+		width: 70%;
+		font-size: 1.375em;
+		font-weight: bold;
+		text-decoration: underline;
+		display: inline-block;
+	}
+	/* 고기 파트 */
+	.box-single.barbecue {
+		margin: 6% 6% 6% 6%;
+		text-align: center;
+	}
+	.box-single.barbecue > .wrap-icNnameNprice-selected {
+		width: 30%;
+		padding-right: 5%;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.barbecue > .wrap-icNnameNprice-selected > .ic-selected {
+		width: 100%;
+		height: auto;
+	}
+	.box-single.barbecue > .wrap-icNnameNprice-selected > .text-name-barbecue-selected {
+		text-align: left;
+		font-size: 0.875em;
+	}
+	.box-single.barbecue > .counter {
+		width: 20%;
+		border: 1px solid #000000;
+		border-radius: 10px;
+		padding: 5px 0 5px 0;
+		text-align: center;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.barbecue > .counter > img {
+		width: auto;
+		height: auto;
+	}
+	.box-single.barbecue > .counter > div {
+		font-size: 1.25em;
+	}
+	.box-single.barbecue > .wrap-countNpriceNbtn {
+		width: 45%;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.barbecue > .wrap-countNpriceNbtn > div {
+		display: inline-block;
+	}
+	.box-single.barbecue > .wrap-countNpriceNbtn > .text-count {
+		width: 20%;
+		font-size: 0.9375em;
+		margin-right: 5px;
+	}
+	.box-single.barbecue > .wrap-countNpriceNbtn > .text-price {
+		width: 70%;
+		font-weight: bold;
+		font-size: 1.375em;
+		text-decoration: underline;
+		display: inline-block;
+	}
+	/* 기타 파트 */
+	.box-single.others {
+		margin: 6% 6% 6% 6%;
+		text-align: center;
+	}
+	.box-single.others > .wrap-icNnameNprice-selected {
+		width: 30%;
+		text-align: left;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.others > .wrap-icNnameNprice-selected.item-selected {
+		border: 0px solid #000000;
+	}
+	.box-single.others >  .wrap-icNnameNprice-selected > .ic-selected {
+		width: 25%;
+		height: auto;
+	}
+	.box-single.others > .wrap-icNnameNprice-selected > .text-name-others-selected {
+		font-size: 0.875em;
+	}
+	.box-single.others > .counter {
+		width: 20%;
+		border: 1px solid #000000;
+		border-radius: 10px;
+		padding: 5px 0 5px 0;
+		text-align: center;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.others > .counter > img {
+		width: auto;
+		height: auto;
+	}
+	.box-single.others > .counter > div {
+		font-size: 1.25em;
+	}
+	.box-single.others > .wrap-countNpriceNbtn {
+		width: 45%;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.box-single.others > .wrap-countNpriceNbtn > div {
+		display: inline-block;
+	}
+	.box-single.others > .wrap-countNpriceNbtn > .text-count {
+		width: 20%;
+		font-size: 0.9375em;
+		margin-right: 5px;
+	}
+	.box-single.others > .wrap-countNpriceNbtn > .text-price {
+		width: 70%;
+		font-weight: bold;
+		font-size: 1.375em;
+		text-decoration: underline;
+		display: inline-block;
+	}
+	.btn-delete {
+		width: 5%;
+		height: auto;
+		top: 5%;
+		right: 3%;
+		position: absolute;
+	}
+	.btn-delete > img {
+		width: 100%;
+		height: auto;
 	}
 	.btn-cal-estimate {
 		width: 100%;
@@ -51,35 +293,253 @@
 		bottom: 0px;
 		font-size: 1.25em;
 	}
+	/* 견적내기 누른 후 나타나는 모달 */
+	.modal-confirm-estimate {
+		width: 100%;
+		height: 100%;
+		top: 0px;
+		color: white;
+		position: absolute;
+		display: none;
+		z-index: 1000;
+	}
+	.modal-confirm-estimate > .btn-delete {
+		width: 8%;
+		height: auto;
+		top: 1%;
+		right: 5%;
+		position: absolute;
+		z-index: 1001;
+	}
+	.modal-background-custom {
+		width: 100%;
+		height: 100%;
+		background-color: black;
+		opacity: 0.7;
+	}
+	.modal-content-custom {
+		width: 100%;
+		height: 50%;
+		padding: 0 10% 0 10%;
+		top: 20%;
+		position: absolute;
+		text-align: center;
+	}
+	.modal-content-custom > .modal-header-custom > .modal-header-main {
+		font-size: 1.5em;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	.modal-content-custom-custom > .modal-header-custom > .modal-header-sub {
+		font-size: 1.4375em;
+		font-weight: bold;
+	}
+	.modal-content-custom > .modal-body-custom {
+		margin: 20% 0 30% 0;
+		line-height: 300%;
+	}
+	.modal-content-custom > .modal-body-custom > .hashtag-item {
+		font-size: 1.4375em;
+		text-decoration: underline;
+		display: inline-block;
+		margin-right: 5%;
+	}
+	.modal-content-custom > .modal-body-custom > .hashtag-item.selected {
+		color: #6699FF;
+		font-weight: bold;
+	}
+	.modal-content-custom > .modal-footer-custom {
+		width: 100%;
+		height: 40%;
+	}
+	.modal-content-custom > .modal-footer-custom > .btn-add-extra,
+	.modal-content-custom > .modal-footer-custom > .btn-ignore {
+		width: 48%;
+		height: 100%;
+		font-size: 2.0em;
+		background-color: transparent;
+		border: 0px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.modal-content-custom > .modal-footer-custom > .divider-vertical {
+		height: 100%;
+		border-right: 1px solid white;
+		display: inline-block;
+	}
 	</style>
 
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script>
+	$(document).on('click', '.hashtag-item', function() {
+		$(this).addClass("selected");
+	});
+	$(document).on('click', '.hashtag-item.selected', function() {
+		$(this).removeClass("selected");
+	});
+	$(document).on('click', '.btn-cal-estimate', function() {
+		$('.modal-confirm-estimate').css("display", "block");
+	});
+	$(document).on('click', '.modal-confirm-estimate > .btn-delete', function() {
+		$('.modal-confirm-estimate').css("display", "none");
+	});
+	</script>
 </head>
 <body>
 	<div class="container">
-		<div class="box-single" id="pensions_estimate_m-btn-select-room">
-			<div class="wrap-btn-add">
+		<div class="table-single" id="pensions_estimate_m-btn-select-room">
+			<div class="wrap-btn-add hidden">
 				<span>숙소 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
+
+			<div class="row box-single room selected">
+				<div class="col-xs-6">
+					<img src="../public/img/main/img-first.png" alt="사진" class="img-room">
+				</div>
+				<div class="col-xs-6">
+					<div class="wrap-line-first">
+						<span class="text-location">지역</span>
+						<span class="text-name-pension">펜션 명</span>
+						<span class="text-name-room">방 명</span>
+					</div>
+					<div class="wrap-line-second">
+						<span>방 </span>
+						<span class="text-number-room">0</span>
+						<span>화장실 </span>
+						<span class="text-number-toilet">0</span>
+					</div>
+					<div class="wrap-line-third">
+						<span class="text-size-room">00</span>
+						<span>평</span>
+						<span>기준인원</span>
+						<span class="text-number-standard">00</span>
+						<span>최대인원</span>
+						<span class="text-number-maximum">00</span>
+					</div>
+					<div class="wrap-line-fourth">
+						<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+						<div class="tag-has-playground">운동장</div>
+						<div class="tag-has-valley">계곡</div>
+						<div class="tag-has-pickup">픽업</div>
+						<div class="tag-has-barbeque">바베큐</div>
+					</div>
+					<div class="text-price">
+						<h4>000,000 원</h4>
+					</div>
+				</div>
+			</div>
+			<div class="btn-delete">
+				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
+			</div>
 		</div>
-		<div class="box-single">
-			<div class="wrap-btn-add">
+		<div class="table-single">
+			<div class="wrap-btn-add hidden">
 				<span>주류 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
+			<div class="row box-single alcohol selected">
+				<div class="wrap-icNnameNprice-selected">
+					<img src="../public/img/pensions_estimate_m/img-soju.png" alt="식재료 아이콘" class="ic-selected">
+					<div class="text-nameNprice-selected">
+						<div class="text-name">처음처럼</div>
+						<div class="text-price">1,000원</div>
+					</div>
+				</div>
+				<div class="counter">
+					<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
+					<div>300</div>
+					<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
+				</div>
+				<div class="wrap-countNprice">
+					<div class="text-count">병</div>
+					<div class="text-price">
+						<div>300,000원</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn-delete">
+				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
+			</div>
 		</div>
-		<div class="box-single">
-			<div class="wrap-btn-add">
+		<div class="table-single">
+			<div class="wrap-btn-add hidden">
 				<span>바베큐</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
 			</div>
+			<div class="row box-single barbecue selected">
+				<div class="wrap-icNnameNprice-selected">
+					<img src="../public/img/pensions_estimate_m/img-pig.png" alt="식재료 아이콘" class="ic-selected">
+					<div class="text-name-barbecue-selected">삼겹살</div>
+				</div>
+				<div class="counter">
+					<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
+					<div>10</div>
+					<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
+				</div>
+				<div class="wrap-countNpriceNbtn">
+					<div class="text-count">인분</div>
+					<div class="text-price">
+						<div>50,000원</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn-delete">
+				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
+			</div>
 		</div>
-		<div class="box-single">
-			<div class="wrap-btn-add">
+		<div class="table-single">
+			<div class="wrap-btn-add hidden">
 				<span>기타 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
-			</div>	
+			</div>
+			<div class="row box-single others selected">
+				<div class="wrap-icNnameNprice-selected">
+					<img src="../public/img/pensions_estimate_m/img-bottle-water.png" alt="식재료 아이콘" class="ic-selected">
+					<div class="text-name-others-selected">물(1.5L)</div>
+				</div>
+				<div class="counter">
+					<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
+					<div>10</div>
+					<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
+				</div>
+				<div class="wrap-countNpriceNbtn">
+					<div class="text-count">병</div>
+					<div class="text-price">
+						<div>10,000원</div>
+					</div>
+				</div>
+			</div>
+			<div class="btn-delete">
+				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
+			</div>
+		</div>
+	</div>
+	
+	<div class="modal-confirm-estimate">
+		<div class="btn-delete">
+			<img src="../public/img/pensions_estimate_m/btn-delete-white.png" alt="삭제 버튼">
+		</div>
+		<div class="modal-background-custom"></div>
+		<div class="modal-content-custom">
+			<div class="modal-header-custom">
+				<div class="modal-header-main">잠깐! 잊으신 항목은 없으신지?</div>
+				<div class="modal-header-sub">아래에서 추가적으로 필요한 항목을 골라주세요</div>
+			</div>
+			<div class="modal-body-custom">
+				<!--selected 클래스를 붙이면 선택된 상태(글씨가 파란색)으로 변한다-->
+				<div class="hashtag-item">#물</div>
+				<div class="hashtag-item">#캐찹</div>
+				<div class="hashtag-item">#라면</div>
+				<div class="hashtag-item">#버섯</div>
+				<div class="hashtag-item">#양파</div>
+			</div>
+			<div class="modal-footer-custom">
+				<button type="button" class="btn-add-extra">추가</button>
+				<div class="divider-vertical"></div>
+				<button type="button" class="btn-ignore">없음</button>
+			</div>
 		</div>
 	</div>
 	<button type="button" class="btn-cal-estimate">견적내기</button>

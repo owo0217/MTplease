@@ -7,14 +7,16 @@
 	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
 
 	<style>
-	.fixedbar {
+	* {
+		outline: none;
+	}
+	.fixedbar-top {
 		width: 100%;
-		margin-left: -15px;
-		margin-right: -15px;
-		padding: 8px 0 8px 0;
+		padding: 5px 0 5px 0;
 		position: fixed;
 		z-index: 1000;
 		background-color: white;
+		box-shadow: 0px -5px 10px 5px grey;
 	}
 	.header {
 		font-size: 1.0625em;
@@ -57,6 +59,12 @@
 		background-color: #E10B58;
 		display: inline-block;
 	}
+	.section-photoNoption > .wrap-tag-option > .tag-has-playground.not-available,
+	.section-photoNoption > .wrap-tag-option > .tag-has-valley.not-available,
+	.section-photoNoption > .wrap-tag-option > .tag-has-pickup.not-available,
+	.section-photoNoption > .wrap-tag-option > .tag-has-barbeque.not-available {
+		background-color: grey;
+	}
 	.section-info-detail > .wrap-info-roomNtoilet {
 		margin: 10px 0 10px 0;
 		font-size: 1.25em;
@@ -74,17 +82,17 @@
 		height: 200px;
 		border: 1px solid #000000;
 	}
-	.section-schoolNsociety > .wrap-logo-schoolNsociety > .line-logo-schoolNsociety {
+	.wrap-logo-schoolNsociety > .line-logo-schoolNsociety {
 		margin: 20px 0 20px 0;
 	}
-	.section-schoolNsociety > .wrap-logo-schoolNsociety 
+	.wrap-logo-schoolNsociety 
 	> .line-logo-schoolNsociety > .logo-schoolNsociety {
+		width: 18%;
 		display: inline-block;
 	}
-	.section-schoolNsociety > .wrap-logo-schoolNsociety 
-	> .line-logo-schoolNsociety > .logo-schoolNsociety > img {
-		width: 50px;
-		height: 50px;
+	.wrap-logo-schoolNsociety > .line-logo-schoolNsociety > .logo-schoolNsociety > img {
+		width: 100%;
+		height: auto;
 	}
 	.section-review > .wrap-reviewList > .wrap-review {
 		margin-top: 10px;
@@ -100,11 +108,11 @@
 </head>
 </head>
 <body>
+	<div class="fixedbar-top bar-room-nameNprice">
+		<div class="text-name-room">가평 펜션A 101호</div>
+		<div class="text-price-room">150,000원</div>	
+	</div>
 	<div class="container">
-		<div class="fixedbar bar-room-nameNprice">
-			<div class="text-name-room">가평 펜션A 101호</div>
-			<div class="text-price-room">150,000원</div>	
-		</div>
 		<div class="section-photoNoption">
 			<div class="carousel-photo">
 				<div id="carousel-photo-room" class="carousel slide" data-ride="carousel">
@@ -146,7 +154,7 @@
 				</div>
 			</div>
 			<div class="wrap-tag-option">
-				<div class="tag-has-playground">운동장</div>
+				<div class="tag-has-playground not-available">운동장</div>
 				<div class="tag-has-valley">계곡</div>
 				<div class="tag-has-pickup">픽업</div>
 				<div class="tag-has-barbeque">바베큐</div>
@@ -181,13 +189,19 @@
 			<div class="wrap-logo-schoolNsociety">
 				<div class="line-logo-schoolNsociety">
 					<div class="logo-schoolNsociety">
-						<img src="" alt="로고1">
+						<img src="../public/img/pensions_detail_m/img-logo-sungkyunkwan-univ.png" alt="로고1">
 					</div>
 					<div class="logo-schoolNsociety">
-						<img src="" alt="로고2">
+						<img src="../public/img/pensions_detail_m/img-logo-seoulnationalscience-univ.jpg" alt="로고2">
 					</div>
 					<div class="logo-schoolNsociety">
-						<img src="" alt="로고2">
+						<img src="../public/img/pensions_detail_m/img-logo-seogang_univ.png" alt="로고3">
+					</div>
+					<div class="logo-schoolNsociety">
+						<img src="../public/img/pensions_detail_m/img-logo-yonsei_univ.png" alt="로고3">
+					</div>
+					<div class="logo-schoolNsociety">
+						<img src="../public/img/pensions_detail_m/img-logo-choongang_univ.png" alt="로고3">
 					</div>
 				</div>
 			</div>

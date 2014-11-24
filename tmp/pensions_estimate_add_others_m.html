@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" name="viewport" content="width=device-width, initial-scale=1.0">
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>엠티를 부탁해</title>
@@ -40,20 +40,20 @@
 		height: 60%;
 		margin-bottom: 18%;
 	}
-	.container > .panel-alcohol-popular {
+	.container > .panel-others-popular {
 		padding: 10px 0 30px 0 ;
 		margin: 120px -15px 0 -15px;
 		background-color: #C7DDEC; 
 	}
-	.panel-alcohol-popular > .header {
+	.panel-others-popular > .header {
 		margin: 0 15px 15px 15px;
 		font-size: 1.25em;
 	}
-	.panel-alcohol-popular > .wrap-list-alcohol-popular > div {
+	.panel-others-popular > .wrap-list-others-popular > div {
 		text-align: center;
 	}
-	.panel-alcohol-popular > .wrap-list-alcohol-popular > .wrap-alcohol-popular-first,
-	.panel-alcohol-popular > .wrap-list-alcohol-popular > .wrap-alcohol-popular-second {
+	.panel-others-popular > .wrap-list-others-popular > .wrap-others-popular-first,
+	.panel-others-popular > .wrap-list-others-popular > .wrap-others-popular-second {
 		margin: 0 5px 20px 5px;
 	}
 	.box-single-small {
@@ -67,27 +67,46 @@
 	.box-single-small > .wrap {
 		position: relative;
 	}
-	.box-single-small > .wrap > .img-alcohol > img {
-		width: auto;
-		height: 150px;
+	.box-single-small > .wrap > .img-others {
+		text-align: right;
+		padding: 0 10% 60px 0;
 	}
-	.box-single-small > .wrap > .wrap-nameNprice-alcohol {
-		color: white;
+	.box-single-small > .wrap > .img-others > img {
+		width: 25%;
+		height: auto;
+		margin-top: 5px;
+	}
+	.box-single-small > .wrap > .wrap-nameNprice-others {
 		font-weight: bold;
+		margin-top: 15px;
 		text-align: left;
 		position: absolute;
 		left: 5px;
 		bottom: 5px;
 		z-index: 100;
 	}
-	/* 주류 항목이 선택 됐을 경우의 효과 */
+	.box-single-small > .wrap > .wrap-nameNprice-others > .text-name-others {
+		font-size: 1.25em;
+	}
+	.box-single-small > .wrap > .wrap-nameNprice-others > .text-standard {
+		font-size: 0.6875em;
+	}
+	.box-single-small > .wrap > .wrap-nameNprice-others > .text-price-others {
+		font-size: 1.0em;
+	}
+	/* 기타 항목이 선택 됐을 경우의 효과 */
 	.box-single-small.selected {
 		border: 2px solid #E10B58;
 	}
-	.box-single-small.selected > .wrap > .img-alcohol {
+	.box-single-small.selected > .wrap > .img-others {
 		border-radius: 8px;
 		background-color: white;
 		-webkit-filter: brightness(0.3);
+		-ms-filter: brightness(0.3);
+		-moz-filter: brightness(0.3);
+	}
+	.box-single-small.selected > .wrap > .wrap-nameNprice-others {
+		color: white;
 	}
 	.fixedbar-bottom {
 		width: 100%;
@@ -96,8 +115,9 @@
 		padding: 10px 15px 10px 15px;
 		bottom: 0;
 		box-shadow: 0px 5px 10px 5px grey;
-		z-index: 1000;  
+		z-index: 1000;
 	}
+	.fixedbar-bottom > img,
 	.fixedbar-bottom > div {
 		display: inline-block;
 	}
@@ -105,7 +125,9 @@
 	   하단바에 아이콘이 나타난다. 선택되지 않거나 선택 해지가
 	   되어있으면 아이콘이 보이지 않고 빈 네모 칸이 보인다.*/
 	.wrap-icNnameNprice-selected {
-		width: 29%;
+		width: 18%;
+		padding: 5px;
+		margin-right: 15px;
 		border: 1px solid #000000;
 		vertical-align: middle;
 	}
@@ -113,22 +135,17 @@
 		border: 0px solid #000000;
 	}
 	.wrap-icNnameNprice-selected > .ic-selected {
-		width: 25%;
+		width: 50%;
 		height: auto;
-		margin-right: 5px;
-		display: inline-block;
-		vertical-align: bottom;
 		opacity: 0;
 	}
 	.wrap-icNnameNprice-selected.item-selected > .ic-selected {
 		opacity: 1;
 	}
-	.wrap-icNnameNprice-selected > .text-nameNprice-selected {
-		width: 55%;
-		display: inline-block;
+	.wrap-icNnameNprice-selected > .text-name-others-selected {
 		opacity: 0;
 	}
-	.wrap-icNnameNprice-selected.item-selected > .text-nameNprice-selected {
+	.wrap-icNnameNprice-selected.item-selected > .text-name-others-selected {
 		opacity: 1;
 		font-size: 0.875em;
 	}
@@ -148,20 +165,21 @@
 		font-size: 1.25em;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn {
-		width: 49%;
-		font-size: 1.0625em;
+		width: 55%;
 		vertical-align: middle;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn > div {
 		display: inline-block;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn > .text-count {
-		width: 10%;
+		width: 15%;
+		font-size: 0.875em;
 		margin-right: 5px;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn > .text-price {
-		width: 50%;
+		width: 46%;
 		font-weight: bold;
+		font-size: 1.0625em;
 		text-decoration: underline;
 		display: inline-block;
 	}
@@ -205,83 +223,83 @@
 </head>
 <body>
 	<div class="fixedbar-top">
-		<div class="header">주류 추가</div>
+		<div class="header">기타항목 추가</div>
 		<div class="bar-search">
-			<input type="text" class="form-control" placeholder="주류 이름 검색&hellip;">
+			<input type="text" class="form-control" placeholder="이름 검색&hellip;">
 			<button type="submit" class="btn btn-default">검색</button>
 		</div>	
 	</div>
 
 	<div class="container">
-		<div class="panel-alcohol-popular">
-			<div class="header">인기 주류</div>
-			<div class="wrap-list-alcohol-popular">
-				<div class="wrap-alcohol-popular-first">
-					<div class="box-single-small">
-						<div class="wrap">
-							<div class="img-alcohol">
-								<img src="../public/img/pensions_estimate_m/img-chamiseul.png" alt="주류1">
-							</div>
-							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
-							</div>
-						</div>
-					</div>
+		<div class="panel-others-popular">
+			<div class="header">인기 항목</div>
+			<div class="wrap-list-others-popular">
+				<div class="wrap-others-popular-first">
 					<div class="box-single-small selected">
 						<div class="wrap">
-							<div class="img-alcohol">
-								<img src="../public/img/pensions_estimate_m/img-cheoeumcheoroum.png" alt="주류2">
+							<div class="img-others">
+								<img src="../public/img/pensions_estimate_m/img-bottle-water.png" alt="기타1">
 							</div>
-							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol">처음처럼</div>
-								<div class="text-price-alcohol">1,000원</div>
+							<div class="wrap-nameNprice-others">
+								<div class="text-name-others">물(1.5L)</div>
+								<div class="text-price-others">1,000원</div>
 							</div>
 						</div>
 					</div>
-					<div class="box-single-small">
+					<div class="box-single-small object-hidden">
 						<div class="wrap">
-							<div class="img-alcohol">
-								<img src="../public/img/pensions_estimate_m/img-hite.png" alt="주류3">
+							<div class="img-others">
+								<img src="" alt="기타2">
 							</div>
-							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
+							<div class="wrap-nameNprice-others">
+								<div class="text-name-others"></div>
+								<div class="text-price-others"></div>
+							</div>
+						</div>
+					</div>
+					<div class="box-single-small object-hidden">
+						<div class="wrap">
+							<div class="img-others">
+								<img src="" alt="기타3">
+							</div>
+							<div class="wrap-nameNprice-others">
+								<div class="text-name-others"></div>
+								<div class="text-price-others"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="wrap-alcohol-popular-second">
+				<div class="wrap-others-popular-second object-hidden">
 					<div class="box-single-small">
 						<div class="wrap">
-							<div class="img-alcohol">
-								<img src="../public/img/pensions_estimate_m/img-max.png" alt="주류4">
+							<div class="img-others">
+								<img src="" alt="기타4">
 							</div>
-							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
+							<div class="wrap-nameNprice-others">
+								<div class="text-name-others"></div>
+								<div class="text-price-others"></div>
 							</div>
 						</div>
 					</div>
 					<div class="box-single-small">
 						<div class="wrap">
-							<div class="img-alcohol">
-								<img src="../public/img/pensions_estimate_m/img-ob.png" alt="주류5">
+							<div class="img-others">
+								<img src="" alt="기타5">
 							</div>
-							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
+							<div class="wrap-nameNprice-others">
+								<div class="text-name-others"></div>
+								<div class="text-price-others"></div>
 							</div>
 						</div>
 					</div>
 					<div class="box-single-small">
 						<div class="wrap">
-							<div class="img-alcohol">
-								<img src="../public/img/pensions_estimate_m/img-maehwasoo.png" alt="주류6">
+							<div class="img-others">
+								<img src="" alt="기타6">
 							</div>
-							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol">매화수</div>
-								<div class="text-price-alcohol">1,400원</div>
+							<div class="wrap-nameNprice-others">
+								<div class="text-name-others"></div>
+								<div class="text-price-others"></div>
 							</div>
 						</div>
 					</div>
@@ -292,33 +310,30 @@
 	<!-- hidden 클래스를 붙이면 안보이게 됨 -->
 	<div class="popup-notification">
 		<div class="background"></div>
-		<div class="text-message-notification">처음처럼 300병이 견적페이지에 추가되었습니다.</div>
+		<div class="text-message-notification">물(1.5L) 5병이 견적페이지에 추가되었습니다.</div>
 	</div>
 
 	<div class="fixedbar-bottom">
 		<!-- 아이템이 선택됐을 때는 item-selected클래스가 뒤에 붙고
 			 선택이 안되었거나 해지 됐을 때는 item-selected클래스가
 			 뒤에 붙지 않는다. css코드 참조
-		-->
-		<div class="wrap-icNnameNprice-selected item-selected">
-			<img src="../public/img/pensions_estimate_m/img-soju.png" alt="식재료 아이콘" class="ic-selected">
-			<div class="text-nameNprice-selected">
-				<div class="text-name">처음처럼</div>
-				<div class="text-price">1,000원</div>
+			-->
+			<div class="wrap-icNnameNprice-selected item-selected">
+				<img src="../public/img/pensions_estimate_m/img-bottle-water.png" alt="식재료 아이콘" class="ic-selected">
+				<div class="text-name-others-selected">물(1.5L)</div>
+			</div>
+			<div class="counter">
+				<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
+				<div>10</div>
+				<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
+			</div>
+			<div class="wrap-countNpriceNbtn">
+				<div class="text-count">병</div>
+				<div class="text-price">
+					<div>10,000원</div>
+				</div>
+				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
 		</div>
-		<div class="counter">
-			<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
-			<div>300</div>
-			<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
-		</div>
-		<div class="wrap-countNpriceNbtn">
-			<div class="text-count">병</div>
-			<div class="text-price">
-				<div>300,000원</div>
-			</div>
-			<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
-		</div>
-	</div>
-</body>
-</html>
+	</body>
+	</html>

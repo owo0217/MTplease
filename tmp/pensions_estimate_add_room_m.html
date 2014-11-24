@@ -6,6 +6,9 @@
 	<link rel="stylesheet" href="../public/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="../public/css/bootstrap-theme.min.css" />
 	<style>
+	* {
+		outline: none;
+	}
 	.fixedbar {
 		width: 100%;
 		padding: 5px 0 5px 0;
@@ -30,7 +33,7 @@
 		display: inline-block;
 	}
 	.fixedbar > .bar-search > button {
-		width: 30%;
+		width: 28%;
 		margin-right: 15px;
 	}
 	.container > .panel-room-recent {
@@ -50,8 +53,8 @@
 		background-color: white;
 	}
 	.img-room {
-		width: 150px;
-		height: 150px;
+		width: 100%;
+		height: auto;
 		margin-top: 3px;
 	}
 	.col-xs-6, .col-xs-12 {
@@ -59,11 +62,13 @@
 		padding-left: 5px;
 	}
 	.wrap-line-first {
+		width: 100%;
 		padding: 10px 0 5px 0;
 		font-size: 0.9375em;
 		font-weight: bold;
 	}
 	.wrap-line-second, .wrap-line-third, .wrap-line-fourth {
+		width: 100%;
 		padding: 5px 0 5px 0;
 	}
 	.wrap-line-second {
@@ -74,6 +79,7 @@
 	.wrap-line-third {
 		font-size: 0.6875em;
 	}
+	/* 반응형으로 고쳐야 함 */
 	.wrap-line-fourth > div {
 		width: 31px;
 		height: 31px;
@@ -95,10 +101,8 @@
 	}
 	/* 재사용 코드 끝 */
 	</style>
-	<!--
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
--->
-<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script src="../public/javascripts/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="fixedbar">
@@ -115,7 +119,7 @@
 				<div class="wrap-room-recent-first">
 					<div class="row box-single">
 						<div class="col-xs-6">
-							<img src="" alt="사진" class="img-room">
+							<img src="../public/img/main/img-first.png" alt="사진" class="img-room">
 						</div>
 						<div class="col-xs-6">
 							<div class="wrap-line-first">
@@ -153,7 +157,7 @@
 				<div class="wrap-room-recent-second">
 					<div class="row box-single">
 						<div class="col-xs-6">
-							<img src="" alt="사진" class="img-room">
+							<img src="../public/img/main/img-second.png" alt="사진" class="img-room">
 						</div>
 						<div class="col-xs-6">
 							<div class="wrap-line-first">
@@ -191,7 +195,7 @@
 				<div class="wrap-room-recent-third">
 					<div class="row box-single">
 						<div class="col-xs-6">
-							<img src="" alt="사진" class="img-room">
+							<img src="../public/img/main/img-third.png" alt="사진" class="img-room">
 						</div>
 						<div class="col-xs-6">
 							<div class="wrap-line-first">
