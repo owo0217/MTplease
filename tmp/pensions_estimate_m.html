@@ -372,6 +372,18 @@
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
 	<script>
+	$(document).on('click', '#pensions_estimate_m-btn-select-room > .wrap-btn-add', function() {
+		 location.href = "";
+	});
+	$(document).on('click', '#pensions_estimate_m-btn-select-alcohol > .wrap-btn-add', function() {
+		location.href = "";
+	});
+	$(document).on('click', '#pensions_estimate_m-btn-select-barbecue > .wrap-btn-add', function() {
+		location.href = "";
+	});
+	$(document).on('click', '#pensions_estimate_m-btn-select-others > .wrap-btn-add', function() {
+		location.href = "";
+	});
 	$(document).on('click', '.hashtag-item', function() {
 		$(this).addClass("selected");
 	});
@@ -389,12 +401,12 @@
 <body>
 	<div class="container">
 		<div class="table-single" id="pensions_estimate_m-btn-select-room">
-			<div class="wrap-btn-add hidden">
+			<div class="wrap-btn-add">
 				<span>숙소 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
 
-			<div class="row box-single room selected">
+			<div class="row box-single room">
 				<div class="col-xs-6">
 					<img src="../public/img/main/img-first.png" alt="사진" class="img-room">
 				</div>
@@ -430,16 +442,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete">
+			<div class="btn-delete hidden">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>
-		<div class="table-single">
-			<div class="wrap-btn-add hidden">
+		<div class="table-single" id="pensions_estimate_m-btn-select-alcohol">
+			<div class="wrap-btn-add">
 				<span>주류 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
-			<div class="row box-single alcohol selected">
+			<div class="row box-single alcohol">
 				<div class="wrap-icNnameNprice-selected">
 					<img src="../public/img/pensions_estimate_m/img-soju.png" alt="식재료 아이콘" class="ic-selected">
 					<div class="text-nameNprice-selected">
@@ -459,16 +471,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete">
+			<div class="btn-delete hidden">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>
-		<div class="table-single">
-			<div class="wrap-btn-add hidden">
+		<div class="table-single"  id="pensions_estimate_m-btn-select-barbecue">
+			<div class="wrap-btn-add">
 				<span>바베큐</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
 			</div>
-			<div class="row box-single barbecue selected">
+			<div class="row box-single barbecue">
 				<div class="wrap-icNnameNprice-selected">
 					<img src="../public/img/pensions_estimate_m/img-pig.png" alt="식재료 아이콘" class="ic-selected">
 					<div class="text-name-barbecue-selected">삼겹살</div>
@@ -485,16 +497,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete">
+			<div class="btn-delete hidden">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>
-		<div class="table-single">
-			<div class="wrap-btn-add hidden">
+		<div class="table-single" id="pensions_estimate_m-btn-select-others">
+			<div class="wrap-btn-add">
 				<span>기타 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
 			</div>
-			<div class="row box-single others selected">
+			<div class="row box-single others">
 				<div class="wrap-icNnameNprice-selected">
 					<img src="../public/img/pensions_estimate_m/img-bottle-water.png" alt="식재료 아이콘" class="ic-selected">
 					<div class="text-name-others-selected">물(1.5L)</div>
@@ -511,7 +523,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete">
+			<div class="btn-delete hidden">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>

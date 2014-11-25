@@ -10,6 +10,12 @@
 	* {
 		outline: none;
 	}
+	html, body {
+		height: 100%;
+	}
+	.container {
+		margin-bottom: 18%;
+	}
 	.fixedbar-top {
 		width: 100%;
 		padding: 5px 0 5px 0;
@@ -100,6 +106,33 @@
 	}
 	.id-user {
 		padding-right: 0px;
+	}
+	.fixedbar-bottom {
+		width: 100%;
+		height: 10%;
+		position: fixed;
+		text-align: center;
+		background-color: #C7DDEC;
+		padding: 10px 15px 10px 15px;
+		font-size: 1.25em;
+		bottom: 0;
+		box-shadow: 0px 5px 10px 5px grey;
+		z-index: 1000;
+	}
+	.fixedbar-bottom > .btn-estimate,
+	.fixedbar-bottom > .btn-share {
+		width: 48%;
+		height: 100%;
+		background-color: transparent;
+		border: 0px;
+		display: inline-block;
+		vertical-align: top;
+	}
+	.fixedbar-bottom > .divider-vertical {
+		width: 1px;
+		height: 100%;
+		border-right: 1px solid black;
+		display: inline-block;
 	}
 	</style>
 
@@ -223,6 +256,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="fixedbar-bottom">
+		<button type="button" class="btn-estimate">견적내기</button>
+		<div class="divider-vertical"></div>
+		<button type="button" class="btn-share">공유하기</button>
 	</div>
 </body>
 </html>
