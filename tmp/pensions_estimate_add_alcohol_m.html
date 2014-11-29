@@ -72,7 +72,7 @@
 		height: 150px;
 	}
 	.box-single-small > .wrap > .wrap-nameNprice-alcohol {
-		color: white;
+		color: black;
 		font-weight: bold;
 		text-align: left;
 		position: absolute;
@@ -82,12 +82,16 @@
 	}
 	/* 주류 항목이 선택 됐을 경우의 효과 */
 	.box-single-small.selected {
+
 		border: 2px solid #E10B58;
 	}
 	.box-single-small.selected > .wrap > .img-alcohol {
 		border-radius: 8px;
 		background-color: white;
 		-webkit-filter: brightness(0.3);
+	}
+	.box-single-small.selected > .wrap > .wrap-nameNprice-alcohol {
+		color: white;
 	}
 	.fixedbar-bottom {
 		width: 100%;
@@ -106,7 +110,6 @@
 	   되어있으면 아이콘이 보이지 않고 빈 네모 칸이 보인다.*/
 	.wrap-icNnameNprice-selected {
 		width: 29%;
-		border: 1px solid #000000;
 		vertical-align: middle;
 	}
 	.wrap-icNnameNprice-selected.item-selected {
@@ -140,11 +143,16 @@
 		text-align: center;
 		vertical-align: middle;
 	}
-	.fixedbar-bottom > .counter > img {
+	.fixedbar-bottom > .counter > div {
+		width: 100%;
+	}
+	.fixedbar-bottom > .counter > div > img {
 		width: auto;
 		height: auto;
 	}
-	.fixedbar-bottom > .counter > div {
+	.fixedbar-bottom > .counter > input {
+		width: 100%;
+		text-align: center;
 		font-size: 1.25em;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn {
@@ -162,6 +170,7 @@
 	.fixedbar-bottom > .wrap-countNpriceNbtn > .text-price {
 		width: 50%;
 		font-weight: bold;
+		text-align: center;
 		text-decoration: underline;
 		display: inline-block;
 	}
@@ -202,6 +211,136 @@
 	</style>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script>
+	$(function(){
+		var isItemSelected = false;
+		var alcoholName;			// 주류 이름
+		var alcoholUnitCost;		// 단가
+		var selectedAlcohol = null;	// 선택된 주류 값
+
+		/* 클릭 안된 아이템 클릭 했을 시의 효과 */
+		$(document).on('click', '.box-single-small', function(){
+			// 사용자가 아무 아이템도 클릭하지 않았을 경우
+			if(!isItemSelected && selectedAlcohol == null) {
+				selectedAlcohol = $(this);
+				addSelectedEffect();
+				calcPrice(alcoholUnitCost);
+				isItemSelected = true;
+			}
+			// 사용자가 어떤 아이템을 클릭한 상태에서 해당 아이템 외의 다른 아이템을 클기했을 때 
+			else if(isItemSelected && selectedAlcohol.hasClass("selected") && !$(this).hasClass("selected")) {
+				removeSelectedEffect();
+				selectedAlcohol = $(this);
+				addSelectedEffect();
+			}
+		});
+		// 클릭 안된 아이템 클릭 했을 시의 효과 코드 끝
+
+		/* 클릭된 아이템 클릭 했을 시의 효과 */
+		$(document).on('click', '.box-single-small.selected', function(){
+			// 사용자가 어떤 아이템을 클릭한 상태에서 그 아이템을 다시 클릭했을 때
+			if(isItemSelected) {
+				selectedAlcohol = $(this);
+				removeSelectedEffect();
+				isItemSelected = false;
+				selectedAlcohol = null;
+			}
+		});
+		// 클릭된 아이템 클릭 했을 시의 효과 코드 끝 
+
+		/* 클릭 효과를 더해주는 함수 */
+		function addSelectedEffect() {
+			selectedAlcohol.addClass("selected");
+
+			$('.fixedbar-bottom .wrap-icNnameNprice-selected').addClass("item-selected");
+
+			alcoholName = selectedAlcohol.find('.text-name-alcohol').text();
+			alcoholUnitCost = selectedAlcohol.find('.text-price-alcohol').text();
+
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-name').text(alcoholName);
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-price').text(alcoholUnitCost);
+
+			calcPrice(alcoholUnitCost);
+		}
+		// 클릭 효과를 더해주는 함수 코드 끝
+
+		/* 클릭 효과를 없애주는 함수 */
+		function removeSelectedEffect() {
+			selectedAlcohol.removeClass("selected");
+			$('.fixedbar-bottom .wrap-icNnameNprice-selected').removeClass("item-selected");
+
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-name').text('');
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-price').text('');
+			$('.fixedbar-bottom > .wrap-countNpriceNbtn .text-price').text('');
+			clicked.val("0");
+		}
+		// 클릭 효과를 없애주는 함수 코드 끝
+
+		var value = 0;
+		var clicked = $('.fixedbar-bottom > .counter > input');
+
+		/* 갯수 증가 버튼 */
+		$(document).on('click', '.fixedbar-bottom > .counter > div:first-child', function(){
+			if(isItemSelected) {
+				value = clicked.val();
+				value++;
+				if(value > -1) {
+					clicked.val(value);
+					calcPrice(alcoholUnitCost);
+				}
+			}
+		});
+		// 갯수 증가 버튼 코드 끝
+
+		/* 갯수 감소 버튼 */
+		$(document).on('click', '.fixedbar-bottom > .counter > div:last-child', function(){
+			if(isItemSelected) {
+				value = clicked.val();
+				value--;
+				if(value > -1) {
+					clicked.val(value);
+					calcPrice(alcoholUnitCost);
+				}
+			}
+		});
+		// 갯수 감소 버튼 코드 끝
+
+		/* 갯수 입력 시 자동적으로 선택한 항목의 총 가격을 업데이트 해주는 코드 */
+		$('.fixedbar-bottom > .counter > input').keyup(function(){
+			calcPrice(alcoholUnitCost); 
+		});
+		// 갯수 입력 시 자동적으로 선택한 항목의 가격을 업데이트 해주는 코드 끝
+
+		/* 항목의 총 가격을 계산해주는 코드 */
+		function calcPrice(itemPrice) {
+			var stringLength = itemPrice.length - 1;
+			itemPrice = itemPrice.substring(0,stringLength);
+			itemPrice = itemPrice.replace(/,/g, '');
+			itemPrice = itemPrice * clicked.val();
+			itemPrice = itemPrice + "원";
+			$('.fixedbar-bottom > .wrap-countNpriceNbtn .text-price').text(itemPrice);
+		}
+		// 항목의 총 가격을 계산해주는 코드 끝
+
+		/* 추가 버튼 코드 */
+		$(document).on('click', '.btn-add', function(){
+			var textPopupMessage = alcoholName + " " + clicked.val() + "병이 견적페이지에 추가되었습니다.";
+			$('.text-message-notification').text(textPopupMessage);
+			$('.popup-notification.hidden').removeClass("hidden");
+
+			var rawAlcoholData = {
+				"alcohol" : [{
+					"name" : alcoholName,
+					"unit_cost" : alcoholUnitCost,
+					"number" : clicked.val()
+				}]
+			};
+			var stringifiedAlcoholData = JSON.stringify(rawAlcoholData);
+			console.log(stringifiedAlcoholData);
+		});
+		// 추가 버튼 코드 끝
+	});
+	</script>
 </head>
 <body>
 	<div class="fixedbar-top">
@@ -223,12 +362,12 @@
 								<img src="../public/img/pensions_estimate_m/img-chamiseul.png" alt="주류1">
 							</div>
 							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
+								<div class="text-name-alcohol">참이슬</div>
+								<div class="text-price-alcohol">1,000원</div>
 							</div>
 						</div>
 					</div>
-					<div class="box-single-small selected">
+					<div class="box-single-small">
 						<div class="wrap">
 							<div class="img-alcohol">
 								<img src="../public/img/pensions_estimate_m/img-cheoeumcheoroum.png" alt="주류2">
@@ -245,8 +384,8 @@
 								<img src="../public/img/pensions_estimate_m/img-hite.png" alt="주류3">
 							</div>
 							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
+								<div class="text-name-alcohol">하이트</div>
+								<div class="text-price-alcohol">1,500원</div>
 							</div>
 						</div>
 					</div>
@@ -258,8 +397,8 @@
 								<img src="../public/img/pensions_estimate_m/img-max.png" alt="주류4">
 							</div>
 							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
+								<div class="text-name-alcohol">맥스</div>
+								<div class="text-price-alcohol">1,600원</div>
 							</div>
 						</div>
 					</div>
@@ -269,8 +408,8 @@
 								<img src="../public/img/pensions_estimate_m/img-ob.png" alt="주류5">
 							</div>
 							<div class="wrap-nameNprice-alcohol">
-								<div class="text-name-alcohol"></div>
-								<div class="text-price-alcohol"></div>
+								<div class="text-name-alcohol">오비라거</div>
+								<div class="text-price-alcohol">1,600원</div>
 							</div>
 						</div>
 					</div>
@@ -290,9 +429,9 @@
 		</div>
 	</div>
 	<!-- hidden 클래스를 붙이면 안보이게 됨 -->
-	<div class="popup-notification">
+	<div class="popup-notification hidden">
 		<div class="background"></div>
-		<div class="text-message-notification">처음처럼 300병이 견적페이지에 추가되었습니다.</div>
+		<div class="text-message-notification"></div>
 	</div>
 
 	<div class="fixedbar-bottom">
@@ -300,23 +439,21 @@
 			 선택이 안되었거나 해지 됐을 때는 item-selected클래스가
 			 뒤에 붙지 않는다. css코드 참조
 		-->
-		<div class="wrap-icNnameNprice-selected item-selected">
+		<div class="wrap-icNnameNprice-selected">
 			<img src="../public/img/pensions_estimate_m/img-soju.png" alt="식재료 아이콘" class="ic-selected">
 			<div class="text-nameNprice-selected">
-				<div class="text-name">처음처럼</div>
-				<div class="text-price">1,000원</div>
+				<div class="text-name"></div>
+				<div class="text-price"></div>
 			</div>
 		</div>
 		<div class="counter">
-			<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
-			<div>300</div>
-			<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
+			<div><img src="../public/img/pensions_estimate_m/btn-keyup.png" alt=""></div>
+			<input type="text" value="0">
+			<div><img src="../public/img/pensions_estimate_m/btn-keydown.png" alt=""></div>
 		</div>
 		<div class="wrap-countNpriceNbtn">
 			<div class="text-count">병</div>
-			<div class="text-price">
-				<div>300,000원</div>
-			</div>
+			<div class="text-price"></div>
 			<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 		</div>
 	</div>

@@ -120,8 +120,9 @@
 		z-index: 1000;
 	}
 	.fixedbar-bottom > .btn-estimate,
-	.fixedbar-bottom > .btn-share {
-		width: 48%;
+	.fixedbar-bottom > .btn-share,
+	.fixedbar-bottom > .btn-compare {
+		width: 30%;
 		height: 100%;
 		background-color: transparent;
 		border: 0px;
@@ -138,6 +139,22 @@
 
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function() {
+		// 페이지 하단 마진 설정 코드
+		var containerMarginBottom = $('.fixedbar-bottom').height() + 30;
+		$('.container').css({'margin-bottom': containerMarginBottom + 'px'});
+	});
+	function onClickCompare() {
+		window.MainFragment.toastShort("견적내기 버튼");
+	}
+	function onClickEstimate() {
+		window.MainFragment.toastShort("공유하기 버튼");
+	}
+	function onClickShare() {
+		window.MainFragment.toastShort("공유하기 버튼");
+	}
+	</script>
 </head>
 </head>
 <body>
@@ -258,9 +275,11 @@
 		</div>
 	</div>
 	<div class="fixedbar-bottom">
-		<button type="button" class="btn-estimate">견적내기</button>
+		<button type="button" class="btn-compare" onclick="onClickCompare()">비교하기</button>
 		<div class="divider-vertical"></div>
-		<button type="button" class="btn-share">공유하기</button>
+		<button type="button" class="btn-estimate" onclick="onClickEstimate()">견적내기</button>
+		<div class="divider-vertical"></div>
+		<button type="button" class="btn-share" onclick="onClickShare()">공유하기</button>
 	</div>
 </body>
 </html>

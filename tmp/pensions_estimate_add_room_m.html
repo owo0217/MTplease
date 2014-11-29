@@ -99,6 +99,9 @@
 	.hidden {
 		display: none;
 	}
+	a:link, a:visited {
+		color: black;
+	}
 	/* 재사용 코드 끝 */
 	</style>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -117,118 +120,124 @@
 			<div class="header">최근 본 방</div>
 			<div class="wrap-list-room-recent">
 				<div class="wrap-room-recent-first">
-					<div class="row box-single">
-						<div class="col-xs-6">
-							<img src="../public/img/main/img-first.png" alt="사진" class="img-room">
+					<a href="#" pen-id= "pen_id" room-name= "room_name" date= "date" cost= "weekdays">
+						<div class="row box-single">
+							<div class="col-xs-6">
+								<img src="../public/img/main/img-first.png" alt="사진" class="img-room">
+							</div>
+							<div class="col-xs-6">
+								<div class="wrap-line-first">
+									<span class="text-location">지역</span>
+									<span class="text-name-pension">펜션 명</span>
+									<span class="text-name-room">방 명</span>
+								</div>
+								<div class="wrap-line-second">
+									<span>방 </span>
+									<span class="text-number-room">0</span>
+									<span>화장실 </span>
+									<span class="text-number-toilet">0</span>
+								</div>
+								<div class="wrap-line-third">
+									<span class="text-size-room">00</span>
+									<span>평</span>
+									<span>기준인원</span>
+									<span class="text-number-standard">00</span>
+									<span>최대인원</span>
+									<span class="text-number-maximum">00</span>
+								</div>
+								<div class="wrap-line-fourth">
+									<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+									<div class="tag-has-playground">운동장</div>
+									<div class="tag-has-valley">계곡</div>
+									<div class="tag-has-pickup">픽업</div>
+									<div class="tag-has-barbeque">바베큐</div>
+								</div>
+								<div class="text-price">
+									<h4>000,000 원</h4>
+								</div>
+							</div>
 						</div>
-						<div class="col-xs-6">
-							<div class="wrap-line-first">
-								<span class="text-location">지역</span>
-								<span class="text-name-pension">펜션 명</span>
-								<span class="text-name-room">방 명</span>
-							</div>
-							<div class="wrap-line-second">
-								<span>방 </span>
-								<span class="text-number-room">0</span>
-								<span>화장실 </span>
-								<span class="text-number-toilet">0</span>
-							</div>
-							<div class="wrap-line-third">
-								<span class="text-size-room">00</span>
-								<span>평</span>
-								<span>기준인원</span>
-								<span class="text-number-standard">00</span>
-								<span>최대인원</span>
-								<span class="text-number-maximum">00</span>
-							</div>
-							<div class="wrap-line-fourth">
-								<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
-								<div class="tag-has-playground">운동장</div>
-								<div class="tag-has-valley">계곡</div>
-								<div class="tag-has-pickup">픽업</div>
-								<div class="tag-has-barbeque">바베큐</div>
-							</div>
-							<div class="text-price">
-								<h4>000,000 원</h4>
-							</div>
-						</div>
-					</div>
+					</a>
 				</div>
 				<div class="wrap-room-recent-second">
-					<div class="row box-single">
-						<div class="col-xs-6">
-							<img src="../public/img/main/img-second.png" alt="사진" class="img-room">
+					<a href="#" pen-id= "pen_id" room-name= "room_name" date= "date" cost= "weekdays">
+						<div class="row box-single">
+							<div class="col-xs-6">
+								<img src="../public/img/main/img-second.png" alt="사진" class="img-room">
+							</div>
+							<div class="col-xs-6">
+								<div class="wrap-line-first">
+									<span class="text-location">지역</span>
+									<span class="text-name-pension">펜션 명</span>
+									<span class="text-name-room">방 명</span>
+								</div>
+								<div class="wrap-line-second">
+									<span>방 </span>
+									<span class="text-number-room">0</span>
+									<span>화장실 </span>
+									<span class="text-number-toilet">0</span>
+								</div>
+								<div class="wrap-line-third">
+									<span class="text-size-room">00</span>
+									<span>평</span>
+									<span>기준인원</span>
+									<span class="text-number-standard">00</span>
+									<span>최대인원</span>
+									<span class="text-number-maximum">00</span>
+								</div>
+								<div class="wrap-line-fourth">
+									<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+									<div class="tag-has-playground">운동장</div>
+									<div class="tag-has-valley">계곡</div>
+									<div class="tag-has-pickup">픽업</div>
+									<div class="tag-has-barbeque">바베큐</div>
+								</div>
+								<div class="text-price">
+									<h4>000,000 원</h4>
+								</div>
+							</div>
 						</div>
-						<div class="col-xs-6">
-							<div class="wrap-line-first">
-								<span class="text-location">지역</span>
-								<span class="text-name-pension">펜션 명</span>
-								<span class="text-name-room">방 명</span>
-							</div>
-							<div class="wrap-line-second">
-								<span>방 </span>
-								<span class="text-number-room">0</span>
-								<span>화장실 </span>
-								<span class="text-number-toilet">0</span>
-							</div>
-							<div class="wrap-line-third">
-								<span class="text-size-room">00</span>
-								<span>평</span>
-								<span>기준인원</span>
-								<span class="text-number-standard">00</span>
-								<span>최대인원</span>
-								<span class="text-number-maximum">00</span>
-							</div>
-							<div class="wrap-line-fourth">
-								<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
-								<div class="tag-has-playground">운동장</div>
-								<div class="tag-has-valley">계곡</div>
-								<div class="tag-has-pickup">픽업</div>
-								<div class="tag-has-barbeque">바베큐</div>
-							</div>
-							<div class="text-price">
-								<h4>000,000 원</h4>
-							</div>
-						</div>
-					</div>
+					</a>
 				</div>
 				<div class="wrap-room-recent-third">
-					<div class="row box-single">
-						<div class="col-xs-6">
-							<img src="../public/img/main/img-third.png" alt="사진" class="img-room">
+					<a href="#" pen-id= "pen_id" room-name= "room_name" date= "date" cost= "weekdays">
+						<div class="row box-single">
+							<div class="col-xs-6">
+								<img src="../public/img/main/img-third.png" alt="사진" class="img-room">
+							</div>
+							<div class="col-xs-6">
+								<div class="wrap-line-first">
+									<span class="text-location">지역</span>
+									<span class="text-name-pension">펜션 명</span>
+									<span class="text-name-room">방 명</span>
+								</div>
+								<div class="wrap-line-second">
+									<span>방 </span>
+									<span class="text-number-room">0</span>
+									<span>화장실 </span>
+									<span class="text-number-toilet">0</span>
+								</div>
+								<div class="wrap-line-third">
+									<span class="text-size-room">00</span>
+									<span>평</span>
+									<span>기준인원</span>
+									<span class="text-number-standard">00</span>
+									<span>최대인원</span>
+									<span class="text-number-maximum">00</span>
+								</div>
+								<div class="wrap-line-fourth">
+									<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
+									<div class="tag-has-playground">운동장</div>
+									<div class="tag-has-valley">계곡</div>
+									<div class="tag-has-pickup">픽업</div>
+									<div class="tag-has-barbeque">바베큐</div>
+								</div>
+								<div class="text-price">
+									<h4>000,000 원</h4>
+								</div>
+							</div>
 						</div>
-						<div class="col-xs-6">
-							<div class="wrap-line-first">
-								<span class="text-location">지역</span>
-								<span class="text-name-pension">펜션 명</span>
-								<span class="text-name-room">방 명</span>
-							</div>
-							<div class="wrap-line-second">
-								<span>방 </span>
-								<span class="text-number-room">0</span>
-								<span>화장실 </span>
-								<span class="text-number-toilet">0</span>
-							</div>
-							<div class="wrap-line-third">
-								<span class="text-size-room">00</span>
-								<span>평</span>
-								<span>기준인원</span>
-								<span class="text-number-standard">00</span>
-								<span>최대인원</span>
-								<span class="text-number-maximum">00</span>
-							</div>
-							<div class="wrap-line-fourth">
-								<!-- 만약 해당 펜션에 없는 시설이 있으면 그 시설 태그에 .not-available클래스를 붙여서 흐리게 보이게 한다-->
-								<div class="tag-has-playground">운동장</div>
-								<div class="tag-has-valley">계곡</div>
-								<div class="tag-has-pickup">픽업</div>
-								<div class="tag-has-barbeque">바베큐</div>
-							</div>
-							<div class="text-price">
-								<h4>000,000 원</h4>
-							</div>
-						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>

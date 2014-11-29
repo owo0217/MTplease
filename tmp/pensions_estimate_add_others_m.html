@@ -126,16 +126,15 @@
 	   되어있으면 아이콘이 보이지 않고 빈 네모 칸이 보인다.*/
 	.wrap-icNnameNprice-selected {
 		width: 18%;
-		padding: 5px;
+		padding-left: 5px;
 		margin-right: 15px;
-		border: 1px solid #000000;
 		vertical-align: middle;
 	}
 	.wrap-icNnameNprice-selected.item-selected {
 		border: 0px solid #000000;
 	}
 	.wrap-icNnameNprice-selected > .ic-selected {
-		width: 50%;
+		width: 30%;
 		height: auto;
 		opacity: 0;
 	}
@@ -145,7 +144,7 @@
 	.wrap-icNnameNprice-selected > .text-name-others-selected {
 		opacity: 0;
 	}
-	.wrap-icNnameNprice-selected.item-selected > .text-name-others-selected {
+	.wrap-icNnameNprice-selected.item-selected > .text-nameNprice-selected {
 		opacity: 1;
 		font-size: 0.875em;
 	}
@@ -157,11 +156,16 @@
 		text-align: center;
 		vertical-align: middle;
 	}
-	.fixedbar-bottom > .counter > img {
+	.fixedbar-bottom > .counter > div {
+		width: 100%;
+	}
+	.fixedbar-bottom > .counter > div > img {
 		width: auto;
 		height: auto;
 	}
-	.fixedbar-bottom > .counter > div {
+	.fixedbar-bottom > .counter > input {
+		width: 100%;
+		text-align: center;
 		font-size: 1.25em;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn {
@@ -172,14 +176,15 @@
 		display: inline-block;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn > .text-count {
-		width: 15%;
-		font-size: 0.875em;
+		width: 10%;
+		font-size: 1.0em;
 		margin-right: 5px;
 	}
 	.fixedbar-bottom > .wrap-countNpriceNbtn > .text-price {
-		width: 46%;
+		width: 50%;
 		font-weight: bold;
-		font-size: 1.0625em;
+		font-size: 1.3em;
+		text-align: center;
 		text-decoration: underline;
 		display: inline-block;
 	}
@@ -220,6 +225,140 @@
 	</style>
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script>
+	$(function(){
+		var isItemSelected = false;
+		var othersName;				// 기타 항목 이름
+		var othersUnitCost;			// 단가
+		var othersImageSrc;			// 기타 항목 이미지 경로
+		var selectedothers = null;	// 선택된 기타 항목 값
+
+		/* 클릭 안된 아이템 클릭 했을 시의 효과 */
+		$(document).on('click', '.box-single-small', function(){
+			// 사용자가 아무 아이템도 클릭하지 않았을 경우
+			if(!isItemSelected && selectedothers == null) {
+				selectedothers = $(this);
+				addSelectedEffect();
+				calcPrice(othersUnitCost);
+				isItemSelected = true;
+			}
+			// 사용자가 어떤 아이템을 클릭한 상태에서 해당 아이템 외의 다른 아이템을 클기했을 때 
+			else if(isItemSelected && selectedothers.hasClass("selected") && !$(this).hasClass("selected")) {
+				removeSelectedEffect();
+				selectedothers = $(this);
+				addSelectedEffect();
+			}
+		});
+		// 클릭 안된 아이템 클릭 했을 시의 효과 코드 끝
+
+		/* 클릭된 아이템 클릭 했을 시의 효과 */
+		$(document).on('click', '.box-single-small.selected', function(){
+			// 사용자가 어떤 아이템을 클릭한 상태에서 그 아이템을 다시 클릭했을 때
+			if(isItemSelected) {
+				selectedothers = $(this);
+				removeSelectedEffect();
+				isItemSelected = false;
+				selectedothers = null;
+			}
+		});
+		// 클릭된 아이템 클릭 했을 시의 효과 코드 끝
+
+		/* 클릭 효과를 더해주는 함수 */
+		function addSelectedEffect() {
+			selectedothers.addClass("selected");
+
+			$('.fixedbar-bottom .wrap-icNnameNprice-selected').addClass("item-selected");
+
+			othersName = selectedothers.find('.text-name-others').text();
+			othersUnitCost = selectedothers.find('.text-price-others').text();
+			othersImageSrc = selectedothers.find('.img-others').find('img').attr('src');
+
+
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-nameNprice-selected .text-name').text(othersName);
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-price').text(othersUnitCost);
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected> .ic-selected').attr("src", othersImageSrc);
+
+			calcPrice(othersUnitCost);
+		}
+		// 클릭 효과를 더해주는 함수 코드 끝
+
+		/* 클릭 효과를 없애주는 함수 */
+		function removeSelectedEffect() {
+			selectedothers.removeClass("selected");
+			$('.fixedbar-bottom .wrap-icNnameNprice-selected').removeClass("item-selected");
+
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-nameNprice-selected .text-name').text('');
+			$('.fixedbar-bottom > .wrap-icNnameNprice-selected .text-price').text('');
+			$('.fixedbar-bottom > .wrap-countNpriceNbtn .text-price').text('');
+			clicked.val("0");
+		}
+		// 클릭 효과를 없애주는 함수 코드 끝
+
+		var value = 0;
+		var clicked = $('.fixedbar-bottom > .counter > input');
+
+		/* 갯수 증가 버튼 */
+		$(document).on('click', '.fixedbar-bottom > .counter > div:first-child', function(){
+			if(isItemSelected) {
+				value = clicked.val();
+				value++;
+				if(value > -1) {
+					clicked.val(value);
+					calcPrice(othersUnitCost);
+				}
+			}
+		});
+		// 갯수 증가 버튼 코드 끝
+
+		/* 갯수 감소 버튼 */
+		$(document).on('click', '.fixedbar-bottom > .counter > div:last-child', function(){
+			if(isItemSelected) {
+				value = clicked.val();
+				value--;
+				if(value > -1) {
+					clicked.val(value);
+					calcPrice(othersUnitCost);
+				}
+			}
+		});
+		// 갯수 감소 버튼 코드 끝
+
+		/* 갯수 입력 시 자동적으로 선택한 항목의 총 가격을 업데이트 해주는 코드 */
+		$('.fixedbar-bottom > .counter > input').keyup(function(){
+			calcPrice(othersUnitCost); 
+		});
+		// 갯수 입력 시 자동적으로 선택한 항목의 가격을 업데이트 해주는 코드 끝
+
+		/* 항목의 총 가격을 계산해주는 코드 */
+		function calcPrice(itemPrice) {
+			var stringLength = itemPrice.length - 1;
+			itemPrice = itemPrice.substring(0,stringLength);
+			itemPrice = itemPrice.replace(/,/g, '');
+			itemPrice = itemPrice * clicked.val();
+			itemPrice = itemPrice + "원";
+			$('.fixedbar-bottom > .wrap-countNpriceNbtn .text-price').text(itemPrice);
+		}
+		// 항목의 총 가격을 계산해주는 코드 끝
+
+		/* 추가 버튼 코드 */
+		$(document).on('click', '.btn-add', function(){
+			var textPopupMessage = othersName + " " + clicked.val() + "개(병)이 견적페이지에 추가되었습니다.";
+			$('.text-message-notification').text(textPopupMessage);
+			$('.popup-notification.hidden').removeClass("hidden");
+
+			var rawOthersData = {
+				"others" : [{
+					"name" : othersName,
+					"unit_cost" : othersUnitCost,
+					"number" : clicked.val()
+				}]
+			};
+			var stringifiedOthersData = JSON.stringify(rawOthersData);
+			console.log(stringifiedOthersData);
+		});
+		// 추가 버튼 코드 끝
+	});
+	</script>
 </head>
 <body>
 	<div class="fixedbar-top">
@@ -235,7 +374,7 @@
 			<div class="header">인기 항목</div>
 			<div class="wrap-list-others-popular">
 				<div class="wrap-others-popular-first">
-					<div class="box-single-small selected">
+					<div class="box-single-small">
 						<div class="wrap">
 							<div class="img-others">
 								<img src="../public/img/pensions_estimate_m/img-bottle-water.png" alt="기타1">
@@ -308,9 +447,9 @@
 		</div>
 	</div>
 	<!-- hidden 클래스를 붙이면 안보이게 됨 -->
-	<div class="popup-notification">
+	<div class="popup-notification hidden">
 		<div class="background"></div>
-		<div class="text-message-notification">물(1.5L) 5병이 견적페이지에 추가되었습니다.</div>
+		<div class="text-message-notification"></div>
 	</div>
 
 	<div class="fixedbar-bottom">
@@ -318,20 +457,21 @@
 			 선택이 안되었거나 해지 됐을 때는 item-selected클래스가
 			 뒤에 붙지 않는다. css코드 참조
 			-->
-			<div class="wrap-icNnameNprice-selected item-selected">
+			<div class="wrap-icNnameNprice-selected">
 				<img src="../public/img/pensions_estimate_m/img-bottle-water.png" alt="식재료 아이콘" class="ic-selected">
-				<div class="text-name-others-selected">물(1.5L)</div>
+				<div class="text-nameNprice-selected">
+					<div class="text-name"></div>
+					<div class="text-price"></div>
+				</div>
 			</div>
 			<div class="counter">
-				<img src="../public/img/pensions_estimate_m/btn-keyup.png" alt="">
-				<div>10</div>
-				<img src="../public/img/pensions_estimate_m/btn-keydown.png" alt="">
+				<div><img src="../public/img/pensions_estimate_m/btn-keyup.png" alt=""></div>
+				<input type="text" value="0">
+				<div><img src="../public/img/pensions_estimate_m/btn-keydown.png" alt=""></div>
 			</div>
 			<div class="wrap-countNpriceNbtn">
 				<div class="text-count">병</div>
-				<div class="text-price">
-					<div>10,000원</div>
-				</div>
+				<div class="text-price"></div>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
 		</div>

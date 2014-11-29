@@ -10,7 +10,11 @@
 	* {
 		outline: none;
 	}
+	html, body {
+		height: 100%;
+	}
 	.wrap-checkbox-options {
+		width: 100%;
 		padding-top: 10px;
 		text-align: center;
 		position: fixed;
@@ -103,10 +107,43 @@
 
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
+	<script>
+	$(function(){
+    	//Keep track of last scroll
+    	var lastScroll = 0;
+    	$(window).scroll(function(event){
+    		//Sets the current scroll position
+    		var st = $(this).scrollTop();
+    		//Determines up-or-down scrolling
+    		if (st > lastScroll){
+    			//Replace this with your function call for downward-scrolling
+    			$(".checkbox-tab-unchecked").addClass("hidden");
+    			$(".checkbox-options-first-row").css({"display": "inline-block", "vertical-align": "middle"});
+    			$(".checkbox-options-second-row").css({"display": "inline-block", "vertical-align": "middle"});
+			}
+			else {
+    			//Replace this with your function call for upward-scrolling
+    			$(".checkbox-options-first-row").css("display", "block");
+    			$(".checkbox-options-second-row").css("display", "block");
+    			$(".checkbox-tab-unchecked").removeClass("hidden");
+			}
+    		//Updates scroll position
+    		lastScroll = st;
+		});
+
+    	$(document).on('click', '.checkbox-tab.checkbox-tab-unchecked', function() {
+    		$(this).removeClass("checkbox-tab-unchecked").addClass("checkbox-tab-checked");
+    	});
+    	$(document).on('click', '.checkbox-tab.checkbox-tab-checked', function() {
+    		$(this).removeClass("checkbox-tab-checked").addClass("checkbox-tab-unchecked");
+    	});
+	});
+	
+	</script>
 </head>
 <body>
-	<div class="row wrap-checkbox-options">
-		<div class="col-xs-12 checkbox-options-first-row">
+	<div class="wrap-checkbox-options">
+		<div class="checkbox-options-first-row">
 			<div class="checkbox-tab checkbox-line-height checkbox-tab-unchecked">
 				<input type="checkbox" id="checkbox-ascendingPrice">낮은<br>가격순</input>
 			</div>
@@ -120,7 +157,7 @@
 				<input type="checkbox" id="checkbox-valley">계곡</input>
 			</div>
 		</div>
-		<div class="col-xs-12 checkbox-options-second-row">
+		<div class="checkbox-options-second-row">
 			<div class="checkbox-tab checkbox-tab-unchecked">
 				<input type="checkbox" id="checkbox-pickup">픽업</input>
 			</div>
@@ -281,14 +318,5 @@
 			</div>
 		</div>
 	</div>
-
-	<script type="text/javascript">
-	$(document).on('click', '.checkbox-tab.checkbox-tab-unchecked', function() {
-		$(this).removeClass("checkbox-tab-unchecked").addClass("checkbox-tab-checked");
-	});
-	$(document).on('click', '.checkbox-tab.checkbox-tab-checked', function() {
-		$(this).removeClass("checkbox-tab-checked").addClass("checkbox-tab-unchecked");
-	});
-	</script>
 </body>
 </html>

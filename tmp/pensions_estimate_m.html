@@ -372,6 +372,14 @@
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
 	<script>
+	/* container margin-bottom 설정 코드*/
+	$(document).ready(function() {
+		var containerMarginBottom = $('.btn-cal-estimate').height();
+		$('.container').css({'margin-bottom': containerMarginBottom + 'px'});
+	});
+	// container margin-bottom 설정 코드 끝
+
+	/* 각 추가 버튼 눌렀을 때의 실행 코드 */
 	$(document).on('click', '#pensions_estimate_m-btn-select-room > .wrap-btn-add', function() {
 		 location.href = "";
 	});
@@ -384,29 +392,59 @@
 	$(document).on('click', '#pensions_estimate_m-btn-select-others > .wrap-btn-add', function() {
 		location.href = "";
 	});
+	// 각 추가 버튼 눌렀을 때의 실행 코드 끝
+
+	/* 삭제 버튼 코드 */
+	$(document).on('click', '.row.box-single.room.selected+.btn-delete', function() {
+		$('.row.box-single.room').removeClass("selected");
+		$('#pensions_estimate_m-btn-select-room > .wrap-btn-add.hidden').removeClass("hidden");
+		$(this).addClass("hidden");
+	});
+	$(document).on('click', '.row.box-single.alcohol.selected+.btn-delete', function() {
+		$('.row.box-single.alcohol').removeClass("selected");
+		$('#pensions_estimate_m-btn-select-alcohol > .wrap-btn-add.hidden').removeClass("hidden");
+		$(this).addClass("hidden");
+	});
+	$(document).on('click', '.row.box-single.barbecue.selected+.btn-delete', function() {
+		$('.row.box-single.barbecue').removeClass("selected");
+		$('#pensions_estimate_m-btn-select-barbecue > .wrap-btn-add.hidden').removeClass("hidden");
+		$(this).addClass("hidden");
+	});
+	$(document).on('click', '.row.box-single.others.selected+.btn-delete', function() {
+		$('.row.box-single.others').removeClass("selected");
+		$('#pensions_estimate_m-btn-select-others > .wrap-btn-add.hidden').removeClass("hidden");
+		$(this).addClass("hidden");
+	});
+	// 삭제 버튼 코드 끝
+
+	/* 견적내기 버튼 코드 */
+	$(document).on('click', '.btn-cal-estimate', function() {
+		$('.modal-confirm-estimate').css("display", "block");
+	});
+	// 견적내기 버튼 코드 끝
+
+	/* 모달 창 코드 */
 	$(document).on('click', '.hashtag-item', function() {
 		$(this).addClass("selected");
 	});
 	$(document).on('click', '.hashtag-item.selected', function() {
 		$(this).removeClass("selected");
 	});
-	$(document).on('click', '.btn-cal-estimate', function() {
-		$('.modal-confirm-estimate').css("display", "block");
-	});
 	$(document).on('click', '.modal-confirm-estimate > .btn-delete', function() {
 		$('.modal-confirm-estimate').css("display", "none");
 	});
+	// 모달 창 코드 끝
 	</script>
 </head>
 <body>
 	<div class="container">
 		<div class="table-single" id="pensions_estimate_m-btn-select-room">
-			<div class="wrap-btn-add">
+			<div class="wrap-btn-add hidden">
 				<span>숙소 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
 
-			<div class="row box-single room">
+			<div class="row box-single room selected">
 				<div class="col-xs-6">
 					<img src="../public/img/main/img-first.png" alt="사진" class="img-room">
 				</div>
@@ -442,16 +480,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete hidden">
+			<div class="btn-delete">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>
 		<div class="table-single" id="pensions_estimate_m-btn-select-alcohol">
-			<div class="wrap-btn-add">
+			<div class="wrap-btn-add hidden">
 				<span>주류 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">
 			</div>
-			<div class="row box-single alcohol">
+			<div class="row box-single alcohol selected">
 				<div class="wrap-icNnameNprice-selected">
 					<img src="../public/img/pensions_estimate_m/img-soju.png" alt="식재료 아이콘" class="ic-selected">
 					<div class="text-nameNprice-selected">
@@ -471,16 +509,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete hidden">
+			<div class="btn-delete">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>
 		<div class="table-single"  id="pensions_estimate_m-btn-select-barbecue">
-			<div class="wrap-btn-add">
+			<div class="wrap-btn-add hidden">
 				<span>바베큐</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
 			</div>
-			<div class="row box-single barbecue">
+			<div class="row box-single barbecue selected">
 				<div class="wrap-icNnameNprice-selected">
 					<img src="../public/img/pensions_estimate_m/img-pig.png" alt="식재료 아이콘" class="ic-selected">
 					<div class="text-name-barbecue-selected">삼겹살</div>
@@ -497,16 +535,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete hidden">
+			<div class="btn-delete">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>
 		<div class="table-single" id="pensions_estimate_m-btn-select-others">
-			<div class="wrap-btn-add">
+			<div class="wrap-btn-add hidden">
 				<span>기타 &nbsp&nbsp</span>
 				<img src="../public/img/pensions_estimate_m/btn-add.png" alt="추가 버튼" class="btn-add">	
 			</div>
-			<div class="row box-single others">
+			<div class="row box-single others selected">
 				<div class="wrap-icNnameNprice-selected">
 					<img src="../public/img/pensions_estimate_m/img-bottle-water.png" alt="식재료 아이콘" class="ic-selected">
 					<div class="text-name-others-selected">물(1.5L)</div>
@@ -523,7 +561,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="btn-delete hidden">
+			<div class="btn-delete">
 				<img src="../public/img/pensions_estimate_m/btn-delete.png" alt="삭제 버튼">
 			</div>
 		</div>
