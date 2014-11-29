@@ -23,6 +23,29 @@
 	}
 
 	</style>
+	<script>
+	var rawRoomDataArray = new Array();
+
+	var rawRoomData1 = {
+		"room" : [{
+			"pen_id" : "",
+			"room_name" : "",
+			"date" : ""
+		}]
+	};
+	var rawRoomData2 = {
+		"room" : [{
+			"pen_id" : "",
+			"room_name" : "",
+			"date" : ""
+		}]
+	};
+	rawRoomDataArray.push(rawRoomData1);
+	rawRoomDataArray.push(rawRoomData2);
+	var stringifiedRoomData = JSON.stringify(rawRoomDataArray);
+	//console.log(stringifiedRoomData);
+	console.log(stringifiedRoomData);
+	</script>
 </head>
 <body>
 	<div class="container">

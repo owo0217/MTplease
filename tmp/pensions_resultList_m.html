@@ -176,66 +176,99 @@
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
 	<script>
-	/**********  추가 코드  **********/
-	var countChecked = 0;
-	/********** 추가 코드 끝 **********/
-	$(document).ready(function() {
-		// 체크박스 정사각형으로 유지해 주는 코드
-		var checkboxHeight = $('.checkbox-room').width() + 10 ;
-		$('.checkbox-room').css({'height': checkboxHeight + 'px'});
-
-		var containerMarginBottom = $('.fixedbar-bottom').height() + 30;
-		$('.container').css({'margin-bottom': containerMarginBottom + 'px'});
-
+	$(function(){
 		/**********  추가 코드  **********/
-		$('button.btn-compare').prop("disabled", true).css({'color' : 'grey'});
-		$('button.btn-estimate').prop("disabled", true).css({'color' : 'grey'});
+		var countChecked = 0;
 		/********** 추가 코드 끝 **********/
-	});
-	/**********  추가 코드  **********/
-	$(document).on('click', '.checkbox-state', function(e) {
-		e.preventDefault();
-		var checkBox = $(this);
-		if(checkBox.hasClass("checked")) {
-			$(this).removeClass("checked");
-			countChecked--;
-			if(countChecked === 0) {
-				$('button.btn-compare').prop("disabled", true).css({'color' : 'grey'});
-				$('button.btn-estimate').prop("disabled", true).css({'color' : 'grey'});
-			}
-			else if(countChecked === 1) {
-				$('button.btn-compare').prop("disabled", false).css({'color' : 'black'});
-				$('button.btn-estimate').prop("disabled", false).css({'color' : 'black'});
-			}
-		}
-		else {
-			checkBox.addClass("checked");
-			countChecked++;
-			if(countChecked === 1) {
-				$('button.btn-compare').prop("disabled", false).css({'color' : 'black'});
-				$('button.btn-estimate').prop("disabled", false).css({'color' : 'black'});
+		$(document).ready(function() {
+			// 체크박스 정사각형으로 유지해 주는 코드
+			var checkboxHeight = $('.checkbox-room').width() + 10 ;
+			$('.checkbox-room').css({'height': checkboxHeight + 'px'});
+			var containerMarginBottom = $('.fixedbar-bottom').height() + 30;
+			$('.container').css({'margin-bottom': containerMarginBottom + 'px'});
+
+			/**********  추가 코드  **********/
+			$('button.btn-compare').prop("disabled", true).css({'color' : 'grey'});
+			$('button.btn-estimate').prop("disabled", true).css({'color' : 'grey'});
+			/********** 추가 코드 끝 **********/
+		});
+		/**********  추가 코드  **********/
+		$(document).on('click', '.checkbox-state', function(e) {
+			e.preventDefault();
+			var checkBox = $(this);
+			if(checkBox.hasClass("checked")) {
+				$(this).removeClass("checked");
+				countChecked--;
+				if(countChecked === 0) {
+					deactivateAllButton();
+				}
+				else if(countChecked === 1) {
+					activateAllButton();
+				}
 			}
 			else {
-				$('button.btn-compare').prop("disabled", false).css({'color' : 'black'});
-				$('button.btn-estimate').prop("disabled", true).css({'color' : 'grey'});
+				checkBox.addClass("checked");
+				countChecked++;
+				if(countChecked === 1) {
+					activateAllButton();
+				}
+				else {
+					$('button.btn-compare').prop("disabled", false).css({'color' : 'black'});
+					$('button.btn-estimate').prop("disabled", true).css({'color' : 'grey'});
+				}
 			}
+		});
+		function deactivateAllButton() {
+			$('button.btn-compare').prop("disabled", true).css({'color' : 'grey'});
+			$('button.btn-estimate').prop("disabled", true).css({'color' : 'grey'});
 		}
+		function activateAllButton() {
+			$('button.btn-compare').prop("disabled", false).css({'color' : 'black'});
+			$('button.btn-estimate').prop("disabled", false).css({'color' : 'black'});
+		}
+		/********** 추가 코드 끝 **********/
+		/*
+			기존 아래 코드는 삭제하고 위 코드로 변경
+			$(document).on('click', '.checkbox-state', function() {}
+			$(document).on('click', '.checkbox-state.checkd', function() {}
+		*/
 	});
+	
+	/**********  추가 코드  **********/
+	function removeTags() {
+		$('.text-message-notification > .text-message-line-first > div').remove();
+		$('.popup-notification').addClass("hidden");
+	}
 	/********** 추가 코드 끝 **********/
-	/*
-		기존 아래 코드는 삭제하고 위 코드로 변경
-		$(document).on('click', '.checkbox-state', function() {}
-		$(document).on('click', '.checkbox-state.checkd', function() {}
-	*/
 
 	function onClickCompare() {
-		/**********  추가 코드  **********/
-		var room =  $('.checkbox-state.checked').parent().next().next();
-		console.log(room);
-		for(var i in room) {
-			var textPopupMessage = room.find('.text-name-pension').text() + " / " + room.find('.text-name-room').text();
-			console.log(textPopupMessage);
-			$('.text-message-notification > .text-message-line-first').text(textPopupMessage);
+			/**********  추가 코드  **********/
+			var room = $('.checkbox-state.checked').parent().next().next();
+			var textPopupMessageArray = new Array();
+			var RoomDataString = "{";
+			console.log(room);
+			for(i = 0; i < room.length; i++) {
+				console.log(i);
+				console.log($(room[i]));
+				singleRoom = $(room[i]);
+				var textPopupMessage = singleRoom.find('.text-name-pension').text() + " / " + singleRoom.find('.text-name-room').text();	
+				textPopupMessageArray.push(textPopupMessage);
+			
+				singleRoom = singleRoom.parent().parent();
+
+				var rawRoomData = "room" + i + " : [{" + "pen_id : " + singleRoom.attr("pen_id") + ", " + "room_name : " + singleRoom.attr("room-name") + ", " + "date : " + singleRoom.attr("date") + "}]";
+				if(i < room.length - 1) {
+					rawRoomData += ", ";
+				}
+				RoomDataString += rawRoomData;
+			}
+			RoomDataString += "}";
+			console.log(RoomDataString);
+
+			for(i = 0; i < textPopupMessageArray.length; i++) {
+				$('.text-message-notification > .text-message-line-first').append("<div>" + textPopupMessageArray[i] + "</div>");
+			}
+			$('.text-message-notification > .text-message-line-second').text("비교페이지에 추가되었습니다.");
 			$('.popup-notification.hidden').removeClass("hidden");
 			
 			var popupHeight = $('.popup-notification > .text-message-notification > .text-message-line-first').height();
@@ -243,49 +276,38 @@
 
 			$('.popup-notification').height(popupHeight + 30);
 
-			room = room.parent().parent();
+			setTimeout('removeTags()', 3000);
+			/********** 추가 코드 끝 **********/
+			window.MainFragment.toastShort("비교하기 버튼");
+		}
+		
+		function onClickEstimate() {
+			/**********  추가 코드  **********/
+			var $room =  $('.checkbox-state.checked').parent().next().next();
+			var textPopupMessage = $room.find('.text-name-pension').text() + " / " + $room.find('.text-name-room').text();
+			console.log(textPopupMessage);
+			$('.text-message-notification > .text-message-line-first').text(textPopupMessage);
+			$('.text-message-notification > .text-message-line-second').text("견적페이지에 추가되었습니다.");
+			$('.popup-notification.hidden').removeClass("hidden");
+			
+			var popupHeight = $('.popup-notification > .text-message-notification > .text-message-line-first').height();
+			popupHeight += $('.popup-notification > .text-message-notification > .text-message-line-second').height();
+
+			$('.popup-notification').height(popupHeight + 30);
+
+			$room = $room.parent().parent();
 			var rawRoomData = {
-				"others" : [{
-					"pen_id" : room.attr("pen-id"),
-					"room_name" : room.attr("room-name"),
-					"date" : room.attr("date")
+				"room" : [{
+					"pen_id" : $room.attr("pen-id"),
+					"room_name" : $room.attr("room-name"),
+					"date" : $room.attr("date")
 				}]
 			};
 			var stringifiedRoomData = JSON.stringify(rawRoomData);
 			console.log(stringifiedRoomData);
+			/********** 추가 코드 끝 **********/
+			window.MainFragment.toastShort("견적내기 버튼");
 		}
-		/*
-		
-		*/
-		/********** 추가 코드 끝 **********/
-		window.MainFragment.toastShort("비교하기 버튼");
-	}
-	function onClickEstimate() {
-		/**********  추가 코드  **********/
-		var room =  $('.checkbox-state.checked').parent().next().next();
-		var textPopupMessage = room.find('.text-name-pension').text() + " / " + room.find('.text-name-room').text();
-		console.log(textPopupMessage);
-		$('.text-message-notification > .text-message-line-first').text(textPopupMessage);
-		$('.popup-notification.hidden').removeClass("hidden");
-		
-		var popupHeight = $('.popup-notification > .text-message-notification > .text-message-line-first').height();
-		popupHeight += $('.popup-notification > .text-message-notification > .text-message-line-second').height();
-
-		$('.popup-notification').height(popupHeight + 30);
-
-		room = room.parent().parent();
-		var rawRoomData = {
-			"others" : [{
-				"pen_id" : room.attr("pen-id"),
-				"room_name" : room.attr("room-name"),
-				"date" : room.attr("date")
-			}]
-		};
-		var stringifiedRoomData = JSON.stringify(rawRoomData);
-		console.log(stringifiedRoomData);
-		/********** 추가 코드 끝 **********/
-		window.MainFragment.toastShort("견적내기 버튼");
-	}
 	</script>
 </head>
 </head>
@@ -486,7 +508,7 @@
 		<div class="background"></div>
 		<div class="text-message-notification">
 			<div class="text-message-line-first"></div>
-			<div class="text-message-line-second">견적페이지에 추가되었습니다.</div>
+			<div class="text-message-line-second"></div>
 		</div>
 	</div>
 	<!-- //////////////////// 추가 코드 끝 //////////////////// -->

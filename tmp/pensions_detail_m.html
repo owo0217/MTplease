@@ -140,20 +140,22 @@
 	<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="../public/javascripts/bootstrap.min.js"></script>
 	<script>
-	$(document).ready(function() {
-		// 페이지 하단 마진 설정 코드
-		var containerMarginBottom = $('.fixedbar-bottom').height() + 30;
-		$('.container').css({'margin-bottom': containerMarginBottom + 'px'});
+	$(function(){
+		$(document).ready(function() {
+			// 페이지 하단 마진 설정 코드
+			var containerMarginBottom = $('.fixedbar-bottom').height() + 30;
+			$('.container').css({'margin-bottom': containerMarginBottom + 'px'});
+		});
+		function onClickCompare() {
+			window.MainFragment.toastShort("견적내기 버튼");
+		}
+		function onClickEstimate() {
+			window.MainFragment.toastShort("공유하기 버튼");
+		}
+		function onClickShare() {
+			window.MainFragment.toastShort("공유하기 버튼");
+		}
 	});
-	function onClickCompare() {
-		window.MainFragment.toastShort("견적내기 버튼");
-	}
-	function onClickEstimate() {
-		window.MainFragment.toastShort("공유하기 버튼");
-	}
-	function onClickShare() {
-		window.MainFragment.toastShort("공유하기 버튼");
-	}
 	</script>
 </head>
 </head>
